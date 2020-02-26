@@ -7,5 +7,3 @@
 - Bootstrap
 - Git and github
 - CrossFit
-
-
