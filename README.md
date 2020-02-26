@@ -1,13 +1,25 @@
-## Your GitHub Learning Lab Repository for Communicating Using Markdown
-
-Welcome to **your** repository for your GitHub Learning Lab course. This repository will be used during the different activities that I will be guiding you through.
+## Welcome to **Zayidu** Repository!
 
 Oh! I haven't introduced myself...
 
-I'm the GitHub Learning Lab bot and I'm here to help guide you in your journey to learn and master the various topics covered in this course. I will be using Issue and Pull Request comments to communicate with you. In fact, I already added an issue for you to check out.
+I pride myself in being a resourceful SAP Certified® Full-Stack ABAP/Fiori Senior Developer, SAP Techno-Functional Consultant, experienced in leading and inspiring SAP teams, I take pride in providing the best service while always leading with kindness.
 
-![issue tab](https://lab.github.com/public/images/issue_tab.png)
+I make it my mission to get to know my clients, their needs and provide top-notch service and deliverables.
 
-I'll meet you over there, can't wait to get started!
+Experienced developer and a programmer with a demonstrated history of working in the information technology and services industry. Expert-level proficiency with major development tools such as SAP HANA Tools, Javascript ES6, Fiori Apps. Strong engineering professional with a Bachelor of Technology (B.Tech.) focused on Electrical and Electronics Engineering.
 
-This repository is licensed under [MIT](../LICENSE) (c) 2019 GitHub, Inc.
+When I'm not running my IDEs, you can find me out exploring the world or doing Cross-Fit.
+
+Thanks for reading. Good day to you!
+
+## SAP® Certifications:
+
+# SAP Certified Development Associate - SAP Fiori Application Developer
+https://www.youracclaim.com/badges/eb4bb1a9-2c90-41e8-94c7-59c1db6e0572/linked_in_profile
+
+# SAP Certified Development Specialist - ABAP for SAP HANA 2.0
+https://www.youracclaim.com/badges/d8190fe4-9ddc-449a-8376-797ca9195d2b/linked_in_profile
+
+
+
+This repository is licensed under [zayidu](https://zayidu.github.io/portfolio) (c) 2020 GitHub, Inc.
