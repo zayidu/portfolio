@@ -1,9 +1,10 @@
 # Here is a list of my favorite things:
 
 - Coding!
+- React.js
 - Javascript
-- SAP ABAP, Fiori
-- Open Source
+- SAP ABAP, Fiori, Ui5
+- Open Source Projects
 - Bootstrap
-- Git and github
+- Git and Github
 - CrossFit
