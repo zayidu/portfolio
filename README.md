@@ -30,4 +30,4 @@ https://powerful-brook-38361.herokuapp.com
 
 https://powerful-brook-38361.herokuapp.com/profile/5eccd4c4672f18b60a4e7bc4
 
-This repository is licensed under [zayidu](https://zayidu.github.io/portfolio) (c) 2020 GitHub, Inc.
+This repository is licensed under [zayidu](https://zayidu.github.io/portfolio) (c) 2020 Zayidu, Inc.
