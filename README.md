@@ -4,8 +4,6 @@ Oh! I haven't introduced myself...
 
 I pride myself in being a resourceful SAP Certified® Full-Stack ABAP/Fiori Senior Developer, SAP Techno-Functional Consultant, experienced in leading and inspiring SAP teams, I take pride in providing the best service while always leading with kindness.
 
-I make it my mission to get to know my clients, their needs and provide top-notch service and deliverables.
-
 Experienced developer and a programmer with a demonstrated history of working in the information technology and services industry. Expert-level proficiency with major development tools such as SAP HANA Tools, Javascript ES6, Fiori Apps. Strong engineering professional with a Bachelor of Technology (B.Tech.) focused on Electrical and Electronics Engineering.
 
 When I'm not running my IDEs, you can find me out exploring the world or doing Cross-Fit.
