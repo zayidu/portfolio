@@ -1,5 +1,6 @@
-[GitHub Profile](https://github.com/zayidu)
-[zDevConector Profile](https://powerful-brook-38361.herokuapp.com/profile/5eccd4c4672f18b60a4e7bc4)
+# [GitHub Profile](https://github.com/zayidu)
+
+# [zDevConector Profile](https://powerful-brook-38361.herokuapp.com/profile/5eccd4c4672f18b60a4e7bc4)
 
 # My Open-Source Projects:
 
