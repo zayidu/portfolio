@@ -3,7 +3,7 @@
 - Coding!
 - React.js, MERN
 - Javascript
-- SAP ABAP, Fiori, Ui5
+- SAP S/H Hana ABAP, Fiori, Ui5
 - Open Source Projects
 - Bootstrap
 - Git and Github
