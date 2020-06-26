@@ -65,6 +65,26 @@ p {
   text-align: justify;
 }
 
+h3 {
+  margin-bottom: 0;
+}
+.item-details h3 + p {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.item-details h3 ~ p {
+  margin: 0;
+}
+
+.divider > section {
+  border-bottom: 1px dotted #343434;
+  padding: 25px 0;
+}
+.divider > section:last-of-type {
+  border-bottom: none;
+}
+
 /* Profile   
 ---------------------------------- */
 header {
@@ -93,8 +113,8 @@ header {
 }
 .project-item {
   overflow: hidden;
-  border-bottom: 1px dotted #343434;
   padding: 25px 0;
+  min-height: 100px;
 }
 .project-item img {
   float: left;
@@ -120,8 +140,14 @@ header {
   background: #353919;
   color: #f7fff7;
 }
+.certification-item {
+  /* border-bottom: 1px dotted #f7fff7; */
+}
 /* Education   
 ---------------------------------- */
+.education-item {
+  /* border-bottom: 1px dotted #343434; */
+}
 /* Contact Info   
 ---------------------------------- */
 footer {
