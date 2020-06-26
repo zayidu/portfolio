@@ -57,7 +57,13 @@ h2 {
 }
 
 .content-wrap {
-  width: 900px;
+  /* width: 900px; */
+  max-width: 900px;
+  /* When the viewport is smaller than max value which is 900 px 
+     it becomes same width as its container, to make it relative to 
+     its container 85%. So this rule will be applied on small 
+     screens < 900px.    */
+  width: 85%;
   margin: 0 auto;
   padding: 60px 0;
 }
@@ -90,7 +96,13 @@ h3 {
 header {
   background: #2f3061;
   color: #f7fff7;
-  text-align: center;
+  /* text-align: center; */
+}
+.profile-img {
+  width: 300px;
+  border-radius: 10px;
+  float: left;
+  margin-right: 30px;
 }
 /* Projects   
 ---------------------------------- */
@@ -116,10 +128,10 @@ header {
   padding: 25px 0;
   min-height: 100px;
 }
-.project-item img {
+/* .project-item img {
   float: left;
   margin-right: 20px;
-}
+} */
 .project-item h3 {
   margin-top: 0;
 }
@@ -128,12 +140,12 @@ header {
 .work-experience {
   background: #a1c6d7;
 }
-.job-item {
+/* .job-item {
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 30px;
   border-bottom: 1px dotted #343434;
-}
+} */
 /* Certification   
 ---------------------------------- */
 .certification {
@@ -145,6 +157,15 @@ header {
 }
 /* Education   
 ---------------------------------- */
+.education {
+  background-image: url('../images/sharon-mccutcheon-unsplash.jpg');
+  background-size: cover;
+  background-position: top right;
+  padding-bottom: 100px;
+}
+.education p {
+  width: 60%;
+}
 .education-item {
   /* border-bottom: 1px dotted #343434; */
 }
@@ -153,16 +174,66 @@ header {
 footer {
   background: #343434;
   color: #f7fff7;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .contact-list {
   list-style-type: none;
   padding: 0;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 .contact-list a {
   padding: 15px;
   display: inline-block;
+}
+
+/* Responsive   
+---------------------------------- */
+/* Big Screens/ Desktops   
+---------------------------------- */
+@media screen and (min-width: 750px) {
+  header,
+  footer {
+    text-align: center;
+  }
+  .project-item img {
+    float: left;
+    margin-right: 20px;
+  }
+  .job-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 30px;
+    border-bottom: 1px dotted #343434;
+  }
+  .contact-list {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* Small Screens/ Mobiles   
+---------------------------------- */
+@media screen and (max-width: 749px) {
+  h1 {
+    font-size: 70px;
+    line-height: 0.9;
+    margin-bottom: 20px;
+  }
+  header h2 {
+    font-size: 50px;
+  }
+
+  h2 {
+    line-height: 1;
+  }
+  .contact-list a {
+    padding: 5px;
+  }
+  .education {
+    background-image: url('../images/joanna-kosinska-unsplash.jpg');
+    background-size: cover;
+    background-position: top right;
+    padding-bottom: 100px;
+  }
 }
