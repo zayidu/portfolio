@@ -38,6 +38,7 @@ img {
 a {
   color: #ffe66d;
 }
+
 a:hover {
   text-decoration: none;
 }
@@ -152,9 +153,15 @@ nav a:hover {
   border-radius: 4px;
   display: inline-block;
 }
+
 .projects .btn:hover {
   background: rgba(47, 48, 97, 80%);
 }
+
+.project-item img {
+  cursor: pointer;
+}
+
 .project-item {
   overflow: hidden;
   padding: 25px 0;

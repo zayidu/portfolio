@@ -18,11 +18,38 @@
     />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body>
     <main>
       <!-- ***********************  ABOUT / PROFILE  *********************** -->
       <header id="about">
         <!-- <a href="./files/zayidu-resume.pdf" download class="btn download">Download PDF</a> -->
+        <!-- <nav>
+          <a href="#about">
+            <i class="fas fa-address-card" />
+            <span class="hide-m">About</span></a
+          >
+          <a href="#projects">
+            <i class="fas fa-project-diagram"></i>
+            <span class="hide-m">Project</span></a
+          >
+          <a href="#work">
+            <i class="fas fa-briefcase"></i>
+            <span class="hide-m">Work Experience</span></a
+          >
+          <a href="#certification">
+            <i class="fas fa-certificate"></i>
+            <span class="hide-m">Certification</span></a
+          >
+          <a href="#education">
+            <i class="fas fa-university"></i>
+            <span class="hide-m">Education</span></a
+          >
+          <a href="#contact">
+            <i class="fas fa-id-card"></i>
+            <span class="hide-m">Contact</span></a
+          >
+        </nav> -->
         <nav>
           <a href="#about">About</a>
           <a href="#projects">Project</a>
@@ -80,8 +107,10 @@
           <section class="project-item">
             <div>
               <img
+                onclick="onOpenInsta()"
                 src="images/project-instagram-thumbnail.jpg"
-                alt="Instagram Clone - Developed by Zayidu"
+                alt="Instagram Clone
+              - Developed by Zayidu"
               />
             </div>
             <div>
@@ -91,15 +120,14 @@
                 using ReactJS, Redux, HTML, JavaScript, CSS. Used NodeMailer and
                 SendGrid for Forgot Password and Welcome Mail functionalities,
                 Used Cloudinary to save the Images, Used MongoDB to store the
-                new user sign-in information and used Bcrypt.js Library for
-                authentication to sign-up and sign-in users. I encourage you to
-                check it with the below link.
+                new user sign-in information and used Bcrypt.js as well. I
+                encourage you to check it with the below link.
               </p>
               <a
                 class="btn"
                 href="https://instaclonezayidu.herokuapp.com/"
                 target="_blank"
-                >View the Insta Clone - Z</a
+                >View Insta Clone - Z</a
               >
             </div>
           </section>
@@ -107,6 +135,7 @@
           <!-- Project 2 -->
           <section class="project-item">
             <img
+              onclick="onOpenzDevConnector()"
               src="images/project-zdevconnector-thumbnail.jpg"
               alt="zDevConnector - Developed by Zayidu"
             />
@@ -123,13 +152,14 @@
               class="btn"
               href="https://powerful-brook-38361.herokuapp.com/"
               target="_blank"
-              >View the zDevConnector</a
+              >View zDevConnector</a
             >
           </section>
 
           <!-- Project 3 -->
           <section class="project-item">
             <img
+              onclick="onOpenNBA()"
               src="images/project-nba-thumbnail.jpg"
               alt="NBA App- Developed by Zayidu"
             />
@@ -148,13 +178,14 @@
               class="btn"
               href="https://nba-full-stack-59c4b.web.app/"
               target="_blank"
-              >View the App</a
+              >View App</a
             >
           </section>
 
           <!-- Project 4 -->
           <section class="project-item">
             <img
+              onclick="onOpenBookaholic()"
               src="images/project-bookaholic-thumbnail.jpg"
               alt="Bookaholic- Developed by Zayidu"
             />
@@ -174,7 +205,7 @@
               class="btn"
               href="https://fierce-brook-03104.herokuapp.com/"
               target="_blank"
-              >View the App</a
+              >View App</a
             >
           </section>
         </div>
@@ -487,5 +518,6 @@
         </div>
       </footer>
     </main>
+    <script src="./scripts/index.js" />
   </body>
 </html>
