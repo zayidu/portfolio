@@ -159,7 +159,7 @@ nav a:hover {
 }
 
 .project-item img {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .project-item {
