@@ -296,11 +296,15 @@ footer {
   }
   header {
     text-align: center;
-    margin-top: 0px;
+    /* margin-top: 0px; */
   }
 
   nav {
-    display: none;
+    /* display: none; */
+    font-size: 10px;
+  }
+  nav a {
+    padding: 12px 12px;
   }
 
   footer h2 {
