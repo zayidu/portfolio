@@ -8,6 +8,8 @@ https://coolors.co/f7fff7-343434-2f3061-ffe66d-353919-a1c6d7
 #FFE66D - yellow
 #A1C6D7 - blue light
 #353919 - kombu green
+#FB3640 - red salsa,  rgb (251, 54, 64)
+#F7FFF7 - Mint Cream
 */
 
 /* Global Styles
@@ -91,16 +93,6 @@ h3 {
 .divider > section:last-of-type {
   border-bottom: none;
 }
-.column-narrow {
-  width: 35%;
-  float: left;
-  min-height: 150%;
-}
-.column-wide {
-  width: 62%;
-  float: left;
-  min-height: 150%;
-}
 
 /* Header
 ------------------------------------*/
@@ -110,13 +102,39 @@ h3 {
 header {
   background: #2f3061;
   color: #f7fff7;
+  margin-top: 25px;
   /* text-align: center; */
 }
 .profile-img {
-  width: 300px;
+  width: 250px;
   border-radius: 20px;
   float: left;
-  margin-right: 40px;
+  /* margin-right: 40px; */
+}
+
+/* Navigation
+-------------------------*/
+nav {
+  text-align: center;
+  background: aliceblue;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /*z-index: 100;*/
+}
+
+nav a {
+  color: rgb(251, 54, 64);
+  display: inline-block;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+footer a,
+nav a:hover {
+  color: rgb(251, 54, 64, 0.5);
 }
 /* Projects   
 ---------------------------------- */
@@ -184,14 +202,26 @@ header {
   /* border-bottom: 1px dotted #343434; */
 }
 
-/* Header & Footer 
+/* Footer 
 ------------------------------------*/
+footer a {
+  color: #f7fff7;
+}
+
+footer a:hover {
+  color: rgb(255, 230, 109, 0.8);
+}
 /* Contact Info   
 ---------------------------------- */
 footer {
   background: #343434;
   color: #f7fff7;
   /* text-align: center; */
+}
+
+.contact-info a {
+  padding: 10px;
+  display: inline-block;
 }
 
 .contact-list {
@@ -209,10 +239,25 @@ footer {
 ---------------------------------- */
 /* Big Screens/ Desktops   
 ---------------------------------- */
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 850px) {
   header,
   footer {
     text-align: center;
+  }
+  header p {
+    text-align: center;
+  }
+
+  .column-narrow {
+    width: 35%;
+    float: left;
+    min-height: 150%;
+  }
+  .column-wide {
+    margin-left: 18px;
+    width: 62%;
+    float: left;
+    min-height: 150%;
   }
 
   .project-item img {
@@ -232,32 +277,38 @@ footer {
 }
 /* Small Screens/ Mobiles   
 ---------------------------------- */
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 849px) {
   h1 {
-    font-size: 60px;
+    font-size: 50px;
     line-height: 0.9;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
   header h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
-  header p {
-    text-align: unset;
+  header {
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  nav {
+    display: none;
   }
 
   footer h2 {
-    font-size: 18px;
+    font-size: 21px;
   }
 
   .column-narrow {
     float: none;
-    height: 100%;
-    width: 100%;
+    height: unset;
+    margin: 0 auto;
   }
   .column-wide {
     float: none;
-    height: 100%;
-    width: 100%;
+    height: unset;
+    width: unset;
   }
   .profile-img {
     width: 150px;
@@ -277,5 +328,13 @@ footer {
     background-size: cover;
     background-position: top right;
     padding-bottom: 100px;
+  }
+
+  .hide-m {
+    display: none;
+  }
+  footer .content-wrap {
+    padding: 20px;
+    text-align: center;
   }
 }

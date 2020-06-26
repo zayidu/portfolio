@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- <script src="https://use.fontawesome.com/6e47fdd73a.js"></script> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zayidu Ansari, Tech Enthusiast + Full Stack Developer</title>
+    <link rel="icon" href="./images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
@@ -13,13 +21,24 @@
   <body>
     <main>
       <!-- ***********************  ABOUT / PROFILE  *********************** -->
-      <header>
+      <header id="about">
+        <!-- <a href="./files/zayidu-resume.pdf" download class="btn download">Download PDF</a> -->
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Project</a>
+          <a href="#work">Work Experience</a>
+          <a href="#certification">Certification</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
         <div class="content-wrap">
-          <img
-            class="profile-img column-narrow"
-            src="./images/zayidu-profile.jpg"
-            alt="Zayidu Ansari"
-          />
+          <div class="column-narrow">
+            <img
+              class="profile-img"
+              src="./images/zayidu-profile.jpg"
+              alt="Zayidu Ansari"
+            />
+          </div>
           <div class="column-wide">
             <h1>Zayidu Ansari</h1>
             <h2>Tech Enthusiast + Full Stack Developer</h2>
@@ -47,12 +66,14 @@
       </header>
 
       <!-- ********************  PROJECTS / PORTFOLIO  ********************* -->
-      <section class="projects">
+      <section id="projects" class="projects">
         <div class="content-wrap divider">
           <h2>Featured Projects</h2>
           <p>
             View selected projects below. More information can be found at
-            <a class="btn" href="https://github.com/zayidu">Github.com</a>.
+            <a class="btn" href="https://github.com/zayidu" target="_blank"
+              >Github.com</a
+            >.
           </p>
 
           <!-- Project 1 -->
@@ -160,7 +181,7 @@
       </section>
 
       <!-- ***********************  WORK EXPERIENCE  *********************** -->
-      <section class="work-experience">
+      <section id="work" class="work-experience">
         <div class="content-wrap item-details divider">
           <h2>Work Experience</h2>
           <p>
@@ -325,7 +346,7 @@
       </section>
 
       <!-- ******************  CERTIFICATIONS ****************** -->
-      <section class="certification">
+      <section id="certification" class="certification">
         <div class="content-wrap item-details">
           <h2>Certification</h2>
 
@@ -383,7 +404,7 @@
       </section>
 
       <!-- ******************  EDUCATION *********************** -->
-      <section class="education">
+      <section id="education" class="education">
         <div class="content-wrap item-details">
           <h2>Education</h2>
 
@@ -416,12 +437,38 @@
       </section>
 
       <!-- *****************  CONTACT INFO / SOCIAL MEDIA  ***************** -->
-      <footer>
+      <footer id="contact">
         <div class="content-wrap">
           <h2>Let's Keep in Touch! N'hesitez pas pour m'appeler.</h2>
 
           <!-- Social media and contact links. Add or remove any networks. -->
-          <ul class="contact-list">
+          <div class="contact-info">
+            <a href="mailto:zayidu@gmail.com">
+              <i class="far fa-envelope" aria-hidden="true"></i>
+              <span class="hide-m">zayidu11@gmail.com</span>
+            </a>
+
+            <a href="https://zayidu.github.io/portfolio/" target="_blank">
+              <i class="fas fa-portrait"></i>
+              <span class="hide-m">zayidu.com</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/zayidu/" target="_blank">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              <span class="hide-m">LinkedIn</span>
+            </a>
+
+            <a href="https://www.facebook.com/zayidu" target="_blank">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
+              <span class="hide-m">Facebook</span></a
+            >
+            <a href="https://twitter.com/zayidu" target="_blank">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+              <span class="hide-m">Twitter</span></a
+            >
+          </div>
+
+          <!-- <ul class="contact-list">
             <li><a href="mailto:zayidu11@gmail.com">zayidu11@gmail.com</a></li>
             <li>
               <a href="https://zayidu.github.io/portfolio/" target="_blank"
@@ -436,7 +483,7 @@
                 >LinkedIn</a
               >
             </li>
-          </ul>
+          </ul> -->
         </div>
       </footer>
     </main>
