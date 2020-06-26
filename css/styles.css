@@ -61,15 +61,16 @@ h2 {
   margin: 0 auto;
   padding: 60px 0;
 }
-/* p {
+p {
   text-align: justify;
-} */
+}
 
 /* Profile   
 ---------------------------------- */
 header {
   background: #2f3061;
   color: #f7fff7;
+  text-align: center;
 }
 /* Projects   
 ---------------------------------- */
@@ -107,6 +108,12 @@ header {
 .work-experience {
   background: #a1c6d7;
 }
+.job-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 30px;
+  border-bottom: 1px dotted #343434;
+}
 /* Certification   
 ---------------------------------- */
 .certification {
@@ -120,4 +127,16 @@ header {
 footer {
   background: #343434;
   color: #f7fff7;
+  text-align: center;
+}
+
+.contact-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.contact-list a {
+  padding: 15px;
+  display: inline-block;
 }
