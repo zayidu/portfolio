@@ -12,8 +12,23 @@ https://coolors.co/f7fff7-343434-2f3061-ffe66d-353919-a1c6d7
 
 /* Global Styles
 ---------------------------------- */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   color: #343434;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
 }
 img {
   width: 300px;
@@ -24,11 +39,31 @@ a {
 a:hover {
   text-decoration: none;
 }
+h1 {
+  font-size: 100px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 45px;
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  font-family: 'Caveat', cursive;
+  margin: 0;
+}
 
 .content-wrap {
   width: 900px;
   margin: 0 auto;
+  padding: 60px 0;
 }
+/* p {
+  text-align: justify;
+} */
 
 /* Profile   
 ---------------------------------- */
@@ -50,9 +85,22 @@ header {
   text-decoration: none;
   padding: 8px;
   border-radius: 4px;
+  display: inline-block;
 }
 .projects .btn:hover {
   background: rgba(47, 48, 97, 80%);
+}
+.project-item {
+  overflow: hidden;
+  border-bottom: 1px dotted #343434;
+  padding: 25px 0;
+}
+.project-item img {
+  float: left;
+  margin-right: 20px;
+}
+.project-item h3 {
+  margin-top: 0;
 }
 /* Work Experience   
 ---------------------------------- */
@@ -63,6 +111,7 @@ header {
 ---------------------------------- */
 .certification {
   background: #353919;
+  color: #f7fff7;
 }
 /* Education   
 ---------------------------------- */
