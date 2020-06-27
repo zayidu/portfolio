@@ -325,6 +325,13 @@ footer {
     text-align: center;
     /* margin-top: 0px; */
   }
+  header p {
+    text-align: center;
+  }
+
+  /* header .content-wrap {
+    padding: 50px 0px;
+  } */
 
   nav {
     /* display: none; */
@@ -337,6 +344,10 @@ footer {
 
   footer h2 {
     font-size: 21px;
+  }
+
+  .content-wrap {
+    padding: 50px 0px;
   }
 
   .column-narrow {
