@@ -178,6 +178,15 @@ nav a:hover {
 .work-experience {
   background: #a1c6d7;
 }
+
+.work-experience a {
+  color: #343434;
+}
+
+.work-experience a:hover {
+  color: rgb(52, 52, 52, 0.8);
+}
+
 /* .job-item {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -193,6 +202,21 @@ nav a:hover {
 .certification-item {
   /* border-bottom: 1px dotted #f7fff7; */
 }
+
+/* .certification .btn {
+  color: #343434;
+  background: rgb(255, 230, 109);
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+  display: inline-block;
+} */
+
+.certification .btn:hover {
+  /* background: rgb(255, 230, 109, 0.8); */
+  text-decoration: none;
+}
+
 /* Education   
 ---------------------------------- */
 .education {
