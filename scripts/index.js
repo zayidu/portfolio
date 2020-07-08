@@ -1,4 +1,5 @@
 const onOpenInsta = () => {
+  // window.location.hostname === "zayidu.github.io" &&
   window.open('https://instaclonezayidu.herokuapp.com/', '_blank').focus();
 };
 
