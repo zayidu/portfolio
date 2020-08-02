@@ -187,6 +187,14 @@ nav a:hover {
   color: rgb(52, 52, 52, 0.8);
 }
 
+.job-item a {
+  text-decoration: none;
+}
+
+.job-item a:hover {
+  color: rgb(47, 48, 97, 0.6);
+}
+
 /* .job-item {
   display: grid;
   grid-template-columns: 1fr 2fr;
