@@ -173,6 +173,13 @@ nav a:hover {
 .project-item h3 {
   margin-top: 0;
 }
+
+/* Overall Experience   
+---------------------------------- */
+.overall-experience {
+  background: #d4afb9;
+}
+
 /* Work Experience   
 ---------------------------------- */
 .work-experience {
