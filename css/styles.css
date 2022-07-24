@@ -139,7 +139,7 @@ nav a:hover {
 /* Projects   
 ---------------------------------- */
 .projects {
-  background: #f7fff7;
+  background: #d4afb9;
 }
 .projects a {
 }
@@ -177,13 +177,17 @@ nav a:hover {
 /* Overall Experience   
 ---------------------------------- */
 .overall-experience {
-  background: #d4afb9;
+  background: #f7fff7;
 }
 
 /* Work Experience   
 ---------------------------------- */
 .work-experience {
   background: #a1c6d7;
+}
+
+.linkedin-btn {
+  color: #2F3061;
 }
 
 .work-experience a {
@@ -208,6 +212,77 @@ nav a:hover {
   column-gap: 30px;
   border-bottom: 1px dotted #343434;
 } */
+/* DELF B2 Certification   
+---------------------------------- */
+ .delf-b2 {
+  position: relative;
+  font-size: 12px;
+  color: black;
+  z-index: 16;
+  background: #f7fff7;
+  padding: 20px;
+}
+
+section.certification-item-b2 {
+  text-align: left;
+  line-height: 30px;
+}
+
+.delf-b2-content {
+    padding-top: 15px;
+}
+
+p.certification-item-b2 {
+  display: inline-block;
+  line-height: 16px;
+  padding-top: 10px;
+}
+
+.content-wrap.item-details.delf-b2 {
+  padding: 20px;
+}
+
+a.btn-b2 {
+  color: red;
+}
+
+.delf-b2-content-img {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.flag {
+    width: auto;
+    height: auto;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid #bbb;
+    margin: 10px;
+    position: relative;
+    background: #fff;
+}
+
+.flag:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background: #00f;
+    width: 33%;
+    z-index: 4;
+}
+.flag:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: #f00;
+    width: 33%;
+    z-index: 4;
+}
+
 /* Certification   
 ---------------------------------- */
 .certification {
