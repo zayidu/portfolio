@@ -59,6 +59,10 @@ h2 {
   margin: 0;
 }
 
+#nav {
+  z-index: 100;
+}
+
 .content-wrap {
   /* width: 900px; */
   max-width: 900px;
