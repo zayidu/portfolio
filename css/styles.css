@@ -10,6 +10,7 @@ https://coolors.co/f7fff7-343434-2f3061-ffe66d-353919-a1c6d7
 #353919 - kombu green
 #FB3640 - red salsa,  rgb (251, 54, 64)
 #F7FFF7 - Mint Cream
+#F5F5DC - BEIGE
 */
 
 /* Global Styles
@@ -199,7 +200,7 @@ nav a:hover {
 /* Projects   
 ---------------------------------- */
 .projects {
-  background: #d4afb9;
+  background: #F5F5DC;
 }
 .projects a {
 }
