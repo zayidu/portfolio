@@ -1,7 +1,9 @@
 # Advanced Booking Widget:
 
-## Mobile:
-![Advanced Booking Widget Mobile View - EN](./MOBILE/en_mobile.gif)
+## Mobile - EN:
+![Advanced Booking Widget Mobile View - AR](./MOBILE/en_mobile.gif)
+## Mobile - AR:
+![Advanced Booking Widget Mobile View - EN](./MOBILE/ar_mobile.gif)
 
 ## Desktop - EN:
 ![Advanced Booking Widget Desktop View - EN](./DESKTOP/en_desktop.gif)
