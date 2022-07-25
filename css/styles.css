@@ -144,7 +144,7 @@ h3 {
 }
 
 #demo-btn:hover {
-  background: transparent;
+  background: rgb(255,255,255, 0.2);
   color: black;
 }
 
