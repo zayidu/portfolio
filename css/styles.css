@@ -493,6 +493,15 @@ footer {
     padding: 12px 12px;
   }
 
+  nav a .show-github {
+    position: relative;
+  }
+
+  .icon-github {
+    position: absolute;
+    top: 16px;
+  }
+
   footer h2 {
     font-size: 21px;
   }
