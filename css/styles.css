@@ -421,7 +421,7 @@ footer {
 ---------------------------------- */
 /* Big Screens/ Desktops   
 ---------------------------------- */
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 860px) {
   header,
   footer {
     text-align: center;
@@ -462,7 +462,7 @@ footer {
 }
 /* Small Screens/ Mobiles   
 ---------------------------------- */
-@media screen and (max-width: 849px) {
+@media screen and (max-width: 859px) {
   h1 {
     font-size: 50px;
     line-height: 0.9;
