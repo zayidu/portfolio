@@ -100,6 +100,82 @@ h3 {
   border-bottom: none;
 }
 
+.title-name--container {
+  display: flex;
+  justify-content: center;
+  font-size: 5rem;
+  font-family: 'Caveat', cursive;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 2px;
+}
+
+.title-name--title-gap {
+  width:20px;
+}
+
+/* bubbly */
+.title-name--title {
+  animation-name: bubbly;
+  animation-duration: calc(var(--i) * 1s);
+  animation-fill-mode:forwards;
+  animation-timing-function:linear;
+  /* animation-iteration-count:infinite; */
+}
+/* keyframes */
+@keyframes bubbly {
+  0% {
+    opacity: 0;
+    /* transform: translateY(-100px); */
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateY(0); */
+    transform: scale(1);
+  }
+}
+
+/* rotating */
+/* .title-name--title {
+  animation-name: rotating;
+  animation-duration: calc(var(--i) * 1s);
+} */
+/* keyframes */
+@keyframes rotating {
+  0% {
+    opacity: 0;
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(720deg);
+  }
+}
+
+/* lowerCase */
+/* .title-name--title { 
+  animation-name: lowerCase;
+  animation-duration: calc(var(--i) * 1s);
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; */
+}
+/* keyframes */
+@keyframes lowerCase {
+  80% {
+    text-transform: lowercase;
+  }
+  100% {
+    text-transform: uppercase;
+  }
+}
+
 #demo-btn {
   background: #222;
   height: 50px;
@@ -463,6 +539,10 @@ footer {
 /* Small Screens/ Mobiles   
 ---------------------------------- */
 @media screen and (max-width: 859px) {
+  .title-name--container {
+    font-size: 3rem;
+    gap: unset;
+  }
   h1 {
     font-size: 50px;
     line-height: 0.9;
