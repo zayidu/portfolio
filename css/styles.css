@@ -213,27 +213,53 @@ h3 {
   }
 }
 
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 #demo-btn {
-  background: #222;
+  background: linear-gradient(270deg, #6e7f8d, #b2becd, #6e7f8d, #b2becd);
+  background-size: 400% 400%;
+  color: #fff;
   height: 50px;
   min-width: 150px;
   border: none;
-  border-radius: 10px;
-  color: #eee;
+  border-radius: 25px;
   font-size: 20px;
-  font-family: 'Cookie', cursive;
+  font-family: 'Arial', sans-serif;
   position: relative;
-  transition: 1s;
+  transition: all 0.3s ease;
   -webkit-tap-highlight-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding-top: 5px;
-  text-decoration: none;
-  padding: 5px;
+  padding: 5px 20px;
   margin-top: 5px;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: gradientAnimation 5s ease infinite;
+  overflow: hidden;
 }
+
+#demo-btn:hover {
+  background: linear-gradient(270deg, #7a8da1, #c3cdd3); /* Lighter and softer gradient on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow for subtle depth */
+}
+
+#demo-btn:active {
+  transform: scale(0.98); /* Slight scale down on click */
+}
+
+
 
 #demo-btn #circle {
   width: 5px;
@@ -254,11 +280,6 @@ h3 {
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-}
-
-#demo-btn:hover {
-  background: rgb(255,255,255, 0.2);
-  color: black;
 }
 
 #demo-btn:hover #circle {
