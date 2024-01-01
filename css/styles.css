@@ -302,10 +302,11 @@ header {
   /* text-align: center; */
 }
 .profile-img {
-  width: 250px;
-  border-radius: 20px;
-  float: left;
-  /* margin-right: 40px; */
+  width: 300px; /* Adjust width as needed */
+  height: 300px; /* Adjust height as needed */
+  border-radius: 50%; /* Creates a circular shape */
+  float: none;
+  margin: 0 auto; Center the image
 }
 
 .b2-img {
@@ -712,12 +713,15 @@ footer {
     height: unset;
     width: unset;
   }
-  .profile-img {
-    width: 150px;
-    border-radius: 20px;
-    float: none;
-    margin: 0 auto;
-  }
+  
+.profile-img {
+  width: 180px; /* Adjust width as needed */
+  height: 180px; /* Adjust height as needed */
+  border-radius: 50%; /* Creates a circular shape */
+  float: none;
+  margin: 0 auto; Center the image
+}
+
   
   .b2-img {
     width: 15px; */
