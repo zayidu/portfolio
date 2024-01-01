@@ -225,7 +225,7 @@ h3 {
   }
 }
 
-#demo-btn {
+#project-live-btn {
   background: linear-gradient(270deg, #6e7f8d, #b2becd, #6e7f8d, #b2becd);
   background-size: 400% 400%;
   color: #fff;
@@ -250,18 +250,18 @@ h3 {
   overflow: hidden;
 }
 
-#demo-btn:hover {
+#project-live-btn:hover {
   background: linear-gradient(270deg, #7a8da1, #c3cdd3); /* Lighter and softer gradient on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow for subtle depth */
 }
 
-#demo-btn:active {
+#project-live-btn:active {
   transform: scale(0.98); /* Slight scale down on click */
 }
 
 
 
-#demo-btn #circle {
+#project-live-btn #circle {
   width: 5px;
   height: 5px;
   background: transparent;
@@ -282,7 +282,7 @@ h3 {
             user-select: none;
 }
 
-#demo-btn:hover #circle {
+#project-live-btn:hover #circle {
   height: 50px;
   width: 150px;
   left: 0;
@@ -480,6 +480,43 @@ a.btn-b2 {
     background: #f00;
     width: 33%;
     z-index: 4;
+}
+
+.widget-description .widget-link {
+  color: #007bff; /* Default link color */
+  text-decoration: none; /* No underline by default */
+  transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.widget-description .widget-link:hover, .widget-description .widget-link:focus {
+  color: #0056b3; /* Darker color on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+.widget-description .widget-project-live-btn {
+  display: inline-block;
+  background: linear-gradient(270deg, #6e7f8d, #b2becd);
+  background-size: 400% 400%;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin: 5px 0;
+  text-align: center;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+.widget-description .widget-project-live-btn:hover {
+  background: linear-gradient(270deg, #7a8da1, #c3cdd3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none; /* No underline on hover for the button */
+}
+
+.widget-description .widget-project-live-btn:active {
+  transform: scale(0.98); /* Slight scale down on click */
 }
 
 /* Certification   
