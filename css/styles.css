@@ -297,8 +297,8 @@ h3 {
 /* Style for the container */
 .top-right {
   position: fixed; /* Fixed position */
-  top: 75px;
-  right: 50px; /* 50px from the right */
+  top: 65px;
+  right: 15px; /* 50px from the right */
   z-index: 1000; /* Ensure it's above other elements */
   display: flex; /* Use flexbox for alignment */
   align-items: center; /* Align items vertically */
@@ -330,6 +330,7 @@ h3 {
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px; /* Rounded corners */
+  z-index: 1; /* Ensure the switch is above the label */
 }
 
 .slider:before {
@@ -356,8 +357,18 @@ input:checked + .slider:before {
 }
 
 .language-label {
-  font-size: 18px; /* Adjust font size as needed */
-  color: #000; /* Black color for visibility */
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  left: 12px;
+  top: 5px;
+  z-index: 2;
+}
+
+/* Change label text when switch is active */
+#language-toggle:checked + .slider + .language-label {
+  content: 'EN';
 }
 
 
