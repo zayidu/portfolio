@@ -321,6 +321,31 @@ h3 {
   transform: scale(1.05); /* Slightly increase size */
 }
 
+.switch:hover::after {
+  content: attr(title); /* This will display the title text */
+  position: absolute;
+  top: 50%; /* Position at the middle of the switch */
+  transform: translate(-70%, -50%); /* Ensure it's vertically centered */
+  left: calc(-100% - 10px); /* Position to the left of the switch */
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em; /* Smaller font size */
+  font-family: Arial, sans-serif; /* Example font style */
+  z-index: 1001; /* Above other elements */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.switch:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Active/click effect */
 .switch:active {
   transform: scale(0.95); /* Slightly decrease size */
