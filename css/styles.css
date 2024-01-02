@@ -321,6 +321,47 @@ h3 {
   transform: scale(1.05); /* Slightly increase size */
 }
 
+.switch:hover::after,
+.switch:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.switch::after {
+  content: attr(title); /* Display the title text */
+  position: absolute;
+  top: 50%;
+  transform: translate(-70%, -50%);
+  left: calc(-100% - 20px); /* Position to the left of the switch */
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+  font-family: Arial, sans-serif;
+  z-index: 1001;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%; /* Align with the right edge of the switch */
+  margin-right: -5px; /* Adjust this value to move the tail */
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
 .switch:hover::after {
   content: attr(title); /* This will display the title text */
   position: absolute;
