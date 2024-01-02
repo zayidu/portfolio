@@ -311,6 +311,7 @@ h3 {
   height: 34px;
   margin-right: 10px; /* Space between switch and label */
   text-decoration: none; /* Remove underline from link */
+  padding: 5px;
 }
 
 .slider {
