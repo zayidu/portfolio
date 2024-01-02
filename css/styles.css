@@ -293,12 +293,11 @@ h3 {
 /* Header
 ------------------------------------*/
 
-/* Switch Button */
 /* Style for the container */
 .top-right {
   position: fixed; /* Fixed position */
   top: 65px;
-  right: 15px; /* 50px from the right */
+  right: 5px; /* 5px from the right */
   z-index: 1000; /* Ensure it's above other elements */
   display: flex; /* Use flexbox for alignment */
   align-items: center; /* Align items vertically */
@@ -331,6 +330,7 @@ h3 {
   transition: .4s;
   border-radius: 34px; /* Rounded corners */
   z-index: 1; /* Ensure the switch is above the label */
+  border: 1px solid #000; 
 }
 
 .slider:before {
@@ -338,6 +338,7 @@ h3 {
   content: "";
   height: 26px;
   width: 26px;
+  top: 3px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -360,9 +361,9 @@ input:checked + .slider:before {
   font-size: 14px;
   font-weight: bold;
   color: #000;
-  position: relative;
-  left: 12px;
-  top: 5px;
+  position: absolute;
+  left: 35px; /* Adjust the left position as needed */
+  top: 6px; /* Adjust the top position as needed */
   z-index: 2;
 }
 
@@ -370,7 +371,6 @@ input:checked + .slider:before {
 #language-toggle:checked + .slider + .language-label {
   content: 'EN';
 }
-
 
 /* Profile   
 ---------------------------------- */
