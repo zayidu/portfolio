@@ -312,6 +312,19 @@ h3 {
   margin-right: 10px; /* Space between switch and label */
   text-decoration: none; /* Remove underline from link */
   padding: 5px;
+  transition: transform 0.2s; /* Smooth transformation */
+  will-change: transform; /* Optimize for animations */
+}
+
+/* Hover effect */
+.switch:hover {
+  transform: scale(1.05); /* Slightly increase size */
+}
+
+/* Active/click effect */
+.switch:active {
+  transform: scale(0.95); /* Slightly decrease size */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
 .slider {
@@ -324,7 +337,7 @@ h3 {
   background-color: #ccc; /* Background color */
   background-image: url('../icons/france.png'); /* French flag icon */
   background-repeat: no-repeat;
-  background-position: left center; /* Position the flag to the left */
+  background-position: left 5px center; /* Position the flag to the left */
   background-size: 26px 26px; /* Size of the flag icon */
   border-radius: 34px; /* Rounded corners */
   border: 1px solid #000; 
@@ -342,7 +355,6 @@ h3 {
   top: 6px; /* Adjust the top position as needed */
   z-index: 2;
 }
-
 
 /* Change label text when switch is active */
 /* #language-toggle:checked + .slider + .language-label {
