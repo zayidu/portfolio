@@ -160,6 +160,65 @@ h3 {
   z-index: 99; /* Ensure it is above other elements */
 }
 
+.strava-follow a {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Base styles for the button to ensure visibility */
+.strava-follow img {
+  display: block; /* Ensure the image is treated as a block element */
+  border-radius: 5px; /* Match the border radius of the container */
+  background-color: #e04e00; /* Strava orange background color for better visibility */
+  padding: 5px; /* Add padding for a better look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for interactions */
+}
+
+/* Brightening shimmer effect */
+.strava-follow a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  transform: skewX(-30deg);
+  transition: all 0.5s;
+}
+
+.strava-follow a:hover::before {
+  left: 100%;
+  transition: all 0.5s;
+}
+
+.strava-follow a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  transform: skewX(-30deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: -150%;
+  }
+}
+
 /* bubbly */
 .title-name--title {
   animation-name: bubbly;
@@ -789,9 +848,11 @@ footer {
 
 /* Strava Follow Badge Styles */
   .strava-follow {
-    bottom: 5px; /* Adjust for smaller screens */
-    right: 5px; /* Adjust for smaller screens */
-    transform: scale(0.8); /* Slightly smaller on mobile */
+    position: absolute;
+    bottom: 10px; /* Adjust for desired vertical position on mobile */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to center the element */
+    right: auto; /* Reset right positioning */
   }
 
   .title-name--container {
