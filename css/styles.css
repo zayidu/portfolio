@@ -152,6 +152,14 @@ h3 {
   width:20px;
 }
 
+/* Strava Follow Badge Styles */
+.strava-follow {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed for desired vertical position */
+  right: 10px; /* Adjust as needed for desired horizontal position */
+  z-index: 99; /* Ensure it is above other elements */
+}
+
 /* bubbly */
 .title-name--title {
   animation-name: bubbly;
@@ -430,6 +438,7 @@ h3 {
 /* Profile   
 ---------------------------------- */
 header {
+  position: relative;
   background: #2f3061;
   color: #f7fff7;
   margin-top: 25px;
@@ -777,6 +786,13 @@ footer {
     font-size: 3rem;
     gap: unset;
   } */
+
+/* Strava Follow Badge Styles */
+  .strava-follow {
+    bottom: 5px; /* Adjust for smaller screens */
+    right: 5px; /* Adjust for smaller screens */
+    transform: scale(0.8); /* Slightly smaller on mobile */
+  }
 
   .title-name--container {
     display: none;
