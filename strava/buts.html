@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Zayidu A Strava Buts</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111827;
+      --panel-soft: #162033;
+      --text: #e5ecf6;
+      --muted: #9fb0c8;
+      --line: rgba(148, 163, 184, 0.25);
+      --accent: #f59e0b;
+      --accent-soft: #fde68a;
+      --link: #93c5fd;
+      --shadow: 0 20px 45px rgba(2, 6, 23, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-rounded, "SF Pro Rounded", "SF Pro Text", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(245, 158, 11, 0.12), transparent 32%),
+        linear-gradient(180deg, #09111f 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+    .hero, .card {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .hero {
+      padding: 26px 24px 18px;
+      margin-bottom: 18px;
+    }
+    .hero h1, .card h2, .card h3 { margin: 0; }
+    .hero h1 {
+      font-size: clamp(1.7rem, 2vw + 1rem, 2.45rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .hero .subtitle {
+      margin: 12px 0 0;
+      color: var(--accent-soft);
+      font-size: 1rem;
+    }
+    .hero .executed {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .stack { display: grid; gap: 18px; }
+    .card { padding: 22px; }
+    .card h2 {
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+    }
+    .status-badge {
+      display: block;
+      max-width: 100%;
+      margin-bottom: 16px;
+    }
+    .time-progress-block h3,
+    .subheading {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--accent-soft);
+    }
+    .time-progress {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .time-progress img {
+      width: min(220px, 100%);
+      height: auto;
+    }
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+      justify-content: center;
+      gap: 16px;
+    }
+    .svg-tile {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .svg-tile img {
+      width: min(220px, 100%);
+      height: auto;
+    }
+    .snapshot-item h3, .historic-block h3, .year-total h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .meta, .distance {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.96em;
+    }
+    .summary {
+      margin: 0;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .summary.total {
+      margin-top: 4px;
+      color: var(--accent-soft);
+      font-weight: 700;
+    }
+    .indent { padding-left: 1.2rem; }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin: 14px 0;
+    }
+    .monthly-breakdown, .historic-list, .year-total-list {
+      display: grid;
+      gap: 12px;
+    }
+    .month-item, .historic-block, .year-total {
+      background: var(--panel-soft);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+    .clean-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .clean-list li {
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .empty-state {
+      margin: 0;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .grand-total {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .grand-total h3 {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+    .grand-total ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+    .grand-total .final-total {
+      margin: 14px 0 0;
+      color: var(--accent-soft);
+      font-weight: 800;
+    }
+    @media (max-width: 640px) {
+      .page {
+        width: min(100vw - 20px, 1120px);
+        padding-top: 18px;
+      }
+      .hero, .card {
+        border-radius: 18px;
+      }
+      .activity-grid {
+        grid-template-columns: repeat(auto-fit, minmax(168px, 168px));
+        gap: 12px;
+      }
+      .svg-tile img,
+      .time-progress img {
+        width: min(168px, 100%);
+      }
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>🏔️ Zayidu A · <a href="https://www.strava.com/athletes/32322110">Strava</a></h1>
+      <p class="subtitle">🚴 Long rides · 🏃 steady miles · 🏊 swim focus · 🎯 yearly goals</p>
+      <p class="executed"><em>- Lastly executed: 2026-03-08 20:57:36</em></p>
+    </header>
+    <div class="stack">
+      <section class="card">
+        <h2>🎯 Goals 2026 (Buts)</h2>
+        <img class="status-badge" src="https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-9_months,_42_weeks,_298_days-f59e0b?style=flat-square&amp;labelColor=f8fafc" alt="Goals status">
+        <section class="time-progress-block"><h3>⏳ Time Progress</h3><div class="time-progress"><img src="progress/2026/time_progress.svg" alt="Time progress" loading="lazy"></div></section>
+        <h3 class="subheading">🏃 🚴 🏊 Activities</h3>
+        <div class="activity-grid">
+  <figure class="svg-tile"><img src="progress/2026/run_goal_progress.svg" alt="Run goal progress" loading="lazy"></figure>
+  <figure class="svg-tile"><img src="progress/2026/ride_goal_progress.svg" alt="Ride goal progress" loading="lazy"></figure>
+  <figure class="svg-tile"><img src="progress/2026/swim_goal_progress.svg" alt="Swim goal progress" loading="lazy"></figure>
+</div>
+      </section>
+      <section class="card">
+        <h2>📊 March 2026 Stats/Snapshots (Current)</h2>
+        <article class="snapshot-item">
+  <h3>📅 Weekly <span class="meta">(Mar 02 - Mar 08)</span> <span class="distance">(4.03km total)</span></h3>
+  <p class="summary">🏊 2 Swims (4.03km)</p>
+  <p class="summary total">🏁 Total 2 Activities (4.03km)</p>
+</article><div class="divider" aria-hidden="true"></div><article class="snapshot-item">
+  <h3>🗓️  Monthly <span class="meta">(March 2026)</span> <span class="distance">(4.03km total)</span></h3>
+  <p class="summary">🏊 2 Swims (4.03km)</p>
+  <p class="summary total">🏁 Total 2 Activities (4.03km)</p>
+</article><div class="divider" aria-hidden="true"></div><article class="snapshot-item">
+  <h3>📆 Yearly <span class="meta">(2026)</span> <span class="distance">(480.22km total)</span></h3>
+  <p class="summary">🥾 1 Hike (6.31km),  🚴 5 Rides (403.29km),  🏃 5 Runs (26.37km),  🏊 21 Swims (44.25km)</p>
+  <p class="summary total">🏁 Total 32 Activities (480.22km)</p>
+</article>
+        <div class="divider" aria-hidden="true"></div>
+<h3 class="subheading">🗂️ Monthly Breakdown</h3>
+<div class="monthly-breakdown">
+  <article class="month-item">
+    <p class="summary"><strong>Jan:</strong> 🥾 1 Hike (6.31km),  🚴 2 Rides (139.55km),  🏃 1 Run (5.59km),  🏊 10 Swims (21.55km)</p>
+    <p class="summary total indent">🏁 Total 14 Activities (173km)</p>
+  </article>
+  <article class="month-item">
+    <p class="summary"><strong>Feb:</strong> 🚴 3 Rides (263.74km),  🏃 4 Runs (20.79km),  🏊 9 Swims (18.68km)</p>
+    <p class="summary total indent">🏁 Total 16 Activities (303.2km)</p>
+  </article>
+  <article class="month-item">
+    <p class="summary"><strong>Mar:</strong> 🏊 2 Swims (4.03km)</p>
+    <p class="summary total indent">🏁 Total 2 Activities (4.03km)</p>
+  </article>
+</div>
+      </section>
+      <section class="card">
+        <h2>🏆 Historic Goals Achieved</h2>
+        <div class="historic-list">
+          <section class="historic-block">
+  <h3>🚴 BRM 200</h3>
+  <ul class="clean-list">
+    <li><strong>09 Jun 2024</strong>: <a href="https://www.strava.com/activities/11614752093">BRM 200, UV Argenteuil🚴‍♂️</a> <em>(215.73km / 9h 47m)</em></li>
+  </ul>
+</section>
+        </div>
+      </section>
+      <section class="card">
+        <h2>🎖️ All-Time Totals (Since Inception)</h2>
+        <div class="year-total-list">
+          <article class="year-total">
+  <h3>2026</h3>
+  <p class="summary">🥾 1 Hike (6km), 🚴 5 Rides (403km), 🏃 5 Runs (26km), 🏊 21 Swims (44km)</p>
+  <p class="summary total">🏁 Total 32 Activities (480km)</p>
+</article>
+<article class="year-total">
+  <h3>2025</h3>
+  <p class="summary">🏋️ 1 Crossfit (0km), 🥾 4 Hikes (31km), 🚴 25 Rides (2219km), 🏃 25 Runs (131km), 🏊 84 Swims (150km), 🚶 8 Walks (48km)</p>
+  <p class="summary total">🏁 Total 147 Activities (2578km)</p>
+</article>
+<article class="year-total">
+  <h3>2024</h3>
+  <p class="summary">🏅 1 Kayaking (1km), 🚴 42 Rides (3190km), 🏃 11 Runs (59km), 🏊 78 Swims (100km), 🚶 3 Walks (11km), 🏋️‍♂️ 2 WeightTrainings (0km), 💪 14 Workouts (1km)</p>
+  <p class="summary total">🏁 Total 151 Activities (3363km)</p>
+</article>
+<article class="year-total">
+  <h3>2023</h3>
+  <p class="summary">🚴 1 Ride (57km), 🏃 5 Runs (20km)</p>
+  <p class="summary total">🏁 Total 6 Activities (77km)</p>
+</article>
+<article class="year-total">
+  <h3>2022</h3>
+  <p class="summary">🏃 3 Runs (12km)</p>
+  <p class="summary total">🏁 Total 3 Activities (12km)</p>
+</article>
+<article class="year-total">
+  <h3>2021</h3>
+  <p class="summary">🏃 12 Runs (70km)</p>
+  <p class="summary total">🏁 Total 12 Activities (70km)</p>
+</article>
+<article class="year-total">
+  <h3>2019</h3>
+  <p class="summary">🏃 10 Runs (37km)</p>
+  <p class="summary total">🏁 Total 10 Activities (37km)</p>
+</article>
+        </div>
+        <div class="grand-total">
+          <h3>🧮 GRAND TOTAL</h3>
+          <ul>
+            <li>🏋️ <strong>Crossfit</strong>: 1 activities (0km)</li>
+<li>🥾 <strong>Hikes</strong>: 5 activities (37km)</li>
+<li>🏅 <strong>Kayaking</strong>: 1 activities (1km)</li>
+<li>🚴 <strong>Rides</strong>: 73 activities (5869km)</li>
+<li>🏃 <strong>Runs</strong>: 71 activities (355km)</li>
+<li>🏊 <strong>Swims</strong>: 183 activities (294km)</li>
+<li>🚶 <strong>Walks</strong>: 11 activities (60km)</li>
+<li>🏋️‍♂️ <strong>WeightTrainings</strong>: 2 activities (0km)</li>
+<li>💪 <strong>Workouts</strong>: 14 activities (1km)</li>
+          </ul>
+          <p class="final-total">🏁 Total 361 Activities (6616km)</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
