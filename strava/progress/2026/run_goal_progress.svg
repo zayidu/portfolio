@@ -44,5 +44,4 @@
   <text x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Run</text>
   <text x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">26.4 / 200 km</text>
   <text x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">173.6 km to go</text>
-  <text x="110" y="224" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#7dd3fc" fill-opacity="0.95">GOAL PROGRESS</text>
 </svg>

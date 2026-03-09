@@ -29,7 +29,7 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="364.42"
-    stroke-dashoffset="296.84"
+    stroke-dashoffset="296.82"
     transform="rotate(-90 110 92)"
   />
   <circle cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
@@ -38,5 +38,4 @@
   <text x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
   <text x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">67 / 365 days</text>
   <text x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">297 days left in 2026</text>
-  <text x="110" y="224" text-anchor="middle" font-size="10.5" letter-spacing="1.2" fill="#67e8f9" fill-opacity="0.95">TIME PROGRESS</text>
 </svg>

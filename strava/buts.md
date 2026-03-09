@@ -4,6 +4,13 @@
 # 🎯 Goals 2026 (Buts)
 ![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-9_months,_42_weeks,_297_days-f59e0b?style=flat-square&labelColor=f8fafc)
 
+### ⏳ Time Progress
+<p align="center"><img src="progress/2026/time_progress.svg" alt="Time progress" width="220"></p>
+
+## 🏃 🚴 🏊 Activities
+
+<p align="center"><img src="progress/2026/run_goal_progress.svg" alt="Run goal progress" width="220"> <img src="progress/2026/ride_goal_progress.svg" alt="Ride goal progress" width="220"> <img src="progress/2026/swim_goal_progress.svg" alt="Swim goal progress" width="220"></p>
+
 
 ## 📊 March 2026 Stats/Snapshots (Current)
 
@@ -77,4 +84,4 @@
 
 **🏁 Total 361 Activities (6616km)**
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-09 17:00:05</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-09 17:04:05</sub></p>
