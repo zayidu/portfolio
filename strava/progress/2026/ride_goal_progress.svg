@@ -15,8 +15,8 @@
       <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
     </radialGradient>
     <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020617" flood-opacity="0.24"/>
-      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#38bdf8" flood-opacity="0.10"/>
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#020617" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#38bdf8" flood-opacity="0.07"/>
     </filter>
     <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="10"/>
