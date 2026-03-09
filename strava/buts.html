@@ -89,6 +89,9 @@
     .time-progress img {
       width: min(220px, 100%);
       height: auto;
+      transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 180ms ease;
+      transform-origin: center center;
+      will-change: transform, filter;
     }
     .activity-grid {
       display: grid;
@@ -100,10 +103,34 @@
       margin: 0;
       display: flex;
       justify-content: center;
+      overflow: visible;
     }
     .svg-tile img {
       width: min(220px, 100%);
       height: auto;
+      transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 180ms ease;
+      transform-origin: center center;
+      will-change: transform, filter;
+    }
+    .time-progress img:hover,
+    .time-progress img:focus-visible,
+    .svg-tile img:hover,
+    .svg-tile img:focus-visible {
+      transform: scale(1.035);
+      filter: drop-shadow(0 18px 26px rgba(2, 6, 23, 0.28)) saturate(1.06);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .time-progress img,
+      .svg-tile img {
+        transition: none;
+      }
+      .time-progress img:hover,
+      .time-progress img:focus-visible,
+      .svg-tile img:hover,
+      .svg-tile img:focus-visible {
+        transform: none;
+        filter: none;
+      }
     }
     .snapshot-item h3, .historic-block h3, .year-total h3 {
       font-size: 1.05rem;
