@@ -35,13 +35,13 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="364.42"
-    stroke-dashoffset="283.80"
+    stroke-dashoffset="281.29"
     transform="rotate(-90 110 92)"
   />
   <circle cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text x="110" y="84" text-anchor="middle" font-size="30">🏊</text>
-  <text x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">22%</text>
+  <text x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">23%</text>
   <text x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Swim</text>
-  <text x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">44.2 / 200 km</text>
-  <text x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">155.8 km to go</text>
+  <text x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">45.6 / 200 km</text>
+  <text x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">154.4 km to go</text>
 </svg>

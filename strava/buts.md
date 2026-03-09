@@ -14,15 +14,21 @@
 
 ## 📊 March 2026 Stats/Snapshots (Current)
 
-**🗓️  Monthly** (March 2026) *(4.03km total)*<br>
-*🏊 2 Swims (4.03km)*<br>
-*🏁 Total 2 Activities (4.03km)*
+**📅 Weekly** (Mar 09 - Mar 15) *(1.38km total)*<br>
+*🏊 1 Swim (1.38km)*<br>
+*🏁 Total 1 Activities (1.38km)*
 
 <sub>────────────────────────</sub>
 
-**📆 Yearly** (2026) *(480.22km total)*<br>
-*🥾 1 Hike (6.31km),  🚴 5 Rides (403.29km),  🏃 5 Runs (26.37km),  🏊 21 Swims (44.25km)*<br>
-*🏁 Total 32 Activities (480.22km)*
+**🗓️  Monthly** (March 2026) *(5.4km total)*<br>
+*🏊 3 Swims (5.4km)*<br>
+*🏁 Total 3 Activities (5.4km)*
+
+<sub>────────────────────────</sub>
+
+**📆 Yearly** (2026) *(481.6km total)*<br>
+*🥾 1 Hike (6.31km),  🚴 5 Rides (403.29km),  🏃 5 Runs (26.37km),  🏊 22 Swims (45.62km)*<br>
+*🏁 Total 33 Activities (481.6km)*
 
 <sub>────────────────────────</sub>
 
@@ -32,7 +38,7 @@
 
 *Feb:  🚴 3 Rides (263.74km),  🏃 4 Runs (20.79km),  🏊 9 Swims (18.68km)*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*🏁 Total 16 Activities (303.2km)*
 
-*Mar:  🏊 2 Swims (4.03km)*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*🏁 Total 2 Activities (4.03km)*
+*Mar:  🏊 3 Swims (5.4km)*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*🏁 Total 3 Activities (5.4km)*
 
 
 ## 🏆 Historic Goals Achieved
@@ -44,8 +50,8 @@
 # 🎖️ All-Time Totals (Since Inception)
 
 ### 2026:
-*🥾 1 Hike (6km), 🚴 5 Rides (403km), 🏃 5 Runs (26km), 🏊 21 Swims (44km)*<br>
-*🏁 Total 32 Activities (480km)*
+*🥾 1 Hike (6km), 🚴 5 Rides (403km), 🏃 5 Runs (26km), 🏊 22 Swims (46km)*<br>
+*🏁 Total 33 Activities (482km)*
 
 ### 2025:
 *🏋️ 1 Crossfit (0km), 🥾 4 Hikes (31km), 🚴 25 Rides (2219km), 🏃 25 Runs (131km), 🏊 84 Swims (150km), 🚶 8 Walks (48km)*<br>
@@ -77,11 +83,11 @@
 - 🏅 **Kayaking**: 1 activities (1km)
 - 🚴 **Rides**: 73 activities (5869km)
 - 🏃 **Runs**: 71 activities (355km)
-- 🏊 **Swims**: 183 activities (294km)
+- 🏊 **Swims**: 184 activities (295km)
 - 🚶 **Walks**: 11 activities (60km)
 - 🏋️‍♂️ **WeightTrainings**: 2 activities (0km)
 - 💪 **Workouts**: 14 activities (1km)
 
-**🏁 Total 361 Activities (6616km)**
+**🏁 Total 362 Activities (6618km)**
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-09 17:17:05</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-09 23:53:00</sub></p>
