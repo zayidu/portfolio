@@ -184,13 +184,12 @@
       animation: ring-track-breathe 3.6s ease-in-out infinite;
       transform-origin: center;
     }
-    .remaining-glow {
-      stroke-dasharray: 22 978;
-      stroke-dashoffset: 0;
-      stroke-linecap: round;
-      filter: drop-shadow(0 0 3px rgba(191, 219, 254, 0.18)) drop-shadow(0 0 7px rgba(125, 211, 252, 0.12));
-      animation: remaining-ring-drift 14s linear infinite, ring-track-breathe 3.8s ease-in-out infinite;
-      will-change: stroke-dashoffset, stroke-opacity, filter;
+    .progress-endcap {
+      filter: drop-shadow(0 0 2px rgba(255,255,255,0.16)) drop-shadow(0 0 6px rgba(125, 211, 252, 0.14));
+      animation: progress-endcap-pulse 1s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+      will-change: transform, filter, opacity;
     }
     .progress-status {
       transition: font-size 220ms ease, transform 220ms ease, opacity 220ms ease;
@@ -223,13 +222,21 @@
       0%, 100% { stroke-opacity: 0.10; }
       50% { stroke-opacity: 0.18; }
     }
-    @keyframes remaining-ring-drift {
-      from { stroke-dashoffset: 0; }
-      to { stroke-dashoffset: -1000; }
-    }
     @keyframes pending-status-breathe {
       0%, 100% { opacity: 0.9; }
       50% { opacity: 1; }
+    }
+    @keyframes progress-endcap-pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.92;
+        filter: drop-shadow(0 0 2px rgba(255,255,255,0.14)) drop-shadow(0 0 5px rgba(125, 211, 252, 0.10));
+      }
+      50% {
+        transform: scale(1.12);
+        opacity: 1;
+        filter: drop-shadow(0 0 3px rgba(255,255,255,0.18)) drop-shadow(0 0 8px rgba(125, 211, 252, 0.16));
+      }
     }
     @keyframes progress-ring-glow {
       0% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.04)) drop-shadow(0 0 8px rgba(125,211,252,0.06)); }
@@ -241,7 +248,7 @@
       .progress-ring,
       .progress-status,
       .ring-track,
-      .remaining-glow {
+      .progress-endcap {
         transition: none;
         animation: none;
       }
@@ -279,7 +286,7 @@
       margin-bottom: 6px;
     }
     .monthly-breakdown-heading {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
     .indent { padding-left: 1.2rem; }
     .divider {
@@ -469,7 +476,6 @@
   <ellipse cx="74" cy="38" rx="54" ry="16" fill="#ffffff" fill-opacity="0.09" filter="url(#timeBlur)"/>
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.08" filter="url(#timeBlur)"/>
   <circle class="ring-track" cx="110" cy="92" r="56" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <path class="remaining-glow" d="M 161.79 70.70 A 56.00 56.00 0 1 1 110.00 36.00" fill="none" stroke="#dbeafe" stroke-opacity="0.32" stroke-width="4" pathLength="1000"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -485,6 +491,7 @@
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
+  <circle class="progress-endcap" cx="161.79" cy="70.71" r="4.4" fill="#93c5fd" fill-opacity="0.96"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
@@ -523,7 +530,6 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="56" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <path class="remaining-glow" d="M 151.27 54.15 A 56.00 56.00 0 1 1 110.00 36.00" fill="none" stroke="#dbeafe" stroke-opacity="0.32" stroke-width="4" pathLength="1000"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -539,6 +545,7 @@
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
+  <circle class="progress-endcap" cx="151.27" cy="54.15" r="4.4" fill="#60a5fa" fill-opacity="0.96"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🏃</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">13%</text>
@@ -575,7 +582,6 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="56" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <path class="remaining-glow" d="M 137.18 43.04 A 56.00 56.00 0 1 1 110.00 36.00" fill="none" stroke="#dbeafe" stroke-opacity="0.32" stroke-width="4" pathLength="1000"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -591,6 +597,7 @@
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
+  <circle class="progress-endcap" cx="137.18" cy="43.04" r="4.4" fill="#60a5fa" fill-opacity="0.96"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🚴</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">8%</text>
@@ -627,7 +634,6 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="56" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <path class="remaining-glow" d="M 165.47 84.33 A 56.00 56.00 0 1 1 110.00 36.00" fill="none" stroke="#dbeafe" stroke-opacity="0.32" stroke-width="4" pathLength="1000"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -643,6 +649,7 @@
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
+  <circle class="progress-endcap" cx="165.47" cy="84.33" r="4.4" fill="#60a5fa" fill-opacity="0.96"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🏊</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">23%</text>
@@ -753,7 +760,7 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T14:03:59" data-synced-label="2026-03-10 14:03:59" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T14:09:16" data-synced-label="2026-03-10 14:09:16" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
