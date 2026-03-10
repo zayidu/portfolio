@@ -78,15 +78,18 @@
       margin-bottom: 14px;
     }
     .status-badge {
-      display: inline-flex;
-      align-items: center;
-      max-width: 100%;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      align-items: stretch;
+      width: min(100%, 540px);
       margin-bottom: 16px;
-      border-radius: 999px;
+      border-radius: 24px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.14);
-      background: linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.05));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.03);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)),
+        linear-gradient(180deg, rgba(15,23,42,0.58), rgba(15,23,42,0.42));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.02);
       backdrop-filter: blur(18px) saturate(130%);
       -webkit-backdrop-filter: blur(18px) saturate(130%);
     }
@@ -101,29 +104,32 @@
     }
     .status-badge-label {
       justify-content: center;
-      min-width: 44px;
-      padding-inline: 12px;
+      min-width: 52px;
+      padding-inline: 0;
       background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 55%, rgba(255,255,255,0.02) 100%),
-        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05));
-      color: #fff7ed;
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.30), rgba(255,255,255,0.08) 55%, rgba(255,255,255,0.02) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      color: #f8fafc;
       border-right: 1px solid rgba(255,255,255,0.10);
       font-weight: 600;
     }
     .hourglass-spin {
       display: inline-block;
       transform-origin: center;
-      animation: hourglass-spin 1s linear infinite;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.10));
+      animation: hourglass-spin 2.4s linear infinite;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.08));
     }
     .status-badge-value {
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, rgba(245,158,11,0.68), rgba(251,191,36,0.50));
-      color: #fffaf0;
+        radial-gradient(circle at top left, rgba(255,255,255,0.16), rgba(255,255,255,0.04) 45%, rgba(255,255,255,0.02) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+      color: #f3f4f6;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
       letter-spacing: 0.01em;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.35;
     }
     @keyframes hourglass-spin {
       from { transform: rotate(0deg); }
@@ -306,10 +312,9 @@
         padding: 16px;
       }
       .status-badge {
-        display: inline-flex;
         width: 100%;
+        grid-template-columns: 48px minmax(0, 1fr);
         border-radius: 18px;
-        justify-content: center;
       }
       .status-badge-label,
       .status-badge-value {
@@ -319,7 +324,7 @@
         padding: 10px 12px;
       }
       .status-badge-label {
-        min-width: 52px;
+        min-width: 48px;
       }
       .month-item, .historic-block, .year-total {
         padding: 14px;
@@ -449,7 +454,7 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:10:12" data-synced-label="2026-03-10 13:10:12" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:13:27" data-synced-label="2026-03-10 13:13:27" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
