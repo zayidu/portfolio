@@ -210,6 +210,10 @@
       color: var(--muted);
       font-size: 0.88rem;
     }
+    .synced-value {
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
     .footer-meta a {
       color: var(--link);
     }
@@ -353,8 +357,9 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: today
+      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T12:44:27" data-synced-label="2026-03-10 12:44:27" data-debug="false">today</span>
     </footer>
   </main>
+  <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
 </body>
 </html>
