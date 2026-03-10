@@ -49,34 +49,6 @@
 
 # 🎖️ All-Time Totals (Since Inception)
 
-### 2026:
-*🥾 1 Hike (6km), 🚴 5 Rides (403km), 🏃 5 Runs (26km), 🏊 22 Swims (46km)*<br>
-*🏁 Total 33 Activities (482km)*
-
-### 2025:
-*🏋️ 1 Crossfit (0km), 🥾 4 Hikes (31km), 🚴 25 Rides (2219km), 🏃 25 Runs (131km), 🏊 84 Swims (150km), 🚶 8 Walks (48km)*<br>
-*🏁 Total 147 Activities (2578km)*
-
-### 2024:
-*🏅 1 Kayaking (1km), 🚴 42 Rides (3190km), 🏃 11 Runs (59km), 🏊 78 Swims (100km), 🚶 3 Walks (11km), 🏋️‍♂️ 2 WeightTrainings (0km), 💪 14 Workouts (1km)*<br>
-*🏁 Total 151 Activities (3363km)*
-
-### 2023:
-*🚴 1 Ride (57km), 🏃 5 Runs (20km)*<br>
-*🏁 Total 6 Activities (77km)*
-
-### 2022:
-*🏃 3 Runs (12km)*<br>
-*🏁 Total 3 Activities (12km)*
-
-### 2021:
-*🏃 12 Runs (70km)*<br>
-*🏁 Total 12 Activities (70km)*
-
-### 2019:
-*🏃 10 Runs (37km)*<br>
-*🏁 Total 10 Activities (37km)*
-
 ### 🧮 GRAND TOTAL:
 - 🏋️ **Crossfit**: 1 activities (0km)
 - 🥾 **Hikes**: 5 activities (37km)
@@ -90,4 +62,32 @@
 
 **🏁 Total 362 Activities (6618km)**
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-10 14:46:43</sub></p>
+### 2026
+*🥾 1 Hike (6km), 🚴 5 Rides (403km), 🏃 5 Runs (26km), 🏊 22 Swims (46km)*<br>
+*🏁 Total 33 Activities (482km)*
+
+### 2025
+*🏋️ 1 Crossfit (0km), 🥾 4 Hikes (31km), 🚴 25 Rides (2219km), 🏃 25 Runs (131km), 🏊 84 Swims (150km), 🚶 8 Walks (48km)*<br>
+*🏁 Total 147 Activities (2578km)*
+
+### 2024
+*🏅 1 Kayaking (1km), 🚴 42 Rides (3190km), 🏃 11 Runs (59km), 🏊 78 Swims (100km), 🚶 3 Walks (11km), 🏋️‍♂️ 2 WeightTrainings (0km), 💪 14 Workouts (1km)*<br>
+*🏁 Total 151 Activities (3363km)*
+
+### 2023
+*🚴 1 Ride (57km), 🏃 5 Runs (20km)*<br>
+*🏁 Total 6 Activities (77km)*
+
+### 2022
+*🏃 3 Runs (12km)*<br>
+*🏁 Total 3 Activities (12km)*
+
+### 2021
+*🏃 12 Runs (70km)*<br>
+*🏁 Total 12 Activities (70km)*
+
+### 2019
+*🏃 10 Runs (37km)*<br>
+*🏁 Total 10 Activities (37km)*
+
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-10 22:36:14</sub></p>
