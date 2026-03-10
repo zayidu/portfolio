@@ -87,18 +87,35 @@
     .hero-jump {
       display: inline-flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       gap: 9px;
-      min-height: 34px;
-      padding: 6px 0;
-      color: var(--accent-soft);
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06)),
+        linear-gradient(135deg, rgba(125,211,252,0.10), rgba(196,181,253,0.05));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 10px 24px rgba(2, 6, 23, 0.16);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
       font-size: 0.88rem;
       letter-spacing: 0.01em;
       white-space: nowrap;
+      border-radius: 999px;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
     }
     .hero-jump:hover {
       text-decoration: none;
-      color: #f8fafc;
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.24);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08)),
+        linear-gradient(135deg, rgba(125,211,252,0.14), rgba(196,181,253,0.08));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 14px 28px rgba(2, 6, 23, 0.18);
     }
     .hero-jump-emoji {
       width: 1.2em;
@@ -313,6 +330,10 @@
       .hourglass-spin {
         animation: none;
       }
+      .back-to-top.is-visible,
+      .back-to-top-glyph {
+        animation: none;
+      }
       .time-progress:hover svg,
       .time-progress:focus-within svg,
       .svg-tile:hover svg,
@@ -410,28 +431,55 @@
       right: 20px;
       bottom: 22px;
       z-index: 30;
-      border: 1px solid rgba(147, 197, 253, 0.18);
-      background: linear-gradient(180deg, rgba(17,24,39,0.94), rgba(10,15,26,0.92));
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05)),
+        linear-gradient(180deg, rgba(17,24,39,0.92), rgba(10,15,26,0.90));
       color: #e5ecf6;
-      padding: 10px 14px;
+      padding: 10px 14px 10px 12px;
       border-radius: 999px;
+      backdrop-filter: blur(18px) saturate(145%);
+      -webkit-backdrop-filter: blur(18px) saturate(145%);
       font: inherit;
       font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.02em;
-      box-shadow: 0 12px 28px rgba(2, 6, 23, 0.28);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.16),
+        0 12px 28px rgba(2, 6, 23, 0.22);
       opacity: 0;
       pointer-events: none;
       transform: translateY(12px);
-      transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease;
+      transition: opacity 180ms ease, transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
     .back-to-top.is-visible {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
+      animation: back-to-top-float 2.4s ease-in-out infinite;
     }
     .back-to-top:hover {
-      border-color: rgba(147, 197, 253, 0.3);
+      border-color: rgba(255,255,255,0.26);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 16px 32px rgba(2, 6, 23, 0.26);
+    }
+    .back-to-top-glyph {
+      display: inline-block;
+      font-size: 1rem;
+      line-height: 1;
+      animation: back-to-top-arrow 1.8s ease-in-out infinite;
+    }
+    @keyframes back-to-top-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes back-to-top-arrow {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(-2px); opacity: 1; }
     }
     .footer-meta {
       margin: 18px 0 0;
@@ -476,9 +524,9 @@
         justify-items: stretch;
       }
       .hero-jump {
-        justify-content: flex-start;
-        min-height: 32px;
-        padding: 6px 4px;
+        justify-content: center;
+        min-height: 38px;
+        padding: 7px 8px;
         font-size: 0.76rem;
       }
       .goals-heading-row {
@@ -614,7 +662,7 @@
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="161.92" cy="71.02" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="-21.9972"/>
+  <circle class="progress-endcap" cx="161.92" cy="71.03" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="-21.9939"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
@@ -882,9 +930,9 @@
         </div>
       </section>
     </div>
-    <button class="back-to-top" type="button" aria-label="Back to top">↑ Top</button>
+    <button class="back-to-top" type="button" aria-label="Back to top"><span class="back-to-top-glyph" aria-hidden="true">↑</span><span>Top</span></button>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T22:44:07" data-synced-label="2026-03-10 22:44:07" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T22:48:51" data-synced-label="2026-03-10 22:48:51" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
