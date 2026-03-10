@@ -18,6 +18,7 @@
       --accent-soft: #fde68a;
       --link: #93c5fd;
       --shadow: 0 20px 45px rgba(2, 6, 23, 0.35);
+      --hero-stick-gap: 12px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -41,7 +42,7 @@
     .page {
       width: min(1120px, calc(100vw - 32px));
       margin: 0 auto;
-      padding: 0 0 40px;
+      padding: 28px 0 40px;
     }
     .hero, .card {
       background: rgba(17, 24, 39, 0.92);
@@ -57,9 +58,19 @@
       padding: 26px 24px 18px;
       margin-bottom: 18px;
       position: sticky;
-      top: 0;
+      top: var(--hero-stick-gap);
       z-index: 24;
       overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      top: calc(-1 * var(--hero-stick-gap));
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(9, 17, 31, 0.995), rgba(11, 18, 32, 0.992));
+      z-index: -1;
     }
     .hero-top {
       display: flex;
@@ -506,16 +517,18 @@
       color: var(--link);
     }
     @media (max-width: 640px) {
+      :root {
+        --hero-stick-gap: 8px;
+      }
       .page {
         width: min(100vw - 16px, 1120px);
-        padding: 0 0 28px;
+        padding: 16px 0 28px;
       }
       .hero, .card {
         border-radius: 18px;
       }
       .hero {
         padding: 18px 14px 14px;
-        top: 0;
       }
       .hero-top {
         flex-direction: column;
@@ -669,12 +682,12 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="351.86"
-    stroke-dashoffset="285.35"
-    data-target-offset="285.35"
+    stroke-dashoffset="285.34"
+    data-target-offset="285.34"
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="161.94" cy="71.07" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="-21.9493"/>
+  <circle class="progress-endcap" cx="161.94" cy="71.07" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="-21.9474"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
@@ -944,7 +957,7 @@
     </div>
     <button class="back-to-top" type="button" aria-label="Back to top"><span class="back-to-top-glyph" aria-hidden="true">↑</span><span>Top</span></button>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T23:54:00" data-synced-label="2026-03-10 23:54:00" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T23:56:50" data-synced-label="2026-03-10 23:56:50" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
