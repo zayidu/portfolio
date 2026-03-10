@@ -20,7 +20,7 @@
   <ellipse cx="74" cy="38" rx="54" ry="16" fill="#ffffff" fill-opacity="0.09" filter="url(#timeBlur)"/>
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.08" filter="url(#timeBlur)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <circle class="remaining-dots" cx="110" cy="92" r="53" fill="none" stroke="#dbeafe" stroke-opacity="0.26" stroke-width="2.6" stroke-dasharray="270.44 333.01" data-remaining-length="270.44" transform="rotate(-22.36 110 92)"/>
+  <circle class="remaining-dots" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.24" stroke-width="3.2" stroke-dasharray="295.95 364.42" data-remaining-length="295.95" transform="rotate(-22.36 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -31,12 +31,12 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="364.42"
-    stroke-dashoffset="295.96"
-    data-target-offset="295.96"
+    stroke-dashoffset="295.95"
+    data-target-offset="295.95"
     data-ring-length="364.42"
     transform="rotate(-90 110 92)"
   />
-  <circle class="ring-core" cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
+  <circle class="ring-core" cx="110" cy="92" r="50" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
