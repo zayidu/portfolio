@@ -71,9 +71,35 @@
       margin-bottom: 14px;
     }
     .status-badge {
-      display: block;
+      display: inline-flex;
+      align-items: stretch;
+      flex-wrap: wrap;
       max-width: 100%;
       margin-bottom: 16px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .status-badge-label,
+    .status-badge-value {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .status-badge-label {
+      background: rgba(248, 250, 252, 0.92);
+      color: #0f172a;
+      font-weight: 600;
+    }
+    .status-badge-value {
+      background: rgba(245, 158, 11, 0.92);
+      color: #fff7ed;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
     }
     .time-progress-block h3,
     .subheading {
@@ -236,6 +262,14 @@
       .card {
         padding: 18px;
       }
+      .status-badge {
+        border-radius: 18px;
+      }
+      .status-badge-label,
+      .status-badge-value {
+        white-space: normal;
+        line-height: 1.35;
+      }
     }
   </style>
 </head>
@@ -248,7 +282,7 @@
     <div class="stack">
       <section class="card">
         <h2>🎯 Goals 2026 (Buts)</h2>
-        <img class="status-badge" src="https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-9_months,_42_weeks,_296_days-f59e0b?style=flat-square&amp;labelColor=f8fafc" alt="Goals status">
+        <div class="status-badge" data-badge-target="2026-12-31T23:59:59" data-badge-label="🎯 Opportunities Still on the Table. ⏳ The Clock is Ticking, Make it Count."><span class="status-badge-label">🎯 Opportunities Still on the Table. ⏳ The Clock is Ticking, Make it Count.</span><span class="status-badge-value">9 months, 42 weeks, 296 days</span></div>
         <section class="time-progress-block"><h3>⏳ Time Progress</h3><div class="time-progress"><img src="progress/2026/time_progress.svg" alt="Time progress" loading="lazy"></div></section>
         <h3 class="subheading">🏃 🚴 🏊 Activities</h3>
         <div class="activity-grid">
@@ -357,9 +391,10 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T12:44:27" data-synced-label="2026-03-10 12:44:27" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T12:58:04" data-synced-label="2026-03-10 12:58:04" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
+  <script>!function(){var e=document.querySelector(".status-badge");if(!e)return;var t=e.dataset.badgeTarget||"",a=e.querySelector(".status-badge-value"),n=e.querySelector(".status-badge-label");if(!a||!n)return;var r=new Date(t.replace(" ","T"));if(isNaN(r))return;var o=new Date,i=Math.max(0,r.getTime()-o.getTime()),d=Math.floor(i/864e5),s=Math.floor(d/7),c=(r.getFullYear()-o.getFullYear())*12+(r.getMonth()-o.getMonth());c=Math.max(0,c);a.textContent=c+" months, "+s+" weeks, "+d+" days";console.log("⏳ Badge Countdown:",a.textContent)}();</script>
 </body>
 </html>
