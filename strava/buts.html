@@ -30,6 +30,13 @@
     }
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    a,
+    .summary,
+    .clean-list li,
+    .footer-meta {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
     .page {
       width: min(1120px, calc(100vw - 32px));
       margin: 0 auto;
@@ -95,11 +102,20 @@
       color: #0f172a;
       font-weight: 600;
     }
+    .hourglass-spin {
+      display: inline-block;
+      transform-origin: center;
+      animation: hourglass-flip 1s linear infinite;
+    }
     .status-badge-value {
       background: rgba(245, 158, 11, 0.92);
       color: #fff7ed;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
+    }
+    @keyframes hourglass-flip {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(180deg); }
     }
     .time-progress-block h3,
     .subheading {
@@ -149,6 +165,9 @@
       .time-progress img,
       .svg-tile img {
         transition: none;
+      }
+      .hourglass-spin {
+        animation: none;
       }
       .time-progress img:hover,
       .time-progress img:focus-visible,
@@ -245,30 +264,56 @@
     }
     @media (max-width: 640px) {
       .page {
-        width: min(100vw - 20px, 1120px);
-        padding-top: 18px;
+        width: min(100vw - 16px, 1120px);
+        padding: 16px 0 28px;
       }
       .hero, .card {
         border-radius: 18px;
       }
+      .hero {
+        padding: 20px 16px 16px;
+      }
+      .hero h1 {
+        font-size: 1.45rem;
+        line-height: 1.2;
+      }
+      .hero .subtitle {
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
       .activity-grid {
-        grid-template-columns: repeat(auto-fit, minmax(168px, 168px));
-        gap: 12px;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 10px;
       }
       .svg-tile img,
       .time-progress img {
-        width: min(168px, 100%);
+        width: min(220px, 100%);
       }
       .card {
-        padding: 18px;
+        padding: 16px;
       }
       .status-badge {
+        display: flex;
+        width: 100%;
         border-radius: 18px;
+        flex-direction: column;
       }
       .status-badge-label,
       .status-badge-value {
+        justify-content: center;
+        width: 100%;
         white-space: normal;
         line-height: 1.35;
+        text-align: center;
+        padding: 10px 12px;
+      }
+      .month-item, .historic-block, .year-total {
+        padding: 14px;
+      }
+      .footer-meta {
+        font-size: 0.82rem;
+        line-height: 1.5;
       }
     }
   </style>
@@ -282,7 +327,7 @@
     <div class="stack">
       <section class="card">
         <h2>🎯 Goals 2026 (Buts)</h2>
-        <div class="status-badge" data-badge-target="2026-12-31T23:59:59" data-badge-label="🎯 Opportunities Still on the Table. ⏳ The Clock is Ticking, Make it Count."><span class="status-badge-label">🎯 Opportunities Still on the Table. ⏳ The Clock is Ticking, Make it Count.</span><span class="status-badge-value">9 months, 42 weeks, 296 days</span></div>
+        <div class="status-badge" data-badge-target="2026-12-31T23:59:59" data-badge-label="🎯 Opportunities Still on the Table. ⏳ The Clock is Ticking, Make it Count."><span class="status-badge-label">🎯 Opportunities Still on the Table. <span class="hourglass-spin" aria-hidden="true">⏳</span> The Clock is Ticking, Make it Count.</span><span class="status-badge-value">9 months, 42 weeks, 296 days</span></div>
         <section class="time-progress-block"><h3>⏳ Time Progress</h3><div class="time-progress"><img src="progress/2026/time_progress.svg" alt="Time progress" loading="lazy"></div></section>
         <h3 class="subheading">🏃 🚴 🏊 Activities</h3>
         <div class="activity-grid">
@@ -391,7 +436,7 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T12:58:04" data-synced-label="2026-03-10 12:58:04" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:01:19" data-synced-label="2026-03-10 13:01:19" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
