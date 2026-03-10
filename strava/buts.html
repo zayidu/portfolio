@@ -132,6 +132,7 @@
       line-height: 1.2;
       flex: 1 1 auto;
       min-width: 0;
+      font-family: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
     }
     @keyframes hourglass-spin {
       from { transform: rotate(0deg); }
@@ -175,24 +176,32 @@
       will-change: transform, filter;
     }
     .progress-ring {
-      transition: filter 180ms ease;
+      transition: filter 260ms ease;
       will-change: stroke-dashoffset, filter;
     }
-    .progress-status {
-      transition: font-size 180ms ease, transform 180ms ease, opacity 180ms ease;
+    .ring-track {
+      animation: ring-track-breathe 3.6s ease-in-out infinite;
       transform-origin: center;
+    }
+    .progress-status {
+      transition: font-size 220ms ease, transform 220ms ease, opacity 220ms ease;
+      transform-origin: center;
+    }
+    .progress-status[data-status-state="remaining"] {
+      animation: pending-status-breathe 3.4s ease-in-out infinite;
     }
     .time-progress:hover .progress-ring,
     .time-progress:focus-within .progress-ring,
     .svg-tile:hover .progress-ring,
     .svg-tile:focus-within .progress-ring {
-      filter: drop-shadow(0 0 8px rgba(255,255,255,0.10)) drop-shadow(0 0 14px rgba(125,211,252,0.12));
+      animation: progress-ring-glow 1.8s ease-in-out infinite alternate;
     }
     .time-progress:hover .progress-status,
     .time-progress:focus-within .progress-status,
     .svg-tile:hover .progress-status,
     .svg-tile:focus-within .progress-status {
-      font-size: 13.8px;
+      font-size: 13.6px;
+      transform: translateY(-1px);
     }
     .time-progress:hover svg,
     .time-progress:focus-within svg,
@@ -201,12 +210,26 @@
       transform: scale(1.035);
       filter: saturate(1.04) brightness(1.02);
     }
+    @keyframes ring-track-breathe {
+      0%, 100% { stroke-opacity: 0.10; }
+      50% { stroke-opacity: 0.18; }
+    }
+    @keyframes pending-status-breathe {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 1; }
+    }
+    @keyframes progress-ring-glow {
+      0% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.04)) drop-shadow(0 0 8px rgba(125,211,252,0.06)); }
+      100% { filter: drop-shadow(0 0 8px rgba(255,255,255,0.10)) drop-shadow(0 0 14px rgba(125,211,252,0.12)); }
+    }
     @media (prefers-reduced-motion: reduce) {
       .time-progress svg,
       .svg-tile svg,
       .progress-ring,
-      .progress-status {
+      .progress-status,
+      .ring-track {
         transition: none;
+        animation: none;
       }
       .hourglass-spin {
         animation: none;
@@ -345,10 +368,13 @@
         white-space: nowrap;
         line-height: 1.2;
         padding: 9px 10px;
-        font-size: 0.76rem;
+        font-size: 0.74rem;
       }
       .status-badge-label {
         flex-basis: 44px;
+      }
+      .status-badge-value {
+        letter-spacing: 0;
       }
       .month-item, .historic-block, .year-total {
         padding: 14px;
@@ -368,7 +394,7 @@
     </header>
     <div class="stack">
       <section class="card">
-        <h2>Goals 2026</h2>
+        <h2>🎯 Goals 2026</h2>
         <div class="status-badge" data-badge-target="2026-12-31T23:59:59" data-badge-label="⏳"><span class="status-badge-label"><span class="hourglass-spin" aria-hidden="true">⏳</span></span><span class="status-badge-value">9 months, 42 weeks, 296 days</span></div>
         <section class="time-progress-block"><h3>Time Progress</h3><div class="time-progress" aria-label="Time progress"><svg class="progress-svg progress-svg--time" xmlns="http://www.w3.org/2000/svg" width="220" height="230" viewBox="0 0 220 230" role="img" aria-label="Time progress for 2026">
   <defs>
@@ -412,7 +438,7 @@
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
   <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">68 / 365 days</text>
-  <text class="progress-status" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">296 days left in 2026</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">296 days left in 2026</text>
 </svg>
 </div></section>
         <h3 class="subheading">Activities</h3>
@@ -465,7 +491,7 @@
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">13%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Run</text>
   <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">26.4 / 200 km</text>
-  <text class="progress-status" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">173.6 km to go</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">173.6 km to go</text>
 </svg>
 </figure>
   <figure class="svg-tile" aria-label="Ride goal progress"><svg class="progress-svg progress-svg--goal" xmlns="http://www.w3.org/2000/svg" width="220" height="230" viewBox="0 0 220 230" role="img" aria-label="Ride goal progress">
@@ -516,7 +542,7 @@
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">8%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Ride</text>
   <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">403.3 / 5000 km</text>
-  <text class="progress-status" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">4596.7 km to go</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">4596.7 km to go</text>
 </svg>
 </figure>
   <figure class="svg-tile" aria-label="Swim goal progress"><svg class="progress-svg progress-svg--goal" xmlns="http://www.w3.org/2000/svg" width="220" height="230" viewBox="0 0 220 230" role="img" aria-label="Swim goal progress">
@@ -567,7 +593,7 @@
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">23%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Swim</text>
   <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">45.6 / 200 km</text>
-  <text class="progress-status" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">154.4 km to go</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">154.4 km to go</text>
 </svg>
 </figure>
 </div>
@@ -672,7 +698,7 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:24:08" data-synced-label="2026-03-10 13:24:08" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:29:53" data-synced-label="2026-03-10 13:29:53" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
