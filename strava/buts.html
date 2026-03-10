@@ -184,12 +184,12 @@
       animation: ring-track-breathe 3.6s ease-in-out infinite;
       transform-origin: center;
     }
-    .orbit-dots {
-      stroke-dasharray: 0.8 12.2;
+    .remaining-ring {
+      stroke-dasharray: 1.4 8.6;
       stroke-dashoffset: 0;
       stroke-linecap: round;
-      animation: orbit-dots-spin 16s linear infinite;
-      will-change: stroke-dashoffset;
+      animation: remaining-ring-drift 16s linear infinite, ring-track-breathe 3.8s ease-in-out infinite;
+      will-change: stroke-dashoffset, stroke-opacity;
     }
     .progress-status {
       transition: font-size 220ms ease, transform 220ms ease, opacity 220ms ease;
@@ -222,9 +222,9 @@
       0%, 100% { stroke-opacity: 0.10; }
       50% { stroke-opacity: 0.18; }
     }
-    @keyframes orbit-dots-spin {
+    @keyframes remaining-ring-drift {
       from { stroke-dashoffset: 0; }
-      to { stroke-dashoffset: -65; }
+      to { stroke-dashoffset: -42; }
     }
     @keyframes pending-status-breathe {
       0%, 100% { opacity: 0.9; }
@@ -240,7 +240,7 @@
       .progress-ring,
       .progress-status,
       .ring-track,
-      .orbit-dots {
+      .remaining-ring {
         transition: none;
         animation: none;
       }
@@ -465,6 +465,7 @@
   <ellipse cx="74" cy="38" rx="54" ry="16" fill="#ffffff" fill-opacity="0.09" filter="url(#timeBlur)"/>
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.08" filter="url(#timeBlur)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
+  <circle class="remaining-ring" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.22" stroke-width="12" stroke-dasharray="295.96 364.42" data-remaining-length="295.96" transform="rotate(-22.36 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -481,7 +482,6 @@
     transform="rotate(-90 110 92)"
   />
   <circle class="ring-core" cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
-  <circle class="orbit-dots" cx="110" cy="92" r="47" fill="none" stroke="#e2e8f0" stroke-opacity="0.22" stroke-width="2.1"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
@@ -519,6 +519,7 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
+  <circle class="remaining-ring" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.22" stroke-width="12" stroke-dasharray="316.37 364.42" data-remaining-length="316.37" transform="rotate(-42.53 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -535,7 +536,6 @@
     transform="rotate(-90 110 92)"
   />
   <circle class="ring-core" cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
-  <circle class="orbit-dots" cx="110" cy="92" r="47" fill="none" stroke="#e2e8f0" stroke-opacity="0.22" stroke-width="2.1"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🏃</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">13%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Run</text>
@@ -571,6 +571,7 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
+  <circle class="remaining-ring" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.22" stroke-width="12" stroke-dasharray="335.03 364.42" data-remaining-length="335.03" transform="rotate(-60.96 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -587,7 +588,6 @@
     transform="rotate(-90 110 92)"
   />
   <circle class="ring-core" cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
-  <circle class="orbit-dots" cx="110" cy="92" r="47" fill="none" stroke="#e2e8f0" stroke-opacity="0.22" stroke-width="2.1"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🚴</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">8%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Ride</text>
@@ -623,6 +623,7 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
+  <circle class="remaining-ring" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.22" stroke-width="12" stroke-dasharray="281.29 364.42" data-remaining-length="281.29" transform="rotate(-7.88 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"
@@ -639,7 +640,6 @@
     transform="rotate(-90 110 92)"
   />
   <circle class="ring-core" cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
-  <circle class="orbit-dots" cx="110" cy="92" r="47" fill="none" stroke="#e2e8f0" stroke-opacity="0.22" stroke-width="2.1"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🏊</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">23%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Swim</text>
@@ -749,7 +749,7 @@
       </section>
     </div>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:46:46" data-synced-label="2026-03-10 13:46:46" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-03-10T13:49:18" data-synced-label="2026-03-10 13:49:18" data-debug="false">today</span>
     </footer>
   </main>
   <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
