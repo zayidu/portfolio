@@ -19,8 +19,9 @@
   <rect x="12" y="12" width="196" height="206" rx="30" fill="url(#timeCard)" stroke="#94a3b8" stroke-opacity="0.18" filter="url(#timeShadow)"/>
   <ellipse cx="74" cy="38" rx="54" ry="16" fill="#ffffff" fill-opacity="0.09" filter="url(#timeBlur)"/>
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.08" filter="url(#timeBlur)"/>
-  <circle cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
+  <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
   <circle
+    class="progress-ring"
     cx="110"
     cy="92"
     r="58"
@@ -29,13 +30,15 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="364.42"
-    stroke-dashoffset="295.98"
+    stroke-dashoffset="295.97"
+    data-target-offset="295.97"
+    data-ring-length="364.42"
     transform="rotate(-90 110 92)"
   />
-  <circle cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
-  <text x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
-  <text x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
-  <text x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
-  <text x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">68 / 365 days</text>
-  <text x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">296 days left in 2026</text>
+  <circle class="ring-core" cx="110" cy="92" r="42" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
+  <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">19%</text>
+  <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
+  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">68 / 365 days</text>
+  <text class="progress-status" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">296 days left in 2026</text>
 </svg>
