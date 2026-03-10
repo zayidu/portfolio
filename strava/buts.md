@@ -90,4 +90,4 @@
 *🏃 10 Runs (37km)*<br>
 *🏁 Total 10 Activities (37km)*
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-10 22:36:14</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-03-10 22:44:07</sub></p>
