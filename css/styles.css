@@ -33,6 +33,7 @@ body {
   font-size: 15px;
   line-height: 1.5;
 }
+
 img {
   width: 300px;
 }
@@ -978,4 +979,21 @@ footer {
     padding: 20px;
     text-align: center;
   }
+}
+
+
+/* Automatic: project title logos
+---------------------------------- */
+.project-item h3.project-title-with-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  line-height: 1.2;
+}
+
+.project-item .project-title-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex: 0 0 24px;
 }
