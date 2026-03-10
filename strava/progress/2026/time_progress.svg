@@ -20,7 +20,7 @@
   <ellipse cx="74" cy="38" rx="54" ry="16" fill="#ffffff" fill-opacity="0.09" filter="url(#timeBlur)"/>
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.08" filter="url(#timeBlur)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <circle class="remaining-ring" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.22" stroke-width="12" stroke-dasharray="295.96 364.42" data-remaining-length="295.96" transform="rotate(-22.36 110 92)"/>
+  <circle class="remaining-dots" cx="110" cy="92" r="53" fill="none" stroke="#dbeafe" stroke-opacity="0.26" stroke-width="2.6" stroke-dasharray="270.44 333.01" data-remaining-length="270.44" transform="rotate(-22.36 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"

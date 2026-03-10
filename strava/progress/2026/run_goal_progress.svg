@@ -26,7 +26,7 @@
   <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="58" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
-  <circle class="remaining-ring" cx="110" cy="92" r="58" fill="none" stroke="#dbeafe" stroke-opacity="0.22" stroke-width="12" stroke-dasharray="316.37 364.42" data-remaining-length="316.37" transform="rotate(-42.53 110 92)"/>
+  <circle class="remaining-dots" cx="110" cy="92" r="53" fill="none" stroke="#dbeafe" stroke-opacity="0.26" stroke-width="2.6" stroke-dasharray="289.10 333.01" data-remaining-length="289.10" transform="rotate(-42.53 110 92)"/>
   <circle
     class="progress-ring"
     cx="110"
