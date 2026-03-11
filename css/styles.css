@@ -1057,6 +1057,9 @@ footer {
   right: 18px;
   bottom: 18px;
   z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   border: 0;
   border-radius: 999px;
   padding: 0.72rem 0.95rem;
@@ -1080,4 +1083,26 @@ footer {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.back-to-top__arrow {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  animation: backToTopArrow 1.9s ease-in-out infinite;
+}
+
+.back-to-top__label {
+  line-height: 1;
+}
+
+@keyframes backToTopArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
 }
