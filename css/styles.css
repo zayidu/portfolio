@@ -921,6 +921,7 @@ footer {
   .icon-github {
     position: absolute;
     top: 16px;
+    font-size: 1.2rem;
   }
 
   footer h2 {
@@ -1005,7 +1006,7 @@ footer {
   z-index: 99;
   display: inline-flex;
   align-items: center;
-  gap: 0.28rem;
+  gap: 0.42rem;
 }
 
 .hero-corner-badge {
@@ -1034,7 +1035,7 @@ footer {
   .hero-corner-logos {
     top: 44px;
     left: 10px;
-    gap: 0.22rem;
+    gap: 0.34rem;
   }
 
   .hero-corner-badge {
@@ -1127,5 +1128,67 @@ footer {
   50% {
     color: #ffc95a;
     text-shadow: 0 0 6px rgba(255, 201, 90, 0.48), 0 0 12px rgba(251, 54, 64, 0.14);
+  }
+}
+
+/* Automatic: badge border pulse
+---------------------------------- */
+.switch {
+  border: 1px solid rgba(247, 255, 247, 0.18);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(247, 255, 247, 0.08);
+  animation: badgeBorderPulse 2s ease-in-out infinite;
+}
+
+.hero-corner-badge {
+  animation: badgeBorderPulse 2s ease-in-out infinite;
+}
+
+.switch:hover,
+.switch:focus,
+.hero-corner-badge:hover,
+.hero-corner-badge:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes badgeBorderPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  50% {
+    transform: scale(1.04);
+    border-color: rgba(255, 230, 109, 0.5);
+    box-shadow: 0 0 0 1px rgba(255, 230, 109, 0.26), 0 0 0 5px rgba(255, 230, 109, 0.12), 0 10px 18px rgba(0, 0, 0, 0.14);
+  }
+}
+
+/* Automatic: github icon pulse
+---------------------------------- */
+.show-github .icon-github {
+  animation: githubIconGlow 1s ease-in-out infinite;
+}
+
+.show-github:hover .icon-github,
+.show-github:focus .icon-github {
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 8px rgba(251, 54, 64, 0.26));
+}
+
+@keyframes githubIconGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(251, 54, 64, 0));
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 8px rgba(251, 54, 64, 0.28)) drop-shadow(0 0 14px rgba(251, 54, 64, 0.12));
+    opacity: 0.98;
   }
 }
