@@ -1085,6 +1085,16 @@ footer {
   transform: translateY(0);
 }
 
+.nav-link-project {
+  color: rgb(251, 54, 64);
+  animation: projectLinkGlitter 1s ease-in-out infinite;
+}
+
+.nav-link-project:hover,
+.nav-link-project:focus {
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.42), 0 0 18px rgba(251, 54, 64, 0.24);
+}
+
 .back-to-top__arrow {
   display: inline-block;
   font-size: 1rem;
@@ -1104,5 +1114,18 @@ footer {
 
   50% {
     transform: translateY(-3px);
+  }
+}
+
+@keyframes projectLinkGlitter {
+  0%,
+  100% {
+    color: rgb(251, 54, 64);
+    text-shadow: 0 0 0 rgba(255, 193, 7, 0), 0 0 0 rgba(251, 54, 64, 0);
+  }
+
+  50% {
+    color: #ffc95a;
+    text-shadow: 0 0 6px rgba(255, 201, 90, 0.48), 0 0 12px rgba(251, 54, 64, 0.14);
   }
 }
