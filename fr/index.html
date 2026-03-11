@@ -6,20 +6,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zayidu Ansari, Passionné de Technologie + Développeur Full Stack</title>
-  <link rel="icon" href="./images/favicon.ico" />
+  <link rel="icon" href="../images/favicon.ico" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
     integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@400;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
 <body>
   <main>
     <!-- ***********************  À PROPOS / PROFIL  *********************** -->
     <header id="about">
-      <!-- <a href="./files/zayidu-resume.pdf" download class="btn download">Télécharger PDF</a> -->
+      <!-- <a href="../files/zayidu-resume.pdf" download class="btn download">Télécharger PDF</a> -->
       <nav id="nav">
         <a href="#about">
           <i class="material-icons hide-desktop">person</i>
@@ -31,8 +31,8 @@
         <a href="#certification">
           <i class="material-icons hide-desktop">stars</i>
           <span class="hide-m">Certification</span></a>
-        <a href="#projects">
-          <i class="material-icons hide-desktop">turned_in</i>
+        <a href="#projects" class="nav-link-project">
+          <i class="material-icons hide-desktop">folder_special</i>
           <span class="hide-m">Projet</span></a>
         <a href="#education">
           <i class="material-icons hide-desktop">school</i>
@@ -41,15 +41,43 @@
           <i class="material-icons hide-desktop">contact_mail</i>
           <span class="hide-m">Contact</span></a>
         <a href="#certification-b2" class="b2-img-none">
-          <img class="b2-img" src="./images/france.png" alt="DELF B2" /></a>
+          <img class="b2-img" src="../images/france.png" alt="DELF B2" /></a>
         <a href="https://github.com/zayidu" class="show-github" target="_blank">
           <i class="fab fa-github icon-github" aria-hidden="true"></i>
           <span class="hide-m"></span></a>
       </nav>
 
+      <!-- SWITCH BUTTON -->
+      <div class="top-right">
+        <!-- <a href="https://zayidu.github.io/portfolio/" target="_self" class="switch" title="Click here for English Version"> -->
+        <!-- <a href="../index.html" target="_self" class="switch" title="Click here for English Version"> -->
+        <a href="../" target="_self" class="switch" title="Click here for English Version">
+          <!-- <a href="../index.html" target="_self" class="switch" title="Click here for English Version"> -->
+          <span class="slider round"></span>
+          <span class="language-label">EN</span>
+        </a>
+      </div>
+
+      <!-- Strava Follow Badge -->
+      <div class="strava-follow">
+        <a href="https://www.strava.com/athletes/32322110" target="_blank">
+          <img
+            src="https://img.shields.io/badge/Strava-Suivez--moi%20sur%20Strava-orange?style=for-the-badge&logo=strava&logoColor=white"
+            alt="Suivez-moi sur Strava">
+        </a>
+      </div>
+      <div class="hero-corner-logos" aria-label="SAP et AWS">
+        <span class="hero-corner-badge">
+          <img class="hero-corner-logo hero-corner-logo--sap" src="../icons/sap-logo.png" alt="SAP" />
+        </span>
+        <span class="hero-corner-badge">
+          <img class="hero-corner-logo" src="../icons/aws-logo.png" alt="AWS" />
+        </span>
+      </div>
+
       <div class="content-wrap">
         <div class="column-narrow">
-          <img class="profile-img" src="./images/zayidu-profile.jpg" alt="Zayidu Ansari" />
+          <img class="profile-img" src="../images/zayidu-profile.jpg" alt="Zayidu Ansari" />
         </div>
         <div class="column-wide">
           <ul class="title-name--container">
@@ -68,16 +96,20 @@
             <li class="title-name--title" style=" --i:4.6">i</li>
           </ul>
           <h1 class="title-name--container-sm">Zayidu Ansari</h1>
-          <h2>Passionné de Technologie + Développeur Full Stack</h2>
+          <h2><strong>🚀 Architecte Full-Stack | Fiori | AWS | Solutions Cloud-Native</strong></h2>
+          <p>
+            <strong>Moderniser l'Entreprise : SAP BTP • AWS • UX Intelligente</strong><br>
+            <strong>Architecte Full-Stack</strong> | Fiori • React • IA | <strong>Certifié SAP®</strong>
+          </p>
 
           <p>
-            Je suis fier d'être un développeur Full-Stack polyvalent MERN | MEVN | Certifié SAP® | Fiori, expérimenté
-            dans la direction et l'inspiration des équipes SAP.
+            Lorsque je ne suis pas plongé dans le code ou occupé avec mes IDE, vous me trouverez
+            <em>en train d’explorer le monde, de repousser mes limites en CrossFit 🏋🏼🚴🏊🏼 ou de me perdre dans un
+              bon livre
+              📚.</em>
           </p>
-          <p>
-            Quand je ne code pas / n'utilise pas mes IDEs, vous pouvez me trouver en train d'explorer le monde, de faire
-            du CrossFit, ou d'essayer de rattraper ma liste de lecture sans fin. Merci d'être venu ici, bonne journée !
-          </p>
+          <!-- <p><strong>Merci d’être passé ici. Excellente journée à vous ! ✨</strong></p> -->
+
         </div>
       </div>
     </header>
@@ -97,8 +129,14 @@
             <ul>
               <li>
                 Expertise en
-                <strong>ReactJS, Redux, Vue, Vuex, Docker, SAP Ui5, Fiori Elements, JavaScript,
+                <strong>SAP BTP/Fiori, CDS, RAP, ReactJS, Redux, NodeJS, Docker, SAP Ui5, Fiori Elements, JavaScript,
                   Typescript</strong>, OData, Bootstrap, REST, Git.
+              </li>
+              <li>
+                Projets personnels avec
+                <strong>AWS Lambda, Amazon ECR, Amazon EventBridge, Amazon EventBridge Scheduler, Amazon CloudWatch
+                  Logs,
+                  AWS Systems Manager Parameter Store, Docker, Python, Git/GitHub, AWS CLI</strong>.
               </li>
               <li>
                 Travail sur les méthodologies <strong>DevOps - Agile</strong> et <strong>CI CD</strong> pour un
@@ -197,27 +235,43 @@
         <section class="job-item">
           <div class="job-details">
             <h3>
-              <a href="https://eviden.com/" target="_blank">Eviden/ Atos</a>
+              <a href="https://eviden.com/" target="_blank">Worldgrid (an Alten company) – ex-Eviden (Atos
+                Worldgrid)</a>
             </h3>
             <p>Ingénieur Logiciel Senior</p>
           </div>
           <div class="job-summary">
             <p>
-              Travail pour le client Enedis, se concentrant sur les Core Data Services (CDS) pour la modélisation et la
-              mise
-              en œuvre de données, ainsi que la gestion des Fiori Elements dans le Fiori Launchpad.
+              <strong>Migration vers SAP BTP</strong>, garantissant une <em>intégration cloud fluide et une
+                modernisation</em>.
             </p>
-            <p>Contributions clés :</p>
+            <p><strong>Principales contributions :</strong></p>
             <ul>
               <li>
-                Participation au module SAP GRC, amélioration des applications webdynpro standard, et des webdynpro
-                personnalisées, puis leur publication via les Fiori launchpads.
+                Gestion du <strong>contrôle de version</strong> et des pipelines <strong>CI/CD</strong> avec <em>Git,
+                  Jenkins</em>,
+                et tests automatisés via <strong>Node Package Manager (NPM)</strong>.
               </li>
               <li>
-                Migration vers la SAP Business Technology Platform (SAP BTP).
+                Collaboration avec <strong>Enedis</strong>, gestion des <strong>Fiori Elements</strong> et
+                configuration du <strong>Fiori Launchpad</strong>.
               </li>
               <li>
-                Réalisation de builds Jenkins et tests avec le Node Package Manager (npm) et scripts.
+                Développement et exposition des <strong>vues CDS</strong> à Fiori,
+                avec des <em>extensions CDS personnalisées</em> pour des fonctionnalités avancées.
+              </li>
+              <li>
+                Travail sur la <strong>GED (Gestion Électronique de Documents)</strong> et configuration
+                dans le <strong>module Ventes</strong>.
+              </li>
+              <li>
+                Conception et développement d’<strong>applications Fiori sur mesure</strong>, adaptées aux besoins
+                métier.
+              </li>
+              <li>
+                Amélioration du <strong>module SAP GRC</strong>, personnalisation des applications
+                <strong>WebDynpro</strong>,
+                et intégration dans le <strong>Fiori Launchpad</strong>.
               </li>
             </ul>
           </div>
@@ -363,6 +417,19 @@
               Système
               de Gestion des Fournisseurs.
             </p>
+            <h3><strong>L&T Finance – Implémentation de la GST (Goods and Services Tax) - (Client de LTI)</strong></h3>
+            <h4><em>Développeur ABAP – Chef d’équipe</em></h4>
+            <ul>
+              <li><strong>Encadrement</strong> d'une équipe de trois développeurs juniors, assignation des tâches et
+                accompagnement
+                en ABAP.</li>
+              <li>Implémentation de <strong>notes SAP via SNOTE</strong>, correction des problèmes liés aux notes
+                standards.</li>
+              <li>Développement d’un <strong>BTE (Business Transaction Event)</strong> pour intégrer <em>les champs
+                  relatifs à la
+                  GST</em> dans <strong>FBL3N</strong>.</li>
+              <li><em>GST (Taxe sur les Biens et Services, équivalent de la TVA dans certains pays).</em></li>
+            </ul>
             <p>
               Gestion de tout le traitement automatique des données de conception, processus ZBOM-Bill of Materials et
               ses
@@ -496,7 +563,7 @@
           </section>
         </div>
         <div class="delf-b2-content-img">
-          <img class="delf-b2-content-img" src="./images/DELF_B2_CERT.jpeg" alt="Certificat Diplôme DELF B2">
+          <img class="delf-b2-content-img" src="../images/DELF_B2_CERT.jpeg" alt="Certificat Diplôme DELF B2">
         </div>
       </div>
     </section>
@@ -505,16 +572,52 @@
     <!-- ********************  PROJETS / PORTFOLIO  ********************* -->
     <section id="projects" class="projects">
       <div class="content-wrap divider">
-        <h2>Projets Phares</h2>
+        <h2>Projets sélectionnés</h2>
         <p>
           Consultez les projets sélectionnés ci-dessous. Plus d'informations peuvent être trouvées sur
           <br class="hide-desktop" />
           <a class="btn" href="https://github.com/zayidu" target="_blank">Github.com</a>
         </p>
+        <!-- Projet 9 -->
+        <section class="project-item">
+          <div>
+            <img src="../images/project-strava-auto.jpg" alt="Automatisation Strava sur AWS" />
+          </div>
+          <div>
+            <h3 class="project-title-with-logo"><img class="project-title-logo" src="../icons/aws-logo.png"
+                alt="AWS" />Automatisation Strava sur AWS</h3>
+            <p>
+              Conçu un workflow personnel d'analytics et de publication Strava sur AWS pour collecter des données
+              d'activité, conserver des sauvegardes structurées, générer des synthèses de performance et publier
+              automatiquement des instantanés de progression. La plateforme s'appuie sur AWS Lambda, un déploiement
+              conteneurisé, EventBridge Scheduler et une synchronisation versionnée par Git pour un dispositif léger et
+              simple à maintenir.
+            </p>
+          </div>
+        </section>
+
+        <!-- Projet 8 -->
+        <section class="project-item">
+          <div>
+            <img src="../images/project-yt-auto.jpg" alt="Automatisation YouTube sur AWS" />
+          </div>
+          <div>
+            <h3 class="project-title-with-logo"><img class="project-title-logo" src="../icons/aws-logo.png"
+                alt="AWS" />Automatisation YouTube sur AWS</h3>
+            <p>
+              Conçu et déployé un workflow d'automatisation YouTube serverless sur AWS pour des traitements planifiés
+              liés au contenu et au suivi de publications, avec un coût d'inactivité réduit. La plateforme utilise AWS
+              Lambda, Amazon ECR, EventBridge, CloudWatch et une synchronisation versionnée par Git pour exécuter des
+              pipelines récurrents, conserver les sorties générées et garder l'exploitation simple, reproductible et
+              facile à maintenir.
+            </p>
+          </div>
+        </section>
+
         <!-- Projet 7 -->
         <section class="project-item">
           <div>
-            <img src="images/project-netflix-1-thumbnail.png" alt="Clone de Netflix - Développé par Zayidu" />
+            <img src="../images/project-netflix-1-thumbnail.png" alt="Clone de Netflix - Développé par Zayidu" />
           </div>
           <div>
             <h3>Clone de Netflix</h3>
@@ -532,7 +635,7 @@
         <!-- Projet 6 -->
         <section class="project-item">
           <div>
-            <img src="images/project-google-zclone-thumbnail.jpg" alt="Clone de Google - Développé par Zayidu" />
+            <img src="../images/project-google-zclone-thumbnail.jpg" alt="Clone de Google - Développé par Zayidu" />
           </div>
           <div>
             <h3>Clone de Google</h3>
@@ -547,7 +650,7 @@
         <!-- Projet 5 -->
         <section class="project-item">
           <div>
-            <img src="images/project-youtube-zclone-thumbnail.jpg" alt="Clone de YouTube - Développé par Zayidu" />
+            <img src="../images/project-youtube-zclone-thumbnail.jpg" alt="Clone de YouTube - Développé par Zayidu" />
           </div>
           <div>
             <h3>Clone de YouTube</h3>
@@ -563,7 +666,7 @@
         <!-- Projet 1 -->
         <section class="project-item">
           <div>
-            <img onclick="onOpenInsta()" src="images/project-instagram-thumbnail.jpg"
+            <img onclick="onOpenInsta()" src="../images/project-instagram-thumbnail.jpg"
               alt="Clone d'Instagram - Développé par Zayidu" />
           </div>
           <div>
@@ -583,7 +686,7 @@
 
         <!-- Projet 2 -->
         <section class="project-item">
-          <img onclick="onOpenzDevConnector()" src="images/project-zdevconnector-thumbnail.jpg"
+          <img onclick="onOpenzDevConnector()" src="../images/project-zdevconnector-thumbnail.jpg"
             alt="zDevConnector - Développé par Zayidu" />
           <h3>zDevConnector</h3>
           <p>
@@ -598,7 +701,7 @@
 
         <!-- Projet 3 -->
         <section class="project-item">
-          <img onclick="onOpenNBA()" src="images/project-nba-thumbnail.jpg"
+          <img onclick="onOpenNBA()" src="../images/project-nba-thumbnail.jpg"
             alt="Application NBA - Développée par Zayidu" />
           <h3>Application NBA</h3>
           <p>
@@ -618,7 +721,7 @@
 
         <!-- Projet 4 -->
         <section class="project-item">
-          <img onclick="onOpenBookaholic()" src="images/project-bookaholic-thumbnail.jpg"
+          <img onclick="onOpenBookaholic()" src="../images/project-bookaholic-thumbnail.jpg"
             alt="Bookaholic - Développé par Zayidu" />
           <h3>Bookaholic</h3>
           <p>
@@ -683,7 +786,7 @@
             <span class="hide-m">zayidu11@gmail.com</span>
           </a>
 
-          <a href="https://zayidu.github.io/portfolio/">
+          <a href="https://zayidu.github.io/portfolio/fr/">
             <i class="fas fa-portrait"></i>
             <span class="hide-m">Portfolio</span>
           </a>
@@ -697,9 +800,16 @@
             <i class="fab fa-facebook-f" aria-hidden="true"></i>
             <span class="hide-m">Facebook</span>
           </a>
-          <a href="https://twitter.com/zayidu" target="_blank">
+          <!-- <a href="https://twitter.com/zayidu" target="_blank">
             <i class="fab fa-twitter" aria-hidden="true"></i>
             <span class="hide-m">Twitter</span>
+          </a> -->
+          <a href="https://x.com/zayidu" target="_blank">
+            <svg aria-hidden="true" viewBox="0 0 1200 1227" width="14" height="14" focusable="false">
+              <path fill="currentColor"
+                d="M714.163 519.284 1160.89 0H1055.19L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.693l409.758-476.152 327.221 476.152H1200L714.137 519.284h.026ZM569.01 687.828l-47.399-67.894L144.011 79.694h162.604l304.797 436.042 47.399 67.894 396.2 567.103H892.407L569.01 687.854v-.026Z" />
+            </svg>
+            <span class="hide-m"></span>
           </a>
         </div>
 
@@ -723,7 +833,11 @@
     </footer>
 
   </main>
-  <script src="./scripts/index.js" />
+  <button class="back-to-top" type="button" aria-label="Retour en haut" data-back-to-top>
+    <span class="back-to-top__arrow" aria-hidden="true">↑</span>
+    <span class="back-to-top__label">Haut</span>
+  </button>
+  <script src="../scripts/index.js"></script>
 </body>
 
 </html>
