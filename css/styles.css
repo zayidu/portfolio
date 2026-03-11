@@ -496,6 +496,25 @@ h3 {
   transition: .4s;
 }
 
+.slider-en {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Background color */
+  background-image: url('../icons/world.png'); /* World/eng flag icon */
+  background-repeat: no-repeat;
+  background-position: left 5px center; /* Position the flag to the left */
+  background-size: 26px 26px; /* Size of the flag icon */
+  border-radius: 34px; /* Rounded corners */
+  border: 1px solid #000; 
+  z-index: 1; /* Ensure the slider is above the label */
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
 .language-label {
   font-size: 14px;
   font-weight: bold;
