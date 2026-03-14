@@ -16,16 +16,29 @@ const onOpenBookaholic = () => {
 };
 
 
+const getStickyHeaderHeight = () => {
+  const nav = document.querySelector('nav');
+
+  if (!nav) {
+    return 0;
+  }
+
+  return Math.ceil(nav.getBoundingClientRect().height);
+};
+
+const syncStickyHeaderOffset = () => {
+  document.documentElement.style.scrollPaddingTop = `${getStickyHeaderHeight()}px`;
+};
+
 const scrollToSection = (targetId) => {
   const target = document.querySelector(targetId);
-  const nav = document.querySelector('nav');
 
   if (!target) {
     return;
   }
 
-  const navOffset = nav ? nav.offsetHeight : 0;
-  const top = target.getBoundingClientRect().top + window.scrollY - navOffset - 12;
+  const stickyHeaderHeight = getStickyHeaderHeight();
+  const top = target.getBoundingClientRect().top + window.scrollY - stickyHeaderHeight;
 
   window.scrollTo({
     top: Math.max(top, 0),
@@ -35,6 +48,8 @@ const scrollToSection = (targetId) => {
 
 const setupSmoothScroll = () => {
   const navLinks = document.querySelectorAll('#nav a[href^="#"]');
+
+  syncStickyHeaderOffset();
 
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -48,6 +63,8 @@ const setupSmoothScroll = () => {
       scrollToSection(targetId);
     });
   });
+
+  window.addEventListener('resize', syncStickyHeaderOffset, { passive: true });
 };
 
 const setupBackToTopButton = () => {
