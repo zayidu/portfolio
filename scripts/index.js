@@ -38,7 +38,8 @@ const scrollToSection = (targetId) => {
   }
 
   const stickyHeaderHeight = getStickyHeaderHeight();
-  const top = target.getBoundingClientRect().top + window.scrollY - stickyHeaderHeight;
+  const sectionTop = target.offsetTop;
+  const top = sectionTop - stickyHeaderHeight;
 
   window.scrollTo({
     top: Math.max(top, 0),
