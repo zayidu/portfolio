@@ -30,16 +30,16 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="351.86"
-    stroke-dashoffset="280.30"
-    data-target-offset="280.30"
+    stroke-dashoffset="279.34"
+    data-target-offset="279.34"
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="163.61" cy="75.83" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="-16.7870"/>
+  <circle class="progress-endcap" cx="163.88" cy="76.75" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="-15.8007"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
-  <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">20%</text>
+  <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">21%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Year Clock</text>
-  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">74 / 365 days</text>
-  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">290 days left in 2026</text>
+  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">75 / 365 days</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#93c5fd">289 days left in 2026</text>
 </svg>
