@@ -2,7 +2,7 @@
 *🚴 Long rides · 🏃 steady miles · 🏊 swim focus · 🎯 yearly goals*<br>
 
 # 🎯 Goals 2026 (Buts)
-![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-8_months%2C_38_weeks%2C_272_days-f59e0b?style=flat-square&labelColor=f8fafc)
+![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-8_months%2C_38_weeks%2C_271_days-f59e0b?style=flat-square&labelColor=f8fafc)
 
 ### ⏳ Time Progress
 <p align="center"><img src="progress/2026/time_progress.svg" alt="Time progress" width="220"></p>
@@ -14,21 +14,21 @@
 
 ## 📊 April 2026 Stats/Snapshots (Current)
 
-**📅 Weekly** (Mar 30 - Apr 05) *(5.7km total)*<br>
-*🏃 1 Run (5.7km)*<br>
-*🏁 Total 1 Activities (5.7km / 49m)*
+**📅 Weekly** (Mar 30 - Apr 05) *(8.92km total)*<br>
+*🏃 1 Run (5.7km),  🏊 1 Swim (3.23km)*<br>
+*🏁 Total 2 Activities (8.92km / 1h 57m)*
 
 <sub>────────────────────────</sub>
 
-**🗓️  Monthly** (April 2026) *(5.7km total)*<br>
-*🏃 1 Run (5.7km)*<br>
-*🏁 Total 1 Activities (5.7km / 49m)*
+**🗓️  Monthly** (April 2026) *(8.92km total)*<br>
+*🏃 1 Run (5.7km),  🏊 1 Swim (3.23km)*<br>
+*🏁 Total 2 Activities (8.92km / 1h 57m)*
 
 <sub>────────────────────────</sub>
 
-**📆 Yearly** (2026) *(700.39km total)*<br>
-*🥾 1 Hike (6.31km),  🚴 7 Rides (604.53km),  🏃 6 Runs (32.07km),  🏊 30 Swims (57.47km)*<br>
-*🏁 Total 44 Activities (700.39km / 2d 7h 45m)*
+**📆 Yearly** (2026) *(703.61km total)*<br>
+*🥾 1 Hike (6.31km),  🚴 7 Rides (604.53km),  🏃 6 Runs (32.07km),  🏊 31 Swims (60.7km)*<br>
+*🏁 Total 45 Activities (703.61km / 2d 8h 52m)*
 
 <sub>────────────────────────</sub>
 
@@ -40,7 +40,7 @@
 
 *Mar:  🚴 2 Rides (201.24km),  🏊 11 Swims (17.25km)*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*🏁 Total 13 Activities (218.49km / 16h 32m)*
 
-*Apr:  🏃 1 Run (5.7km)*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*🏁 Total 1 Activities (5.7km / 49m)*
+*Apr:  🏃 1 Run (5.7km),  🏊 1 Swim (3.23km)*<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*🏁 Total 2 Activities (8.92km / 1h 57m)*
 
 
 ## 🏆 Historic Goals Achieved
@@ -56,16 +56,16 @@
 - 🏅 **Kayaking**: 1 activities (1km)
 - 🚴 **Rides**: 75 activities (6070km)
 - 🏃 **Runs**: 72 activities (361km)
-- 🏊 **Swims**: 192 activities (307km)
+- 🏊 **Swims**: 193 activities (311km)
 - 🚶 **Walks**: 11 activities (60km)
 - 🏋️‍♂️ **WeightTrainings**: 2 activities (0km)
 - 💪 **Workouts**: 14 activities (1km)
 
-**🏁 Total 373 Activities (6836.66km / 20d 33m)**
+**🏁 Total 374 Activities (6839.89km / 20d 1h 41m)**
 
 ### 2026
-*🥾 1 Hike (6km), 🚴 7 Rides (605km), 🏃 6 Runs (32km), 🏊 30 Swims (57km)*<br>
-*🏁 Total 44 Activities (700.39km / 2d 7h 45m)*
+*🥾 1 Hike (6km), 🚴 7 Rides (605km), 🏃 6 Runs (32km), 🏊 31 Swims (61km)*<br>
+*🏁 Total 45 Activities (703.61km / 2d 8h 52m)*
 
 ### 2025
 *🏋️ 1 Crossfit (0km), 🥾 4 Hikes (31km), 🚴 25 Rides (2219km), 🏃 25 Runs (131km), 🏊 84 Swims (150km), 🚶 8 Walks (48km)*<br>
@@ -91,4 +91,4 @@
 *🏃 10 Runs (37km)*<br>
 *🏁 Total 10 Activities (36.72km / 1d 1h 57m)*
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-04-03 05:30:58</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-04-04 05:30:58</sub></p>
