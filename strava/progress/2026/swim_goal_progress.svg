@@ -36,16 +36,16 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="351.86"
-    stroke-dashoffset="237.02"
-    data-target-offset="237.02"
+    stroke-dashoffset="232.80"
+    data-target-offset="232.80"
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="159.67" cy="117.85" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="27.4950"/>
+  <circle class="progress-endcap" cx="157.59" cy="121.52" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="31.8150"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🏊</text>
-  <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">33%</text>
+  <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">34%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Swim</text>
-  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">65.3 / 200 km</text>
-  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">134.7 km to go</text>
+  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">67.7 / 200 km</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">132.3 km to go</text>
 </svg>
