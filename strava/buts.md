@@ -46,7 +46,6 @@
 ## 🏆 Historic Goals Achieved
 
 ### 🚴 BRM 200
-- **18 Apr 2026**: [BRM300 🚴– Tour de l’Île de France](https://www.strava.com/activities/18162971761) *(307.4km / 12h 27m)*
 - **11 Apr 2026**: [BRM 200 - US Cergy 🚴](https://www.strava.com/activities/18068871751) *(234.07km / 9h 11m)*
 - **09 Jun 2024**: [BRM 200, UV Argenteuil🚴‍♂️](https://www.strava.com/activities/11614752093) *(215.73km / 9h 47m)*
 
@@ -96,4 +95,4 @@
 *🏃 10 Runs (37km)*<br>
 *🏁 Total 10 Activities (36.72km / 1d 1h 57m)*
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-04-19 05:31:02</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-04-19 18:38:27</sub></p>
