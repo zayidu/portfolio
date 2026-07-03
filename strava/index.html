@@ -60,11 +60,11 @@
     .activity-dialog::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px); }
     .dialog-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); }
     .dialog-header h3 { margin: 0; font-size: 18px; color: var(--link); font-weight: 600; }
-    #dialog-close { background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 0; transition: color 0.2s; }
-    #dialog-close:hover { color: var(--text); }
+    #dialog-close { background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 0; transition: color 0.2s; outline: none; }
+    #dialog-close:hover, #dialog-close:focus-visible { color: var(--text); }
     .dialog-body { padding: 20px; }
-    .btn-primary { width: 100%; padding: 12px; background: var(--link); color: #000; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 16px; font-size: 15px; transition: opacity 0.2s; }
-    .btn-primary:hover { opacity: 0.9; }
+    .btn-primary { width: 100%; padding: 12px; background: var(--link); color: #000; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 16px; font-size: 15px; transition: opacity 0.2s; outline: none; }
+    .btn-primary:hover, .btn-primary:focus-visible { opacity: 0.9; }
     .dialog-list { list-style: none; padding: 0; margin: 0; max-height: 40vh; overflow-y: auto; }
     .dialog-list li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
     .dialog-list li:last-child { border-bottom: none; }
@@ -727,12 +727,12 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="351.86"
-    stroke-dashoffset="174.68"
-    data-target-offset="174.68"
+    stroke-dashoffset="174.67"
+    data-target-offset="174.67"
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="108.75" cy="147.99" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="91.2779"/>
+  <circle class="progress-endcap" cx="108.75" cy="147.99" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="91.2837"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">50%</text>
@@ -1023,7 +1023,7 @@
     </div>
     <button class="back-to-top" type="button" aria-label="Back to top"><span class="back-to-top-glyph" aria-hidden="true">↑</span><span>Top</span></button>
     <footer class="footer-meta">
-      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-07-03T19:05:47" data-synced-label="2026-07-03 19:05:47" data-debug="false">today</span>
+      &copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava</a> | Synced: <span class="synced-value" data-synced-at="2026-07-03T19:14:10" data-synced-label="2026-07-03 19:14:10" data-debug="false">today</span>
     </footer>
   </main>
 <script>!function(){var e=document.querySelector(".synced-value");if(!e)return;var t=e.dataset.syncedAt||"",n=e.dataset.syncedLabel||t,a="true"===e.dataset.debug;console.log("🚀 Last Synced:",n);if(a){e.textContent=n;return}var r=new Date(t.replace(" ","T"));if(isNaN(r)){e.textContent=n;return}var o=Math.max(0,Date.now()-r.getTime()),i=Math.floor(o/6e4),d=Math.floor(o/36e5),s=Math.floor(o/864e5),c=Math.floor(s/7),l=Math.floor(s/30),u=Math.floor(s/365);e.textContent=i<60?(i=Math.max(1,i),i+" mins ago"):d<24?(d+" hours ago"):s<7?(s+" days ago"):s<30?(c=Math.max(1,c),c+" weeks ago"):s<365?(l=Math.max(1,l),l+" months ago"):(u=Math.max(1,u),u+" years ago")}();</script>
