@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="220" height="230" viewBox="0 0 220 230" role="img" aria-label="Swim goal progress">
   <defs>
     <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fc4c02"/>
-      <stop offset="100%" stop-color="#fb923c"/>
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
     </linearGradient>
     <linearGradient id="glassCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1c2537" stop-opacity="0.88"/>
@@ -11,7 +11,7 @@
     </linearGradient>
     <radialGradient id="glassGlow" cx="22%" cy="18%" r="75%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
-      <stop offset="35%" stop-color="#fb923c" stop-opacity="0.14"/>
+      <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.14"/>
       <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
     </radialGradient>
     <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
@@ -23,7 +23,7 @@
   </defs>
   <rect x="12" y="12" width="196" height="206" rx="30" fill="url(#glassCard)" stroke="#94a3b8" stroke-opacity="0.18" filter="url(#shadow)"/>
   <ellipse cx="74" cy="38" rx="54" ry="16" fill="#ffffff" fill-opacity="0.10" filter="url(#blur)"/>
-  <ellipse cx="154" cy="186" rx="58" ry="22" fill="#fb923c" fill-opacity="0.10" filter="url(#blur)"/>
+  <ellipse cx="154" cy="186" rx="58" ry="22" fill="#38bdf8" fill-opacity="0.10" filter="url(#blur)"/>
   <rect x="13" y="13" width="194" height="204" rx="29" fill="url(#glassGlow)"/>
   <circle class="ring-track" cx="110" cy="92" r="56" fill="none" stroke="#cbd5e1" stroke-opacity="0.14" stroke-width="12"/>
   <circle
@@ -36,16 +36,16 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="351.86"
-    stroke-dashoffset="174.32"
-    data-target-offset="174.32"
+    stroke-dashoffset="177.36"
+    data-target-offset="177.36"
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="108.40" cy="147.98" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="91.6420"/>
+  <circle class="progress-endcap" cx="111.43" cy="147.98" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="88.5370"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">🏊</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">50%</text>
   <text class="progress-label" x="110" y="154" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="0.8" fill="#f8fafc">Swim</text>
-  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">100.9 / 200 km</text>
-  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fed7aa">99.1 km to go</text>
+  <text class="progress-value" x="110" y="180" text-anchor="middle" font-size="12.5" fill="#cbd5e1">99.2 / 200 km</text>
+  <text class="progress-status" data-status-state="remaining" x="110" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#bfdbfe">100.8 km to go</text>
 </svg>
