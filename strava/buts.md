@@ -2,7 +2,7 @@
 *🚴 Long rides · 🏃 steady miles · 🏊 swim focus · 🎯 yearly goals*<br>
 
 # 🎯 Goals 2026 (Buts)
-![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-5_months%2C_23_weeks%2C_165_days-f59e0b?style=flat-square&labelColor=f8fafc)
+![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-5_months%2C_23_weeks%2C_164_days-f59e0b?style=flat-square&labelColor=f8fafc)
 
 ### ⏳ Time Progress
 <p align="center"><img src="progress/2026/time_progress.svg" alt="Time progress" width="220"></p>
@@ -13,12 +13,6 @@
 
 
 ## 📊 July 2026 Stats/Snapshots (Current)
-
-**📅 Weekly** (Jul 13 - Jul 19) *(10.14km total)*<br>
-*🏃 <span class="clickable-activity" data-ids="19333728032" data-title="🏃 1 Run (10.14km)">1 Run</span> (10.14km)*<br>
-*🏁 Total 1 Activities (10.14km / 1h 2m)*
-
-<sub>────────────────────────</sub>
 
 **🗓️  Monthly** (July 2026) *(109.51km total)*<br>
 *🚴 <span class="clickable-activity" data-ids="19278536601" data-title="🚴 1 Ride (78.04km)">1 Ride</span> (78.04km),  🏃 <span class="clickable-activity" data-ids="19147826189,19198051756,19333728032" data-title="🏃 3 Runs (24.25km)">3 Runs</span> (24.25km),  🏊 <span class="clickable-activity" data-ids="19155500788,19219874812,19247678029" data-title="🏊 3 Swims (7.22km)">3 Swims</span> (7.22km),  🏋️‍♂️ <span class="clickable-activity" data-ids="19140868698,19141042781" data-title="🏋️‍♂️ 2 WeightTrainings (0km)">2 WeightTrainings</span> (0km)*<br>
@@ -101,4 +95,4 @@
 *🏃 <span class="clickable-activity" data-ids="2840912842,2840912857,2843191895,2857632975,2859869996,2869065551,2871998468,2874047096,2888630591,2890553674" data-title="🏃 10 Runs (37km)">10 Runs</span> (37km)*<br>
 *🏁 Total 10 Activities (36.72km / 1d 1h 57m)*
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-07-19 05:30:58</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-07-20 05:30:57</sub></p>
