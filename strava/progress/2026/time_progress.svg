@@ -30,12 +30,12 @@
     stroke-width="12"
     stroke-linecap="round"
     stroke-dasharray="351.86"
-    stroke-dashoffset="112.00"
-    data-target-offset="112.00"
+    stroke-dashoffset="111.96"
+    data-target-offset="111.96"
     data-ring-length="351.86"
     transform="rotate(-90 110 92)"
   />
-  <circle class="progress-endcap" cx="59.08" cy="115.31" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="155.4068"/>
+  <circle class="progress-endcap" cx="59.06" cy="115.27" r="6.4" fill="#93c5fd" fill-opacity="0.96" data-center-x="110" data-center-y="92" data-radius="56" data-target-angle="155.4505"/>
   <circle class="ring-core" cx="110" cy="92" r="50.5" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.08"/>
   <text class="progress-emoji" x="110" y="84" text-anchor="middle" font-size="30">⏳</text>
   <text class="progress-percent" x="110" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#e2e8f0">68%</text>
