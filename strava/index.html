@@ -498,7 +498,74 @@
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-    .dial-emoji { font-size: 20px; line-height: 1; margin-bottom: 2px; }
+    /* Athletic Micro-Interactions & Icon Movements (Zero cost, pure CSS GPU transforms) */
+    .dial-emoji {
+      font-size: 20px;
+      line-height: 1;
+      margin-bottom: 2px;
+      display: inline-block;
+      will-change: transform;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    /* Subtle ambient athletic breathing for goal dial icons */
+    .goal-card .dial-emoji {
+      animation: subtle-sport-float 5s ease-in-out infinite;
+    }
+    .goal-card:nth-child(2) .dial-emoji {
+      animation-delay: -1.6s;
+    }
+    .goal-card:nth-child(3) .dial-emoji {
+      animation-delay: -3.2s;
+    }
+    
+    @keyframes subtle-sport-float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-2px) scale(1.04); }
+    }
+    
+    /* Interactive hover on goal cards - athletic spring lift */
+    .goal-card:hover .dial-emoji {
+      transform: translateY(-4px) scale(1.18);
+      animation-play-state: paused;
+    }
+    .goal-sport-emoji {
+      display: inline-block;
+      transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .goal-card:hover .goal-sport-emoji {
+      transform: scale(1.2) rotate(-6deg);
+    }
+
+    /* Season Timeline Section subtle hourglass sway and interactive hover spin */
+    .progress-dial--time .dial-emoji {
+      display: inline-block;
+      animation: subtle-time-tilt 6s ease-in-out infinite;
+      will-change: transform;
+    }
+    @keyframes subtle-time-tilt {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(-5deg) scale(1.03); }
+      75% { transform: rotate(5deg) scale(1.03); }
+    }
+    .time-card:hover .progress-dial--time .dial-emoji {
+      animation: time-spin-bounce 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes time-spin-bounce {
+      0% { transform: scale(1) rotate(0deg); }
+      40% { transform: scale(1.22) rotate(180deg); }
+      100% { transform: scale(1) rotate(360deg); }
+    }
+
+    /* Active dots & status tag micro-polish */
+    .active-dot {
+      display: inline-block;
+      animation: active-dot-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes active-dot-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.75; }
+    }
     .dial-percent { font-size: 1.15rem; font-weight: 800; font-family: var(--font-sans); letter-spacing: -0.02em; }
 
     .goal-card-metrics {
@@ -1057,10 +1124,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Last synced: 2026-09-06 23:22:07">
+        <div class="sync-status-pill" title="Last synced: 2026-09-06 23:24:23">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synced:</span>
-          <strong class="synced-value" data-synced-at="2026-09-06T23:22:07" data-synced-label="2026-09-06 23:22:07">today</strong>
+          <strong class="synced-value" data-synced-at="2026-09-06T23:24:23" data-synced-label="2026-09-06 23:24:23">today</strong>
         </div>
         <div class="lang-segmented-control" role="group" aria-label="Language selection">
           <span class="lang-segment is-active" aria-current="page">EN</span>
@@ -1126,7 +1193,7 @@
       <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Activity Targets</h3>
       <div class="goals-grid" id="goals-grid"><div class="goal-card" data-goal-type="Run" data-year="2026" role="button" tabindex="0" aria-label="Goal: Run - 75.0%">
   <div class="goal-card-header">
-    <span class="goal-sport-tag">🏃 Run</span>
+    <span class="goal-sport-tag"><span class="goal-sport-emoji">🏃</span> Run</span>
     <span class="status-badge status-ahead">+14.1km ahead 🚀</span>
   </div>
   <div class="goal-card-dial-wrap">
@@ -1148,7 +1215,7 @@
   </div>
 </div><div class="goal-card" data-goal-type="Ride" data-year="2026" role="button" tabindex="0" aria-label="Goal: Ride - 63.0%">
   <div class="goal-card-header">
-    <span class="goal-sport-tag">🚴 Ride</span>
+    <span class="goal-sport-tag"><span class="goal-sport-emoji">🚴</span> Ride</span>
     <span class="status-badge status-ontrack">On track 🟢</span>
   </div>
   <div class="goal-card-dial-wrap">
@@ -1170,7 +1237,7 @@
   </div>
 </div><div class="goal-card" data-goal-type="Swim" data-year="2026" role="button" tabindex="0" aria-label="Goal: Swim - 58.2%">
   <div class="goal-card-header">
-    <span class="goal-sport-tag">🏊 Swim</span>
+    <span class="goal-sport-tag"><span class="goal-sport-emoji">🏊</span> Swim</span>
     <span class="status-badge status-ontrack">On track 🟢</span>
   </div>
   <div class="goal-card-dial-wrap">
@@ -1709,7 +1776,7 @@
 
           html += '<div class="goal-card" data-goal-type="' + g.goal_type + '" data-year="' + year + '" role="button" tabindex="0" aria-label="Goal: ' + sportName + ' - ' + pct.toFixed(1) + '%">';
           html += '  <div class="goal-card-header">';
-          html += '    <span class="goal-sport-tag">' + g.emoji + ' ' + sportName + '</span>';
+          html += '    <span class="goal-sport-tag"><span class="goal-sport-emoji">' + g.emoji + '</span> ' + sportName + '</span>';
           html += '    <span class="status-badge status-' + g.status_code + '">' + statusTag + '</span>';
           html += '  </div>';
           html += '  <div class="goal-card-dial-wrap">';
