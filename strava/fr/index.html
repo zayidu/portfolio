@@ -63,77 +63,91 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(14, 17, 23, 0.88);
+      background: rgba(14, 17, 23, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       height: var(--nav-height);
       display: flex;
       align-items: center;
+      padding: 0 16px;
     }
     .header-inner {
-      width: min(1140px, calc(100vw - 32px));
+      width: 100%;
+      max-width: 1140px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
+      flex-wrap: nowrap;
     }
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: inherit;
+      flex-shrink: 0;
+      min-width: 0;
     }
     .avatar-badge {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: var(--radius-full);
       background: linear-gradient(135deg, #1E293B, #0F172A);
-      border: 1.5px solid rgba(252, 76, 2, 0.4);
+      border: 1.5px solid rgba(252, 76, 2, 0.45);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
     }
     .brand-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      white-space: nowrap;
+    }
+    .brand-name {
+      font-weight: 700;
+      color: var(--text);
     }
     .strava-logo-tag {
       background: linear-gradient(135deg, #FC4C02, #E34402);
       color: #FFF;
-      font-size: 0.68rem;
+      font-size: 0.64rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
-      padding: 2px 7px;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
       border-radius: var(--radius-sm);
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
     /* Live pulse & Sync indicator */
     .sync-status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: var(--radius-full);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
+      white-space: nowrap;
     }
     .live-pulse-dot {
       width: 8px;
@@ -142,6 +156,14 @@
       background: var(--accent-emerald);
       box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
       animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+      flex-shrink: 0;
+    }
+    .synced-label-text {
+      color: var(--text-muted);
+    }
+    .synced-value {
+      color: var(--text);
+      font-weight: 600;
     }
     @keyframes pulse-ring {
       0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
@@ -153,16 +175,17 @@
     .lang-switch-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
+      gap: 5px;
+      padding: 5px 12px;
       border-radius: var(--radius-full);
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.02em;
+      white-space: nowrap;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: var(--shadow-sm);
     }
@@ -930,10 +953,49 @@
 
     /* Mobile Responsive Viewport adjustments */
     @media (max-width: 640px) {
-      :root { --nav-height: 56px; }
+      :root { --nav-height: 54px; }
+      .app-header {
+        padding: 0 12px;
+      }
+      .header-inner {
+        gap: 8px;
+      }
+      .brand-group {
+        gap: 8px;
+      }
+      .avatar-badge {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+      .brand-title {
+        font-size: 0.92rem;
+        gap: 5px;
+      }
+      .strava-logo-tag {
+        font-size: 0.58rem;
+        padding: 1.5px 5px;
+        border-radius: 4px;
+      }
+      .header-actions {
+        gap: 6px;
+      }
+      .sync-status-pill {
+        padding: 4px 8px;
+        font-size: 0.74rem;
+        gap: 5px;
+      }
+      .synced-label-text {
+        display: none;
+      }
+      .lang-switch-btn {
+        padding: 4px 9px;
+        font-size: 0.74rem;
+        gap: 4px;
+      }
       .desktop-nav { display: none; }
       .mobile-dock { display: block; }
-      .page-container { margin-top: 14px; gap: 18px; }
+      .page-container { margin-top: 14px; gap: 18px; width: calc(100vw - 24px); }
       .athletic-card { padding: 16px; border-radius: var(--radius-md); }
       .card-title { font-size: 1.15rem; }
       .goals-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -968,15 +1030,16 @@
       <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer" class="brand-group" title="Open Strava Profile">
         <div class="avatar-badge">🏔️</div>
         <div class="brand-title">
-          <span>Zayidu A</span>
+          <span class="brand-name">Zayidu A</span>
           <span class="strava-logo-tag">STRAVA</span>
         </div>
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill">
+        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-06 23:01:04">
           <span class="live-pulse-dot" aria-hidden="true"></span>
-          <span>Synchronisé : <strong class="synced-value" data-synced-at="2026-09-06T22:42:06" data-synced-label="2026-09-06 22:42:06">today</strong></span>
+          <span class="synced-label-text">Synchronisé :</span>
+          <strong class="synced-value" data-synced-at="2026-09-06T23:01:04" data-synced-label="2026-09-06 23:01:04">today</strong>
         </div>
         <a href="../" class="lang-switch-btn" title="Switch to English" aria-label="English Version">
           <span class="lang-flag">🇬🇧</span>
