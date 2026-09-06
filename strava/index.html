@@ -62,20 +62,21 @@
     .app-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(14, 17, 23, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      background: rgba(14, 17, 23, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
+      padding-top: max(env(safe-area-inset-top, 0px), 0px);
+      padding-left: max(env(safe-area-inset-left, 0px), 16px);
+      padding-right: max(env(safe-area-inset-right, 0px), 16px);
+      padding-bottom: 0px;
     }
     .header-inner {
       width: 100%;
       max-width: 1140px;
       margin: 0 auto;
+      height: var(--nav-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -176,39 +177,32 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 4px 11px;
+      padding: 5px 12px;
+      min-height: 32px;
       border-radius: var(--radius-full);
       background: var(--surface-elevated);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--text);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 800;
       font-family: var(--font-mono);
       letter-spacing: 0.06em;
       text-decoration: none;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
       flex-shrink: 0;
       cursor: pointer;
+      position: relative;
+      z-index: 10;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(252, 76, 2, 0.3);
     }
     .lang-pill-btn:hover, .lang-pill-btn:active {
-      background: linear-gradient(135deg, rgba(252, 76, 2, 0.2), rgba(227, 68, 2, 0.1));
+      background: linear-gradient(135deg, rgba(252, 76, 2, 0.25), rgba(227, 68, 2, 0.15));
       border-color: var(--strava-orange);
       color: var(--strava-orange);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px var(--strava-orange-glow);
-    }
-    .dock-icon-code {
-      font-size: 0.7rem;
-      font-weight: 800;
-      font-family: var(--font-mono);
-      letter-spacing: 0.06em;
-      line-height: 1;
-      padding: 2.5px 6px;
-      border-radius: 4px;
-      background: rgba(252, 76, 2, 0.15);
-      border: 1px solid rgba(252, 76, 2, 0.3);
-      color: var(--strava-orange);
     }
 
     /* Desktop Navigation Links */
@@ -971,44 +965,47 @@
     .mobile-dock {
       display: none;
       position: fixed;
-      bottom: 14px;
+      bottom: max(14px, env(safe-area-inset-bottom, 14px));
       left: 50%;
       transform: translateX(-50%);
-      z-index: 45;
-      background: rgba(21, 27, 38, 0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
+      width: calc(100vw - 24px);
+      max-width: 440px;
+      z-index: 900;
+      background: rgba(21, 27, 38, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-full);
-      padding: 6px 12px;
-      box-shadow: var(--shadow-lg);
+      padding: 6px 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
     }
     .dock-inner {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-around;
+      width: 100%;
+      gap: 4px;
     }
     .dock-btn {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 2px;
-      padding: 6px 12px;
+      padding: 6px 4px;
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.68rem;
       font-weight: 700;
       border-radius: var(--radius-full);
       transition: all 0.15s ease;
+      white-space: nowrap;
+      min-width: 0;
     }
     .dock-btn:hover, .dock-btn:active {
       color: var(--text);
       background: rgba(255, 255, 255, 0.08);
-    }
-    .dock-lang-btn {
-      border-left: 1px solid var(--border);
-      padding-left: 10px;
-      margin-left: 2px;
     }
     .dock-icon { font-size: 16px; }
 
@@ -1034,11 +1031,15 @@
 
     /* Mobile Responsive Viewport adjustments */
     @media (max-width: 640px) {
-      :root { --nav-height: 54px; }
+      :root { --nav-height: 52px; }
       .app-header {
-        padding: 0 12px;
+        padding-top: max(env(safe-area-inset-top, 0px), 8px);
+        padding-left: max(env(safe-area-inset-left, 0px), 12px);
+        padding-right: max(env(safe-area-inset-right, 0px), 12px);
+        padding-bottom: 4px;
       }
       .header-inner {
+        height: var(--nav-height);
         gap: 8px;
       }
       .brand-group {
@@ -1070,8 +1071,13 @@
         display: none;
       }
       .lang-pill-btn {
-        padding: 3.5px 9px;
-        font-size: 0.74rem;
+        min-height: 32px;
+        padding: 4px 11px;
+        font-size: 0.78rem;
+        cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       .desktop-nav { display: none; }
       .mobile-dock { display: block; }
@@ -1100,6 +1106,12 @@
         }
       }
     }
+
+    @media all and (display-mode: standalone) {
+      .app-header {
+        padding-top: max(env(safe-area-inset-top, 0px), 24px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1116,10 +1128,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Last synced: 2026-09-07 00:03:37">
+        <div class="sync-status-pill" title="Last synced: 2026-09-07 00:15:47">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synced:</span>
-          <strong class="synced-value" data-synced-epoch="1788732217624" data-synced-at="2026-09-07T00:03:37" data-synced-label="2026-09-07 00:03:37">just now</strong>
+          <strong class="synced-value" data-synced-epoch="1788732947000" data-synced-at="2026-09-06T22:15:47Z" data-synced-label="2026-09-07 00:15:47">just now</strong>
         </div>
         <a href="./fr/" class="lang-pill-btn" title="Passer en version française" aria-label="Version Française">FR</a>
       </div>
@@ -1451,7 +1463,6 @@
       <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Stats</span></a>
       <a href="#historic-goals" class="dock-btn"><span class="dock-icon">🏆</span><span>Historic</span></a>
       <a href="#all-time-totals" class="dock-btn"><span class="dock-icon">🎖️</span><span>All-Time</span></a>
-      <a href="./fr/" class="dock-btn dock-lang-btn" title="Passer en version française"><span class="dock-icon-code">FR</span><span>FR</span></a>
     </div>
   </nav>
 
@@ -1653,16 +1664,18 @@
       if (!epoch || isNaN(epoch)) {
         var raw = el.getAttribute("data-synced-at") || "";
         if (raw) {
-          var d = new Date(raw.indexOf("T") === -1 ? raw.replace(" ", "T") : raw);
+          var d = new Date(raw);
           epoch = d.getTime();
         }
       }
       if (!epoch || isNaN(epoch)) return;
 
-      var diffMs = Math.max(0, Date.now() - epoch);
-      var mins = Math.floor(diffMs / 60000);
-      var hours = Math.floor(diffMs / 3600000);
-      var days = Math.floor(diffMs / 86400000);
+      var diffMs = Date.now() - epoch;
+      if (diffMs < 0) diffMs = 0;
+      var seconds = Math.floor(diffMs / 1000);
+      var mins = Math.floor(seconds / 60);
+      var hours = Math.floor(mins / 60);
+      var days = Math.floor(hours / 24);
       var weeks = Math.floor(days / 7);
       var months = Math.floor(days / 30);
       var years = Math.floor(days / 365);
@@ -1670,20 +1683,32 @@
       var text = "";
       if (LANG === "fr") {
         if (mins < 1) text = "à l'instant";
-        else if (mins < 60) text = "il y a " + mins + " min" + (mins > 1 ? "s" : "");
+        else if (mins === 1) text = "il y a 1 min";
+        else if (mins < 60) text = "il y a " + mins + " mins";
+        else if (hours === 1) text = "il y a 1 heure";
         else if (hours < 24) text = "il y a " + hours + " h";
+        else if (days === 1) text = "hier";
         else if (days < 7) text = "il y a " + days + " j";
-        else if (days < 30) text = "il y a " + Math.max(1, weeks) + " sem";
-        else if (days < 365) text = "il y a " + Math.max(1, months) + " mois";
-        else text = "il y a " + Math.max(1, years) + " an" + (years > 1 ? "s" : "");
+        else if (weeks === 1) text = "il y a 1 sem";
+        else if (days < 30) text = "il y a " + weeks + " sem";
+        else if (months === 1) text = "il y a 1 mois";
+        else if (days < 365) text = "il y a " + months + " mois";
+        else if (years === 1) text = "il y a 1 an";
+        else text = "il y a " + years + " ans";
       } else {
         if (mins < 1) text = "just now";
-        else if (mins < 60) text = mins + " min" + (mins > 1 ? "s" : "") + " ago";
-        else if (hours < 24) text = hours + " hour" + (hours > 1 ? "s" : "") + " ago";
-        else if (days < 7) text = days + " day" + (days > 1 ? "s" : "") + " ago";
-        else if (days < 30) text = Math.max(1, weeks) + " week" + (weeks > 1 ? "s" : "") + " ago";
-        else if (days < 365) text = Math.max(1, months) + " month" + (months > 1 ? "s" : "") + " ago";
-        else text = Math.max(1, years) + " year" + (years > 1 ? "s" : "") + " ago";
+        else if (mins === 1) text = "1 min ago";
+        else if (mins < 60) text = mins + " mins ago";
+        else if (hours === 1) text = "1 hour ago";
+        else if (hours < 24) text = hours + " hours ago";
+        else if (days === 1) text = "yesterday";
+        else if (days < 7) text = days + " days ago";
+        else if (weeks === 1) text = "1 week ago";
+        else if (days < 30) text = weeks + " weeks ago";
+        else if (months === 1) text = "1 month ago";
+        else if (days < 365) text = months + " months ago";
+        else if (years === 1) text = "1 year ago";
+        else text = years + " years ago";
       }
       el.textContent = text;
     }
@@ -1695,7 +1720,7 @@
       bindActivityClicks();
       bindGoalClicks();
       bindTimeClick();
-      setInterval(initSyncTimestamp, 60000);
+      setInterval(initSyncTimestamp, 30000);
     }
 
     if (document.readyState === "loading") {
