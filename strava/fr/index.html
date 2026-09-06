@@ -1124,10 +1124,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-06 23:46:44">
+        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-06 23:54:40">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synchronisé :</span>
-          <strong class="synced-value" data-synced-at="2026-09-06T23:46:44" data-synced-label="2026-09-06 23:46:44">à l&#x27;instant</strong>
+          <strong class="synced-value" data-synced-epoch="1788731680058" data-synced-at="2026-09-06T23:54:40" data-synced-label="2026-09-06 23:54:40">à l&#x27;instant</strong>
         </div>
         <a href="../" class="lang-pill-btn" title="Switch to English" aria-label="English Version">EN</a>
       </div>
@@ -1659,20 +1659,18 @@
     function initSyncTimestamp() {
       var el = document.querySelector(".synced-value");
       if (!el) return;
-      var raw = el.getAttribute("data-synced-at") || "";
-      var label = el.getAttribute("data-synced-label") || raw;
-      if (!raw) return;
-
-      var d = new Date(raw.indexOf("T") === -1 ? raw.replace(" ", "T") : raw);
-      if (isNaN(d.getTime())) {
-        var parts = raw.split(/[- :T]/);
-        if (parts.length >= 6) {
-          d = new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+      var epochStr = el.getAttribute("data-synced-epoch");
+      var epoch = epochStr ? parseInt(epochStr, 10) : 0;
+      if (!epoch || isNaN(epoch)) {
+        var raw = el.getAttribute("data-synced-at") || "";
+        if (raw) {
+          var d = new Date(raw.indexOf("T") === -1 ? raw.replace(" ", "T") : raw);
+          epoch = d.getTime();
         }
       }
-      if (isNaN(d.getTime())) return;
+      if (!epoch || isNaN(epoch)) return;
 
-      var diffMs = Math.max(0, Date.now() - d.getTime());
+      var diffMs = Math.max(0, Date.now() - epoch);
       var mins = Math.floor(diffMs / 60000);
       var hours = Math.floor(diffMs / 3600000);
       var days = Math.floor(diffMs / 86400000);
