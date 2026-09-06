@@ -171,52 +171,44 @@
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
     }
 
-    /* 2026 Minimalist Segmented Language Switcher */
-    .lang-segmented-control {
-      display: inline-flex;
-      align-items: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      padding: 2px;
-      gap: 2px;
-      flex-shrink: 0;
-    }
-    .lang-segment {
+    /* 2026 Minimalist Single-Tap Language Pill */
+    .lang-pill-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 3px 10px;
+      padding: 4px 11px;
       border-radius: var(--radius-full);
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--text-subtle);
-      text-decoration: none;
-      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .lang-segment:not(.is-active):hover {
-      color: var(--text);
       background: var(--surface-elevated);
-    }
-    .lang-segment.is-active {
-      background: var(--surface-active);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       color: var(--text);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-      cursor: default;
-      pointer-events: none;
+      font-size: 0.78rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .lang-pill-btn:hover, .lang-pill-btn:active {
+      background: linear-gradient(135deg, rgba(252, 76, 2, 0.2), rgba(227, 68, 2, 0.1));
+      border-color: var(--strava-orange);
+      color: var(--strava-orange);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px var(--strava-orange-glow);
     }
     .dock-icon-code {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 800;
       font-family: var(--font-mono);
       letter-spacing: 0.06em;
       line-height: 1;
-      padding: 2px 5px;
+      padding: 2.5px 6px;
       border-radius: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--accent-cyan);
+      background: rgba(252, 76, 2, 0.15);
+      border: 1px solid rgba(252, 76, 2, 0.3);
+      color: var(--strava-orange);
     }
 
     /* Desktop Navigation Links */
@@ -1077,9 +1069,9 @@
       .synced-label-text {
         display: none;
       }
-      .lang-segment {
-        padding: 2px 7px;
-        font-size: 0.7rem;
+      .lang-pill-btn {
+        padding: 3.5px 9px;
+        font-size: 0.74rem;
       }
       .desktop-nav { display: none; }
       .mobile-dock { display: block; }
@@ -1124,15 +1116,12 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-06 23:24:23">
+        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-06 23:26:58">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synchronisé :</span>
-          <strong class="synced-value" data-synced-at="2026-09-06T23:24:23" data-synced-label="2026-09-06 23:24:23">aujourd&#x27;hui</strong>
+          <strong class="synced-value" data-synced-at="2026-09-06T23:26:58" data-synced-label="2026-09-06 23:26:58">aujourd&#x27;hui</strong>
         </div>
-        <div class="lang-segmented-control" role="group" aria-label="Sélection de la langue">
-          <a href="../" class="lang-segment" title="Switch to English" aria-label="English Version">EN</a>
-          <span class="lang-segment is-active" aria-current="page">FR</span>
-        </div>
+        <a href="../" class="lang-pill-btn" title="Switch to English" aria-label="English Version">EN</a>
       </div>
 
       <nav class="desktop-nav" aria-label="Quick section navigation">
