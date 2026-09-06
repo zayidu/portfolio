@@ -976,7 +976,7 @@
       <div class="header-actions">
         <div class="sync-status-pill">
           <span class="live-pulse-dot" aria-hidden="true"></span>
-          <span>Synchronisé : <strong class="synced-value" data-synced-at="2026-09-06T22:40:38" data-synced-label="2026-09-06 22:40:38">today</strong></span>
+          <span>Synchronisé : <strong class="synced-value" data-synced-at="2026-09-06T22:42:06" data-synced-label="2026-09-06 22:42:06">today</strong></span>
         </div>
         <a href="../" class="lang-switch-btn" title="Switch to English" aria-label="English Version">
           <span class="lang-flag">🇬🇧</span>
@@ -1168,12 +1168,12 @@
       <div class="historic-group">
   <h3 class="historic-group-title">🚴 BRM 200</h3>
   <ul class="historic-list">
-    <li class="historic-item"><span class="historic-date">11 Apr 2026</span><span class="historic-activity"><a href="https://www.strava.com/activities/18068871751" target="_blank" rel="noopener noreferrer" class="historic-link">BRM 200 - US Cergy 🚴 ↗</a></span><span class="historic-metric">234.07km / 9h 11m</span></li><li class="historic-item"><span class="historic-date">09 Jun 2024</span><span class="historic-activity"><a href="https://www.strava.com/activities/11614752093" target="_blank" rel="noopener noreferrer" class="historic-link">BRM 200, UV Argenteuil🚴‍♂️ ↗</a></span><span class="historic-metric">215.73km / 9h 47m</span></li>
+    <li class="historic-item"><span class="historic-date">11 avr. 2026</span><span class="historic-activity"><a href="https://www.strava.com/activities/18068871751" target="_blank" rel="noopener noreferrer" class="historic-link">BRM 200 - US Cergy 🚴 ↗</a></span><span class="historic-metric">234.07km / 9h 11m</span></li><li class="historic-item"><span class="historic-date">09 juin 2024</span><span class="historic-activity"><a href="https://www.strava.com/activities/11614752093" target="_blank" rel="noopener noreferrer" class="historic-link">BRM 200, UV Argenteuil🚴‍♂️ ↗</a></span><span class="historic-metric">215.73km / 9h 47m</span></li>
   </ul>
 </div><div class="historic-group">
   <h3 class="historic-group-title">🚴 BRM 300</h3>
   <ul class="historic-list">
-    <li class="historic-item"><span class="historic-date">18 Apr 2026</span><span class="historic-activity"><a href="https://www.strava.com/activities/18162971761" target="_blank" rel="noopener noreferrer" class="historic-link">BRM300 🚴– Tour de l’Île de France ↗</a></span><span class="historic-metric">307.4km / 12h 27m</span></li>
+    <li class="historic-item"><span class="historic-date">18 avr. 2026</span><span class="historic-activity"><a href="https://www.strava.com/activities/18162971761" target="_blank" rel="noopener noreferrer" class="historic-link">BRM300 🚴– Tour de l’Île de France ↗</a></span><span class="historic-metric">307.4km / 12h 27m</span></li>
   </ul>
 </div>
     </section>
@@ -1236,19 +1236,19 @@
   </div>
   <div class="grand-stat-name">Marches</div>
   <div class="grand-stat-dist">75km</div>
-</div><div class="grand-stat-card clickable-activity" data-ids="10706464282,10712757672,18987515995,19090191501,19090378683,19090490840,19140868698,19141042781" data-title="🏋️‍♂️ 8 WeightTrainings (0km)" role="button" tabindex="0">
+</div><div class="grand-stat-card clickable-activity" data-ids="10706464282,10712757672,18987515995,19090191501,19090378683,19090490840,19140868698,19141042781" data-title="🏋️‍♂️ 8 Musculations (0km)" role="button" tabindex="0">
   <div class="grand-stat-top">
     <span class="grand-stat-emoji">🏋️‍♂️</span>
     <span class="grand-stat-count">8</span>
   </div>
-  <div class="grand-stat-name">WeightTrainings</div>
+  <div class="grand-stat-name">Musculations</div>
   <div class="grand-stat-dist">0km</div>
-</div><div class="grand-stat-card clickable-activity" data-ids="10746419688,10846818756,10887557663,11240879785,11247803963,11269425992,11277954707,11285213562,11399722614,12222311355,12314793111,12341503301,12724625168,12725569050,18949690113,18998594756" data-title="💪 16 Workouts (1km)" role="button" tabindex="0">
+</div><div class="grand-stat-card clickable-activity" data-ids="10746419688,10846818756,10887557663,11240879785,11247803963,11269425992,11277954707,11285213562,11399722614,12222311355,12314793111,12341503301,12724625168,12725569050,18949690113,18998594756" data-title="💪 16 Entraînements (1km)" role="button" tabindex="0">
   <div class="grand-stat-top">
     <span class="grand-stat-emoji">💪</span>
     <span class="grand-stat-count">16</span>
   </div>
-  <div class="grand-stat-name">Workouts</div>
+  <div class="grand-stat-name">Entraînements</div>
   <div class="grand-stat-dist">1km</div>
 </div>
       </div>
@@ -1436,7 +1436,10 @@
     const SPORT_MAP_FR = {
       "Ride": "Vélo", "Run": "Course", "Swim": "Natation", "Walk": "Marche", "Hike": "Randonnée",
       "Rides": "Sorties vélo", "Runs": "Courses", "Swims": "Natations", "Walks": "Marches", "Hikes": "Randonnées",
-      "Crossfit": "Crossfit", "WeightTraining": "Musculation", "Workout": "Entraînement", "Kayaking": "Kayak"
+      "Crossfit": "Crossfit", "Crossfits": "Crossfits",
+      "WeightTraining": "Musculation", "WeightTrainings": "Musculations",
+      "Workout": "Entraînement", "Workouts": "Entraînements",
+      "Kayaking": "Kayak", "Kayakings": "Kayaks"
     };
 
     const STATUS_MAP_FR = {
@@ -1494,10 +1497,11 @@
 
     function translateDateFr(dStr) {
       if (!dStr) return dStr;
-      var parts = dStr.split(" ");
-      if (parts.length > 0 && MONTH_MAP_FR[parts[0]]) {
-        parts[0] = MONTH_MAP_FR[parts[0]];
-        return parts.join(" ");
+      var m = dStr.match(/^([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})(\s*·\s*.*)?$/);
+      if (m) {
+        var mName = MONTH_MAP_FR[m[1]] ? MONTH_MAP_FR[m[1]].toLowerCase() : m[1];
+        var rest = m[4] || "";
+        return m[2] + " " + mName + " " + m[3] + rest;
       }
       return dStr;
     }

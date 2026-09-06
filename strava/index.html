@@ -976,7 +976,7 @@
       <div class="header-actions">
         <div class="sync-status-pill">
           <span class="live-pulse-dot" aria-hidden="true"></span>
-          <span>Synced: <strong class="synced-value" data-synced-at="2026-09-06T22:40:38" data-synced-label="2026-09-06 22:40:38">today</strong></span>
+          <span>Synced: <strong class="synced-value" data-synced-at="2026-09-06T22:42:06" data-synced-label="2026-09-06 22:42:06">today</strong></span>
         </div>
         <a href="./fr/" class="lang-switch-btn" title="Passer en version française" aria-label="Version Française">
           <span class="lang-flag">🇫🇷</span>
@@ -1436,7 +1436,10 @@
     const SPORT_MAP_FR = {
       "Ride": "Vélo", "Run": "Course", "Swim": "Natation", "Walk": "Marche", "Hike": "Randonnée",
       "Rides": "Sorties vélo", "Runs": "Courses", "Swims": "Natations", "Walks": "Marches", "Hikes": "Randonnées",
-      "Crossfit": "Crossfit", "WeightTraining": "Musculation", "Workout": "Entraînement", "Kayaking": "Kayak"
+      "Crossfit": "Crossfit", "Crossfits": "Crossfits",
+      "WeightTraining": "Musculation", "WeightTrainings": "Musculations",
+      "Workout": "Entraînement", "Workouts": "Entraînements",
+      "Kayaking": "Kayak", "Kayakings": "Kayaks"
     };
 
     const STATUS_MAP_FR = {
@@ -1494,10 +1497,11 @@
 
     function translateDateFr(dStr) {
       if (!dStr) return dStr;
-      var parts = dStr.split(" ");
-      if (parts.length > 0 && MONTH_MAP_FR[parts[0]]) {
-        parts[0] = MONTH_MAP_FR[parts[0]];
-        return parts.join(" ");
+      var m = dStr.match(/^([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})(\s*·\s*.*)?$/);
+      if (m) {
+        var mName = MONTH_MAP_FR[m[1]] ? MONTH_MAP_FR[m[1]].toLowerCase() : m[1];
+        var rest = m[4] || "";
+        return m[2] + " " + mName + " " + m[3] + rest;
       }
       return dStr;
     }
