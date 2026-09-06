@@ -6,6 +6,15 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0E1117">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../icon-512.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Strava Buts">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Strava Buts">
   <title>Zayidu A · Strava 📊 · Métriques & Objectifs Sportifs</title>
   <style>
     :root {
@@ -18,37 +27,47 @@
       --accent-cyan: #38BDF8;
       --accent-emerald: #34D399;
       --accent-amber: #FBBF24;
+      --accent-purple: #C084FC;
       --text: #F3F4F6;
       --text-muted: #9CA3AF;
       --text-subtle: #6B7280;
       --border: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(252, 76, 2, 0.5);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
       --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.35);
       --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
       --radius-sm: 10px;
       --radius-md: 16px;
       --radius-lg: 24px;
       --radius-full: 9999px;
+      --nav-height: 64px;
       --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --font-mono: "SF Mono", Menlo, Monaco, Consolas, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-text-size-adjust: 100%; }
     body {
       font-family: var(--font-sans);
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 60px;
+      padding-bottom: 90px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Top Sticky App Header */
     .app-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(14, 17, 23, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(14, 17, 23, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      height: 64px;
+      height: var(--nav-height);
       display: flex;
       align-items: center;
     }
@@ -58,12 +77,53 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
     }
-    .brand-group { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-    .avatar-badge { width: 38px; height: 38px; border-radius: var(--radius-full); background: #1E293B; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-    .brand-title { font-weight: 700; display: flex; align-items: center; gap: 8px; }
-    .strava-logo-tag { background: var(--strava-orange); color: #FFF; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .avatar-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      border: 1.5px solid rgba(252, 76, 2, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .strava-logo-tag {
+      background: linear-gradient(135deg, #FC4C02, #E34402);
+      color: #FFF;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Live pulse & Sync indicator */
     .sync-status-pill {
       display: inline-flex;
       align-items: center;
@@ -72,38 +132,74 @@
       border: 1px solid var(--border);
       padding: 6px 14px;
       border-radius: var(--radius-full);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
     }
-    .live-pulse-dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--accent-emerald); }
-    
-    .desktop-nav { display: flex; align-items: center; gap: 12px; }
-    .nav-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-full); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; text-decoration: none; }
-    .nav-btn:hover { background: var(--surface-active); color: var(--text); border-color: rgba(255, 255, 255, 0.18); transform: translateY(-1px); }
+    .live-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--accent-emerald);
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+      animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+    }
 
     /* Language Switcher Button */
     .lang-switch-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 13px;
-      background: var(--surface-elevated);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 6px 12px;
       border-radius: var(--radius-full);
-      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-decoration: none;
       font-size: 0.82rem;
       font-weight: 700;
-      text-decoration: none;
-      transition: all 0.18s ease;
-      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
     }
     .lang-switch-btn:hover {
-      background: var(--surface-active);
-      border-color: rgba(252, 76, 2, 0.4);
-      color: #FFF;
+      background: var(--surface-elevated);
+      border-color: var(--strava-orange);
+      color: var(--strava-orange);
       transform: translateY(-1px);
     }
-    .lang-flag { font-size: 14px; line-height: 1; }
-    .lang-code { letter-spacing: 0.04em; }
+    .lang-switch-btn .lang-flag { font-size: 14px; }
+
+    /* Desktop Navigation Links */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.18s ease;
+    }
+    .nav-btn:hover {
+      background: var(--surface-elevated);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
 
     /* Page Layout */
     .page-container {
@@ -111,28 +207,77 @@
       margin: 24px auto 0;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 28px;
     }
 
+    /* Cards and Surface styling */
     .athletic-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 24px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
     }
-    .card-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-    .card-title { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
+    /* December Notice Card */
     .december-notice-card {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.05));
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.05));
       border: 1px solid rgba(251, 191, 36, 0.3);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #FEF3C7;
       margin-bottom: 20px;
     }
-    .notice-icon { font-size: 24px; }
+    .notice-icon { font-size: 28px; flex-shrink: 0; }
+    .notice-body strong { display: block; font-size: 0.95rem; margin-bottom: 2px; color: #FBBF24; }
+    .notice-body p { margin: 0; font-size: 0.88rem; opacity: 0.9; }
 
-    .season-switcher-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
+    /* Year Switcher Pills Bar */
+    .season-switcher-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .season-switcher-bar::-webkit-scrollbar { display: none; }
+    .season-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .year-pills-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .year-pill {
       display: inline-flex;
       align-items: center;
@@ -142,15 +287,26 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-full);
       color: var(--text-muted);
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+    }
+    .year-pill:hover {
+      background: var(--surface-active);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.18);
     }
     .year-pill.is-active {
-      background: var(--strava-orange);
+      background: linear-gradient(135deg, var(--strava-orange), #E34402);
       color: #FFF;
       border-color: var(--strava-orange);
+      box-shadow: 0 4px 14px var(--strava-orange-glow);
       transform: translateY(-1px);
     }
+    .active-dot { font-size: 10px; line-height: 1; }
 
     /* Time Progress Timeline Card */
     .time-card {
@@ -160,210 +316,211 @@
       padding: 18px 22px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
       margin-bottom: 24px;
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .time-card:hover {
       border-color: rgba(56, 189, 248, 0.45);
-      background: linear-gradient(135deg, rgba(32, 42, 60, 0.9), rgba(24, 31, 44, 1));
+      background: linear-gradient(135deg, rgba(32, 42, 60, 0.85), rgba(24, 31, 44, 0.98));
       transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
     .time-card-dial-wrap {
       flex-shrink: 0;
     }
     .time-card-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      flex: 1 1 auto;
     }
     .time-card-title-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
     }
     .time-card-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
+      color: var(--text);
     }
     .time-card-desc {
+      font-size: 0.9rem;
       color: var(--text-muted);
-      font-size: 0.92rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
     }
     .time-card-sub {
       display: flex;
       align-items: center;
       gap: 16px;
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      flex-wrap: wrap;
     }
 
-    /* Circular Progress Dial */
-    .progress-dial {
-      width: 68px;
-      height: 68px;
-      border-radius: var(--radius-full);
-      background: conic-gradient(var(--strava-orange) 0deg, var(--strava-orange) var(--deg), rgba(255, 255, 255, 0.08) var(--deg) 360deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .progress-dial--time {
-      background: conic-gradient(var(--accent-cyan) 0deg, var(--accent-cyan) var(--deg), rgba(255, 255, 255, 0.08) var(--deg) 360deg);
-    }
-    .progress-dial-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: var(--radius-full);
-      background: var(--surface);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      gap: 2px;
-    }
-    .dial-emoji { font-size: 16px; }
-    .dial-percent { font-size: 0.74rem; font-weight: 800; font-family: var(--font-mono); color: var(--text); }
-
-    /* Goal Cards Grid */
+    /* Goals CSS Grid */
     .goals-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-bottom: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
     }
     .goal-card {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 16px 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      align-items: center;
+      text-align: center;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
     .goal-card:hover {
+      transform: translateY(-3px);
       border-color: rgba(252, 76, 2, 0.4);
-      background: var(--surface-active);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(252, 76, 2, 0.2);
+    }
+    .goal-card:focus-visible {
+      outline: 2px solid var(--strava-orange);
+      outline-offset: 2px;
     }
     .goal-card-header {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      margin-bottom: 16px;
     }
     .goal-sport-tag {
       font-size: 0.95rem;
       font-weight: 700;
+      color: var(--text);
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .status-badge {
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 3px 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
       border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
     .status-ahead { background: rgba(52, 211, 153, 0.15); color: #34D399; border: 1px solid rgba(52, 211, 153, 0.3); }
-    .status-on-track { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .status-behind { background: rgba(248, 113, 113, 0.15); color: #F87171; border: 1px solid rgba(248, 113, 113, 0.3); }
-    .status-achieved { background: rgba(251, 191, 36, 0.15); color: #FBBF24; border: 1px solid rgba(251, 191, 36, 0.3); }
-    .status-timeline { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .status-ontrack { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .status-behind { background: rgba(251, 191, 36, 0.15); color: #FBBF24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .status-achieved { background: rgba(192, 132, 252, 0.15); color: #C084FC; border: 1px solid rgba(192, 132, 252, 0.3); }
+    .status-timeline { background: rgba(56, 189, 248, 0.12); color: #7DD3FC; border: 1px solid rgba(56, 189, 248, 0.25); }
 
+    /* Progress Dials */
     .goal-card-dial-wrap {
+      margin: 4px 0 16px;
+    }
+    .progress-dial {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(var(--strava-orange) 0deg var(--deg, 0deg), rgba(255, 255, 255, 0.08) var(--deg, 0deg) 360deg);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4px 0;
+      position: relative;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
     }
-    .goal-card-dial-wrap .progress-dial {
-      width: 78px;
-      height: 78px;
+    .progress-dial--time {
+      width: 86px;
+      height: 86px;
+      background: conic-gradient(var(--accent-cyan) 0deg var(--deg, 0deg), rgba(255, 255, 255, 0.08) var(--deg, 0deg) 360deg);
     }
-    .goal-card-metrics {
+    .progress-dial--lg {
+      width: 140px;
+      height: 140px;
+    }
+    .progress-dial-inner {
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      border-radius: 50%;
+      background: var(--surface);
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      text-align: center;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .dial-emoji { font-size: 20px; line-height: 1; margin-bottom: 2px; }
+    .dial-percent { font-size: 1.15rem; font-weight: 800; font-family: var(--font-sans); letter-spacing: -0.02em; }
+
+    .goal-card-metrics {
+      width: 100%;
     }
     .metric-main {
-      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .metric-val {
+      font-size: 1.28rem;
       font-weight: 800;
       color: var(--text);
     }
     .metric-unit {
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.88rem;
+      font-weight: 500;
       color: var(--text-muted);
     }
     .metric-sub-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-subtle);
-      margin-top: 2px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 6px;
     }
 
     /* Snapshots & Monthly Breakdown */
     .snapshot-item {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
+    .snapshot-item:last-child { margin-bottom: 0; }
     .snapshot-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       flex-wrap: wrap;
     }
-    .snapshot-title .meta {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-    .snapshot-title .distance {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
-    }
+    .snapshot-title .meta { font-size: 0.84rem; font-weight: 500; color: var(--text-muted); }
+    .snapshot-title .distance { font-size: 0.84rem; font-weight: 700; color: var(--accent-amber); }
     .summary-line {
       font-size: 0.92rem;
       color: var(--text-muted);
       margin-bottom: 4px;
+      line-height: 1.45;
     }
     .summary-total {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: var(--accent-emerald);
+      color: var(--text);
+      font-style: italic;
     }
+
     .section-divider {
       height: 1px;
       background: var(--border);
-      margin: 20px 0;
+      margin: 22px 0;
     }
 
-    /* Monthly breakdown container */
+    /* Monthly breakdown pills */
     .monthly-breakdown-container {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 12px;
     }
     .month-row {
@@ -371,47 +528,62 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 12px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
     }
     .month-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
     }
     .month-pill {
+      font-size: 0.85rem;
       font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
     }
     .month-total {
+      font-size: 0.85rem;
       font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--accent-emerald);
+      color: var(--accent-amber);
+      font-style: italic;
     }
     .month-summary {
-      font-size: 0.86rem;
-      color: var(--text-muted);
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Clickable activity spans */
+    .clickable-activity {
+      cursor: pointer;
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-color: rgba(255, 255, 255, 0.4);
+      text-underline-offset: 3px;
+      transition: all 0.15s ease;
+    }
+    .clickable-activity:hover {
+      color: var(--accent-cyan);
+      text-decoration-color: var(--accent-cyan);
     }
 
     /* Historic Achievements */
     .historic-group {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
+    .historic-group:last-child { margin-bottom: 0; }
     .historic-group-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--text);
     }
     .historic-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 8px;
     }
     .historic-item {
@@ -421,97 +593,79 @@
       padding: 10px 14px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
     }
     .historic-date {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--text-subtle);
+      font-size: 0.82rem;
+      color: var(--text-muted);
       flex-shrink: 0;
     }
     .historic-activity {
+      flex: 1 1 auto;
       font-weight: 600;
-      color: var(--text);
-      flex: 1;
     }
     .historic-link {
       color: var(--accent-cyan);
       text-decoration: none;
     }
-    .historic-link:hover {
-      text-decoration: underline;
-    }
+    .historic-link:hover { text-decoration: underline; }
     .historic-metric {
-      font-weight: 700;
+      font-size: 0.82rem;
       color: var(--accent-amber);
-      font-size: 0.85rem;
+      font-style: italic;
     }
 
-    /* Grand Totals */
-    .grand-total-banner {
-      background: linear-gradient(135deg, rgba(252, 76, 2, 0.15), rgba(227, 68, 2, 0.05));
-      border: 1px solid rgba(252, 76, 2, 0.3);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #FFF;
-    }
+    /* All Time Totals Grid */
     .grand-totals-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
       margin-bottom: 20px;
     }
     .grand-stat-card {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 14px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      text-align: center;
-      transition: all 0.2s ease;
+      gap: 6px;
+      transition: all 0.18s ease;
     }
-    .clickable-activity {
-      cursor: pointer;
-    }
-    .clickable-activity:hover {
+    .grand-stat-card.clickable-activity:hover {
+      transform: translateY(-2px);
       border-color: rgba(56, 189, 248, 0.4);
       background: var(--surface-active);
-      transform: translateY(-2px);
     }
     .grand-stat-top {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-size: 1.25rem;
+      justify-content: space-between;
+    }
+    .grand-stat-emoji { font-size: 22px; }
+    .grand-stat-count { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .grand-stat-name { font-size: 0.92rem; font-weight: 600; color: var(--text-muted); }
+    .grand-stat-dist { font-size: 0.85rem; font-weight: 700; color: var(--accent-amber); }
+
+    .grand-total-banner {
+      background: linear-gradient(135deg, rgba(252, 76, 2, 0.15), rgba(227, 68, 2, 0.08));
+      border: 1px solid rgba(252, 76, 2, 0.35);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 1.05rem;
       font-weight: 800;
-    }
-    .grand-stat-emoji { font-size: 1.2rem; }
-    .grand-stat-count { font-family: var(--font-mono); color: var(--text); }
-    .grand-stat-name {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .grand-stat-dist {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
+      color: #FFF;
+      text-align: center;
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
     }
 
+    /* Yearly Totals List */
     .year-totals-list {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 10px;
     }
     .year-total-card {
@@ -519,117 +673,116 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       padding: 12px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
     }
     .year-total-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
     }
     .year-total-badge {
-      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--strava-orange);
+      background: rgba(252, 76, 2, 0.12);
       padding: 2px 8px;
       border-radius: var(--radius-sm);
-      font-weight: 700;
-      font-size: 0.82rem;
-      font-family: var(--font-mono);
     }
     .year-total-main {
-      font-weight: 700;
       font-size: 0.88rem;
-      color: var(--accent-emerald);
+      font-weight: 700;
+      color: var(--accent-amber);
+      font-style: italic;
     }
     .year-total-breakdown {
-      font-size: 0.84rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
+      line-height: 1.45;
     }
 
-    /* Empty state */
     .empty-state-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--surface-elevated);
       border: 1px dashed var(--border);
       border-radius: var(--radius-md);
-      padding: 24px;
+      padding: 32px 20px;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
+      font-weight: 500;
     }
 
     /* Dialogs / Modals */
     dialog {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      border: none;
+      border-radius: var(--radius-lg);
       background: var(--surface);
       color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
       padding: 0;
-      width: min(560px, calc(100vw - 32px));
-      max-height: 85vh;
-      overflow-y: auto;
-      z-index: 100;
+      width: min(540px, calc(100vw - 32px));
+      box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
+      margin: auto;
       outline: none;
     }
     dialog::backdrop {
       background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
+
     .dialog-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 22px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--surface);
-      z-index: 2;
     }
     .dialog-title {
       font-size: 1.15rem;
-      font-weight: 800;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .dialog-close-btn {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: var(--radius-full);
+      color: var(--text-muted);
       width: 32px;
       height: 32px;
+      border-radius: var(--radius-full);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
       transition: all 0.15s ease;
     }
     .dialog-close-btn:hover {
-      color: var(--text);
       background: var(--surface-active);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.2);
     }
     .dialog-body {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+      padding: 24px;
+      max-height: 75vh;
+      overflow-y: auto;
     }
 
+    /* Goal Detail Dialog Specifics */
     .goal-detail-dial-row {
       display: flex;
       align-items: center;
-      gap: 18px;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 24px;
     }
     .goal-stats-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
+      margin-bottom: 20px;
     }
     .goal-stat-box {
       background: var(--surface-elevated);
@@ -638,50 +791,46 @@
       padding: 12px 14px;
     }
     .goal-stat-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      color: var(--text-muted);
       margin-bottom: 2px;
+      font-weight: 600;
     }
     .goal-stat-value {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--text);
     }
     .btn-action-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      width: 100%;
+      padding: 12px;
       background: linear-gradient(135deg, var(--strava-orange), #E34402);
       color: #FFF;
       border: none;
-      border-radius: var(--radius-md);
-      padding: 12px 20px;
+      border-radius: var(--radius-sm);
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       box-shadow: 0 4px 14px var(--strava-orange-glow);
-      transition: all 0.2s ease;
-      text-decoration: none;
-      width: 100%;
+      transition: all 0.18s ease;
     }
     .btn-action-primary:hover {
+      opacity: 0.92;
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(252, 76, 2, 0.4);
     }
 
-    /* Activity URL List in Modal */
+    /* Activity Dialog Specifics */
     .activity-url-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 10px;
-      max-height: 50vh;
-      overflow-y: auto;
-      padding-right: 4px;
+      margin-top: 14px;
     }
     .activity-item-card {
       background: var(--surface-elevated);
@@ -690,53 +839,105 @@
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
     .activity-item-title {
+      font-size: 0.95rem;
       font-weight: 700;
-      font-size: 0.92rem;
       color: var(--accent-cyan);
       text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .activity-item-title:hover {
-      text-decoration: underline;
-    }
+    .activity-item-title:hover { text-decoration: underline; }
     .activity-item-meta {
       display: flex;
-      align-items: center;
       gap: 12px;
       font-size: 0.8rem;
       color: var(--text-muted);
       flex-wrap: wrap;
     }
 
-    /* Mobile Responsive */
+    /* Mobile Bottom Navigation Dock */
+    .mobile-dock {
+      display: none;
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 45;
+      background: rgba(21, 27, 38, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 6px 12px;
+      box-shadow: var(--shadow-lg);
+    }
+    .dock-inner {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dock-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      transition: all 0.15s ease;
+    }
+    .dock-btn:hover, .dock-btn:active {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .dock-lang-btn {
+      border-left: 1px solid var(--border);
+      padding-left: 10px;
+      margin-left: 2px;
+    }
+    .dock-icon { font-size: 16px; }
+
+    /* Footer */
+    .app-footer {
+      width: min(1140px, calc(100vw - 32px));
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .app-footer a { color: var(--accent-cyan); text-decoration: none; }
+    .app-footer a:hover { text-decoration: underline; }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .live-pulse-dot { animation: none; }
+      .year-pill, .goal-card, .time-card, dialog { transition: none !important; }
+    }
+
+    /* Mobile Responsive Viewport adjustments */
     @media (max-width: 640px) {
+      :root { --nav-height: 56px; }
       .desktop-nav { display: none; }
-      .mobile-dock {
-        display: block;
-        position: fixed;
-        bottom: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--surface-elevated);
-        border: 1px solid var(--border);
-        padding: 6px;
-        border-radius: var(--radius-full);
-        box-shadow: var(--shadow-lg);
-        display: flex;
-        gap: 6px;
-      }
-      .dock-btn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: var(--text-muted);
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 6px 10px;
-      }
+      .mobile-dock { display: block; }
+      .page-container { margin-top: 14px; gap: 18px; }
+      .athletic-card { padding: 16px; border-radius: var(--radius-md); }
+      .card-title { font-size: 1.15rem; }
+      .goals-grid { grid-template-columns: 1fr; gap: 12px; }
+      .time-card { flex-direction: column; text-align: center; padding: 16px; gap: 14px; }
+      .time-card-title-row { justify-content: center; }
+      .time-card-sub { justify-content: center; }
+      .grand-totals-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      
       dialog {
         width: 100vw;
         max-width: 100vw;
@@ -748,15 +949,19 @@
       }
       dialog[open] {
         transform: translateY(0);
+        @starting-style {
+          transform: translateY(100%);
+        }
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Top Athletic App Header -->
   <header class="app-header">
     <div class="header-inner">
-      <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer" class="brand-group">
+      <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer" class="brand-group" title="Open Strava Profile">
         <div class="avatar-badge">🏔️</div>
         <div class="brand-title">
           <span>Zayidu A</span>
@@ -764,9 +969,15 @@
         </div>
       </a>
 
-      <div class="sync-status-pill">
-        <span class="live-pulse-dot" aria-hidden="true"></span>
-        <span>Synchronisé : <strong class="synced-value" data-synced-at="2026-09-06T21:27:27" data-synced-label="2026-09-06 21:27:27">today</strong></span>
+      <div class="header-actions">
+        <div class="sync-status-pill">
+          <span class="live-pulse-dot" aria-hidden="true"></span>
+          <span>Synchronisé : <strong class="synced-value" data-synced-at="2026-09-06T21:34:56" data-synced-label="2026-09-06 21:34:56">today</strong></span>
+        </div>
+        <a href="../" class="lang-switch-btn" title="Switch to English" aria-label="English Version">
+          <span class="lang-flag">🇬🇧</span>
+          <span class="lang-code">EN</span>
+        </a>
       </div>
 
       <nav class="desktop-nav" aria-label="Quick section navigation">
@@ -774,12 +985,12 @@
         <a href="#current-stats" class="nav-btn"><span>📊</span> Statistiques</a>
         <a href="#historic-goals" class="nav-btn"><span>🏆</span> Historique</a>
         <a href="#all-time-totals" class="nav-btn"><span>🎖️</span> Cumul</a>
-        <a href="../" class="lang-switch-btn" title="Switch to English" aria-label="English Version"><span class="lang-flag">🇬🇧</span> <span class="lang-code">EN</span></a>
       </nav>
     </div>
   </header>
 
   <main class="page-container">
+    <!-- Goals & Season Timeline Section -->
     <section class="athletic-card" id="goals-section">
       <div class="card-header-row">
         <h2 class="card-title">🎯 Objectifs de la Saison <span id="season-year-display" class="meta">(2026)</span></h2>
@@ -787,6 +998,7 @@
 
       
 
+      <!-- Year Switcher Pill Bar -->
       <div class="season-switcher-bar" role="tablist" aria-label="Season selector">
         <span class="season-label">Saison :</span>
         <div class="year-pills-list">
@@ -800,6 +1012,7 @@
         </div>
       </div>
 
+      <!-- Time Progress Dial Card -->
       <div class="time-card" id="time-card" role="button" tabindex="0" aria-label="Time Progress Dial" data-year="2026">
   <div class="time-card-dial-wrap">
     <div class="progress-dial progress-dial--time" style="--deg: 244.4deg;">
@@ -811,7 +1024,7 @@
   </div>
   <div class="time-card-content">
     <div class="time-card-title-row">
-      <h3 class="time-card-title">Calendrier de la Saison</h3>
+      <h3 class="time-card-title">Chronologie de la Saison</h3>
       <span class="status-badge status-timeline" id="time-badge">116 days left</span>
     </div>
     <p class="time-card-desc" id="time-card-desc">248 sur 365 jours écoulés · 16.6 semaines restantes en 2026</p>
@@ -821,6 +1034,7 @@
   </div>
 </div>
 
+      <!-- Dynamic Goals Grid -->
       <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Cibles d'Activité</h3>
       <div class="goals-grid" id="goals-grid"><div class="goal-card" data-goal-type="Run" data-year="2026" role="button" tabindex="0" aria-label="Goal: Course - 75.0%">
   <div class="goal-card-header">
@@ -891,6 +1105,7 @@
 </div></div>
     </section>
 
+    <!-- Current Stats & Monthly Breakdown Section -->
     <section class="athletic-card" id="current-stats">
       <div class="card-header-row">
         <h2 class="card-title">📊 Aperçus & Détail Mensuel</h2>
@@ -941,6 +1156,7 @@
 </div></div>
     </section>
 
+    <!-- Historic Achievements Section -->
     <section class="athletic-card" id="historic-goals">
       <div class="card-header-row">
         <h2 class="card-title">🏆 Réalisations Historiques & Brevets</h2>
@@ -958,6 +1174,7 @@
 </div>
     </section>
 
+    <!-- All Time Totals Section -->
     <section class="athletic-card" id="all-time-totals">
       <div class="card-header-row">
         <h2 class="card-title">🎖️ Cumul Global (Depuis le début)</h2>
@@ -980,12 +1197,12 @@
   </div>
   <div class="grand-stat-name">Randonnées</div>
   <div class="grand-stat-dist">37km</div>
-</div><div class="grand-stat-card clickable-activity" data-ids="12724624377" data-title="🏅 1 Kayaking (1km)" role="button" tabindex="0">
+</div><div class="grand-stat-card clickable-activity" data-ids="12724624377" data-title="🏅 1 Kayak (1km)" role="button" tabindex="0">
   <div class="grand-stat-top">
     <span class="grand-stat-emoji">🏅</span>
     <span class="grand-stat-count">1</span>
   </div>
-  <div class="grand-stat-name">Kayaking</div>
+  <div class="grand-stat-name">Kayak</div>
   <div class="grand-stat-dist">1km</div>
 </div><div class="grand-stat-card clickable-activity" data-ids="10467096730,10498367478,10510574656,10555782668,10581001161,10619322867,10646589351,10692496575,10739367420,10751395628,10751698316,10771815116,10785909862,10798705859,10833065856,10880137981,10893833318,10914836684,10928562584,10951348884,10979910089,11012732339,11081554800,11125487010,11171935669,11229705209,11229711175,11305505772,11359312971,11445851866,11614752093,11657422897,11718821179,11885093148,12001442317,12084263361,12296269489,12356126506,12415188275,12531806104,12890680636,12971859601,13120018302,13580596700,13641653239,13760734779,14172849440,14301137310,14588581032,14650063735,14732939017,14806068351,14880751859,15054694158,15164534277,15252474859,15328296957,15408563140,15567054033,15619492422,16040753687,16115532794,16189887598,16261344758,16330451916,16403457886,16738763060,17011373075,17092099709,17247996546,17319681740,17554893294,17865782191,17899458853,17986067526,17998974167,18068871751,18162971761,18329945898,18541455654,18633235895,18727977318,18810279982,18826699041,18901833238,19007131762,19071592189,19096597446,19278536601,19428461160,19470008670,19567601911,19666316411,19764336740,19836306165,20030178757,20059212483" data-title="🚴 97 Sorties vélo (8511km)" role="button" tabindex="0">
   <div class="grand-stat-top">
@@ -1015,19 +1232,19 @@
   </div>
   <div class="grand-stat-name">Marches</div>
   <div class="grand-stat-dist">75km</div>
-</div><div class="grand-stat-card clickable-activity" data-ids="10706464282,10712757672,18987515995,19090191501,19090378683,19090490840,19140868698,19141042781" data-title="🏋️‍♂️ 8 Musculations (0km)" role="button" tabindex="0">
+</div><div class="grand-stat-card clickable-activity" data-ids="10706464282,10712757672,18987515995,19090191501,19090378683,19090490840,19140868698,19141042781" data-title="🏋️‍♂️ 8 WeightTrainings (0km)" role="button" tabindex="0">
   <div class="grand-stat-top">
     <span class="grand-stat-emoji">🏋️‍♂️</span>
     <span class="grand-stat-count">8</span>
   </div>
-  <div class="grand-stat-name">Musculations</div>
+  <div class="grand-stat-name">WeightTrainings</div>
   <div class="grand-stat-dist">0km</div>
-</div><div class="grand-stat-card clickable-activity" data-ids="10746419688,10846818756,10887557663,11240879785,11247803963,11269425992,11277954707,11285213562,11399722614,12222311355,12314793111,12341503301,12724625168,12725569050,18949690113,18998594756" data-title="💪 16 Entraînements (1km)" role="button" tabindex="0">
+</div><div class="grand-stat-card clickable-activity" data-ids="10746419688,10846818756,10887557663,11240879785,11247803963,11269425992,11277954707,11285213562,11399722614,12222311355,12314793111,12341503301,12724625168,12725569050,18949690113,18998594756" data-title="💪 16 Workouts (1km)" role="button" tabindex="0">
   <div class="grand-stat-top">
     <span class="grand-stat-emoji">💪</span>
     <span class="grand-stat-count">16</span>
   </div>
-  <div class="grand-stat-name">Entraînements</div>
+  <div class="grand-stat-name">Workouts</div>
   <div class="grand-stat-dist">1km</div>
 </div>
       </div>
@@ -1081,54 +1298,63 @@
       </div>
     </section>
 
-    <footer class="app-footer" style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding-top: 20px;">
+    <!-- Footer -->
+    <footer class="app-footer">
       <p>&copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> · <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Profil Strava</a></p>
     </footer>
   </main>
 
-  <nav class="mobile-dock" aria-label="Mobile Navigation" style="display: none;">
-    <a href="#goals-section" class="dock-btn"><span>🎯</span> Objectifs</a>
-    <a href="#current-stats" class="dock-btn"><span>📊</span> Statistiques</a>
-    <a href="#historic-goals" class="dock-btn"><span>🏆</span> Historique</a>
-    <a href="#all-time-totals" class="dock-btn"><span>🎖️</span> Cumul</a>
-    <a href="../" class="dock-btn"><span>🇬🇧</span> EN</a>
+  <!-- Mobile Floating Dock -->
+  <nav class="mobile-dock" aria-label="Mobile Navigation">
+    <div class="dock-inner">
+      <a href="#goals-section" class="dock-btn"><span class="dock-icon">🎯</span><span>Objectifs</span></a>
+      <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Statistiques</span></a>
+      <a href="#historic-goals" class="dock-btn"><span class="dock-icon">🏆</span><span>Historique</span></a>
+      <a href="#all-time-totals" class="dock-btn"><span class="dock-icon">🎖️</span><span>Cumul</span></a>
+      <a href="../" class="dock-btn dock-lang-btn" title="Switch to English"><span class="dock-icon">🇬🇧</span><span>EN</span></a>
+    </div>
   </nav>
 
+  <!-- Modal: Goal Detail Sheet -->
   <dialog id="goal-dialog" aria-labelledby="goal-dialog-title">
     <div class="dialog-header">
-      <h3 id="goal-dialog-title" class="dialog-title">🎯 Goal Breakdown</h3>
+      <h3 id="goal-dialog-title" class="dialog-title">🎯 Détail de l'Objectif</h3>
       <button class="dialog-close-btn" data-close-dialog aria-label="Close dialog">✕</button>
     </div>
     <div class="dialog-body">
       <div class="goal-detail-dial-row">
-        <div id="goal-dialog-dial" class="progress-dial" style="--deg: 0deg;">
+        <div id="goal-dialog-dial" class="progress-dial progress-dial--lg">
           <div class="progress-dial-inner">
-            <span id="goal-dialog-emoji" class="dial-emoji">🚴</span>
+            <span id="goal-dialog-emoji" class="dial-emoji">🎯</span>
             <span id="goal-dialog-percent" class="dial-percent">0%</span>
           </div>
-        </div>
-        <div>
-          <h4 id="goal-dialog-sport" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 4px;">Target</h4>
-          <span id="goal-dialog-status" class="status-badge status-ahead">Status</span>
         </div>
       </div>
 
       <div class="goal-stats-grid">
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Progression</div>
-          <div id="goal-dialog-achieved" class="goal-stat-value">0 / 0 km</div>
+          <div class="goal-stat-label">Discipline</div>
+          <div id="goal-dialog-sport" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Restant</div>
-          <div id="goal-dialog-remaining" class="goal-stat-value">0 km</div>
+          <div class="goal-stat-label">Statut</div>
+          <div id="goal-dialog-status" class="status-badge">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Rythme Requis</div>
-          <div id="goal-dialog-pace-needed" class="goal-stat-value">0 km/wk</div>
+          <div class="goal-stat-label">Objectif Atteint</div>
+          <div id="goal-dialog-achieved" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Séances / Temps Actif</div>
-          <div id="goal-dialog-sessions" class="goal-stat-value">0 acts · 0h</div>
+          <div class="goal-stat-label">Distance Restante</div>
+          <div id="goal-dialog-remaining" class="goal-stat-value">-</div>
+        </div>
+        <div class="goal-stat-box">
+          <div class="goal-stat-label">Rythme Hebdo Requis</div>
+          <div id="goal-dialog-pace-needed" class="goal-stat-value" style="color: var(--accent-cyan);">-</div>
+        </div>
+        <div class="goal-stat-box">
+          <div class="goal-stat-label">Séances de la Saison</div>
+          <div id="goal-dialog-sessions" class="goal-stat-value" style="color: var(--accent-amber);">-</div>
         </div>
       </div>
 
@@ -1138,46 +1364,52 @@
     </div>
   </dialog>
 
+  <!-- Modal: Time Timeline Detail Sheet -->
   <dialog id="time-dialog" aria-labelledby="time-dialog-title">
     <div class="dialog-header">
-      <h3 id="time-dialog-title" class="dialog-title">⏳ Perspectives de la Saison</h3>
+      <h3 id="time-dialog-title" class="dialog-title">⏳ Chronologie de la Saison</h3>
       <button class="dialog-close-btn" data-close-dialog aria-label="Close dialog">✕</button>
     </div>
     <div class="dialog-body">
       <div class="goal-detail-dial-row">
-        <div id="time-dialog-dial" class="progress-dial progress-dial--time" style="--deg: 0deg;">
+        <div id="time-dialog-dial" class="progress-dial progress-dial--lg progress-dial--time">
           <div class="progress-dial-inner">
             <span class="dial-emoji">⏳</span>
             <span id="time-dialog-percent" class="dial-percent">0%</span>
           </div>
         </div>
-        <div>
-          <h4 id="time-dialog-season" style="font-size: 1.1rem; font-weight: 800; margin-bottom: 4px;">Saison 2026</h4>
-          <span id="time-dialog-status" class="status-badge status-timeline">Calendrier</span>
-        </div>
       </div>
 
       <div class="goal-stats-grid">
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Jours Écoulés</div>
-          <div id="time-dialog-elapsed" class="goal-stat-value">0 / 365 days</div>
+          <div class="goal-stat-label">Saison</div>
+          <div id="time-dialog-season" class="goal-stat-value">-</div>
+        </div>
+        <div class="goal-stat-box">
+          <div class="goal-stat-label">Statut Temporel</div>
+          <div id="time-dialog-status" class="status-badge status-timeline">-</div>
+        </div>
+        <div class="goal-stat-box">
+          <div class="goal-stat-label">Temps Écoulé</div>
+          <div id="time-dialog-elapsed" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
           <div class="goal-stat-label">Jours Restants</div>
-          <div id="time-dialog-days-left" class="goal-stat-value">0 days</div>
+          <div id="time-dialog-days-left" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
           <div class="goal-stat-label">Semaines Restantes</div>
-          <div id="time-dialog-weeks-left" class="goal-stat-value">0 weeks</div>
+          <div id="time-dialog-weeks-left" class="goal-stat-value" style="color: var(--accent-cyan);">-</div>
         </div>
         <div class="goal-stat-box">
           <div class="goal-stat-label">Mois Restants</div>
-          <div id="time-dialog-months-left" class="goal-stat-value">0 months</div>
+          <div id="time-dialog-months-left" class="goal-stat-value" style="color: var(--accent-amber);">-</div>
         </div>
       </div>
     </div>
   </dialog>
 
+  <!-- Modal: Activity Drilldown Sheet -->
   <dialog id="activity-dialog" aria-labelledby="activity-dialog-title">
     <div class="dialog-header">
       <h3 id="activity-dialog-title" class="dialog-title">🚴 Activités</h3>
