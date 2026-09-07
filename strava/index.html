@@ -62,15 +62,15 @@
     .app-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(14, 17, 23, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      background: rgba(14, 17, 23, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
+      padding-top: max(env(safe-area-inset-top, 0px), 0px);
+      padding-left: max(env(safe-area-inset-left, 0px), 16px);
+      padding-right: max(env(safe-area-inset-right, 0px), 16px);
+      padding-bottom: 0px;
     }
     .header-inner {
       width: 100%;
@@ -1116,10 +1116,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Last synced: 2026-09-07 08:42:08">
+        <div class="sync-status-pill" title="Last synced: 2026-09-07 08:43:14">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synced:</span>
-          <strong class="synced-value" data-synced-at="2026-09-07T08:42:08" data-synced-label="2026-09-07 08:42:08">today</strong>
+          <strong class="synced-value" data-synced-at="2026-09-07 08:43:14" data-synced-label="2026-09-07 08:43:14">1 min ago</strong>
         </div>
         <a href="./fr/" class="lang-pill-btn" title="Passer en version française" aria-label="Version Française">FR</a>
       </div>
@@ -1451,7 +1451,6 @@
       <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Stats</span></a>
       <a href="#historic-goals" class="dock-btn"><span class="dock-icon">🏆</span><span>Historic</span></a>
       <a href="#all-time-totals" class="dock-btn"><span class="dock-icon">🎖️</span><span>All-Time</span></a>
-      <a href="./fr/" class="dock-btn dock-lang-btn" title="Passer en version française"><span class="dock-icon-code">FR</span><span>FR</span></a>
     </div>
   </nav>
 
@@ -1645,48 +1644,85 @@
     let activeYear = CURRENT_YEAR;
     let currentGoalModalData = null;
 
-    document.addEventListener("DOMContentLoaded", function() {
+    function initSyncTimestamp() {
+      var el = document.querySelector(".synced-value");
+      if (!el) return;
+      var raw = el.getAttribute("data-synced-at") || el.getAttribute("data-synced-label") || "";
+      var label = el.getAttribute("data-synced-label") || raw;
+      if (!raw) return;
+
+      var parts = raw.split(/[- :T]/);
+      var d;
+      if (parts.length >= 6) {
+        d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10), parseInt(parts[3], 10), parseInt(parts[4], 10), parseInt(parts[5], 10));
+      } else {
+        d = new Date(raw.replace(" ", "T"));
+      }
+      if (isNaN(d.getTime())) return;
+
+      var diffMs = Math.max(0, Date.now() - d.getTime());
+      var mins = Math.floor(diffMs / 60000);
+      var hours = Math.floor(diffMs / 3600000);
+      var days = Math.floor(diffMs / 86400000);
+      var weeks = Math.floor(days / 7);
+      var months = Math.floor(days / 30);
+      var years = Math.floor(days / 365);
+
+      var agoText = "";
+      if (LANG === "fr") {
+        if (mins < 60) {
+          agoText = "il y a " + Math.max(1, mins) + " min" + (mins > 1 ? "s" : "");
+        } else if (hours < 24) {
+          agoText = "il y a " + hours + " h";
+        } else if (days < 7) {
+          agoText = "il y a " + days + " jour" + (days > 1 ? "s" : "");
+        } else if (days < 30) {
+          agoText = "il y a " + Math.max(1, weeks) + " sem";
+        } else if (days < 365) {
+          agoText = "il y a " + Math.max(1, months) + " mois";
+        } else {
+          agoText = "il y a " + Math.max(1, years) + " an" + (years > 1 ? "s" : "");
+        }
+      } else {
+        if (mins < 60) {
+          agoText = Math.max(1, mins) + (mins === 1 ? " min ago" : " mins ago");
+        } else if (hours < 24) {
+          agoText = hours + (hours === 1 ? " hour ago" : " hours ago");
+        } else if (days < 7) {
+          agoText = days + (days === 1 ? " day ago" : " days ago");
+        } else if (days < 30) {
+          agoText = Math.max(1, weeks) + (weeks === 1 ? " week ago" : " weeks ago");
+        } else if (days < 365) {
+          agoText = Math.max(1, months) + (months === 1 ? " month ago" : " months ago");
+        } else {
+          agoText = Math.max(1, years) + (years === 1 ? " year ago" : " years ago");
+        }
+      }
+      el.textContent = agoText;
+    }
+
+    function initApp() {
       initSyncTimestamp();
       initDialogs();
       initYearSwitching();
       bindActivityClicks();
       bindGoalClicks();
       bindTimeClick();
-    });
-
-    function initSyncTimestamp() {
-      var el = document.querySelector(".synced-value");
-      if (!el) return;
-      var raw = el.getAttribute("data-synced-at") || "";
-      var label = el.getAttribute("data-synced-label") || raw;
-      var d = new Date(raw.replace(" ", "T"));
-      if (isNaN(d)) return;
-      var diffMs = Math.max(0, Date.now() - d.getTime());
-      var mins = Math.floor(diffMs / 60000);
-      var hours = Math.floor(diffMs / 3600000);
-      var days = Math.floor(diffMs / 86400000);
-      if (LANG === "fr") {
-        if (mins < 60) {
-          el.textContent = "il y a " + Math.max(1, mins) + " min";
-        } else if (hours < 24) {
-          el.textContent = "il y a " + hours + " h";
-        } else if (days < 7) {
-          el.textContent = "il y a " + days + " jours";
-        } else {
-          el.textContent = label;
-        }
-      } else {
-        if (mins < 60) {
-          el.textContent = Math.max(1, mins) + " mins ago";
-        } else if (hours < 24) {
-          el.textContent = hours + " hours ago";
-        } else if (days < 7) {
-          el.textContent = days + " days ago";
-        } else {
-          el.textContent = label;
-        }
-      }
+      setInterval(initSyncTimestamp, 30000);
     }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
+
+    window.addEventListener("pageshow", initSyncTimestamp);
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "visible") {
+        initSyncTimestamp();
+      }
+    });
 
     function initDialogs() {
       document.querySelectorAll("dialog").forEach(function(d) {
