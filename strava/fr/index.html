@@ -58,24 +58,26 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Top Sticky App Header */
+    /* Top Sticky App Header with Safe-Area Clearance */
     .app-header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(14, 17, 23, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      background: rgba(14, 17, 23, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
+      padding-top: max(env(safe-area-inset-top, 0px), 0px);
+      padding-left: max(env(safe-area-inset-left, 0px), 16px);
+      padding-right: max(env(safe-area-inset-right, 0px), 16px);
+      padding-bottom: 0px;
     }
     .header-inner {
       width: 100%;
       max-width: 1140px;
       margin: 0 auto;
+      height: var(--nav-height);
+      min-height: 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -136,7 +138,7 @@
       flex-shrink: 0;
     }
 
-    /* Live pulse & Sync indicator */
+    /* Live pulse & Sync indicator / Refresh Button */
     .sync-status-pill {
       display: inline-flex;
       align-items: center;
@@ -148,6 +150,31 @@
       font-size: 0.8rem;
       color: var(--text-muted);
       white-space: nowrap;
+      cursor: pointer;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .sync-status-pill:hover, .sync-status-pill:active {
+      background: var(--surface-elevated);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .sync-status-pill:active .sync-refresh-icon {
+      transform: rotate(180deg);
+    }
+    .sync-refresh-icon {
+      font-size: 0.82rem;
+      color: var(--accent-emerald);
+      font-weight: bold;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      line-height: 1;
     }
     .live-pulse-dot {
       width: 8px;
@@ -176,39 +203,33 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 4px 11px;
+      padding: 6px 14px;
+      min-height: 36px;
+      min-width: 42px;
       border-radius: var(--radius-full);
       background: var(--surface-elevated);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       color: var(--text);
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 800;
       font-family: var(--font-mono);
       letter-spacing: 0.06em;
       text-decoration: none;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
       flex-shrink: 0;
       cursor: pointer;
+      position: relative;
+      z-index: 1001;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(252, 76, 2, 0.3);
     }
     .lang-pill-btn:hover, .lang-pill-btn:active {
-      background: linear-gradient(135deg, rgba(252, 76, 2, 0.2), rgba(227, 68, 2, 0.1));
+      background: linear-gradient(135deg, rgba(252, 76, 2, 0.25), rgba(227, 68, 2, 0.15));
       border-color: var(--strava-orange);
       color: var(--strava-orange);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px var(--strava-orange-glow);
-    }
-    .dock-icon-code {
-      font-size: 0.7rem;
-      font-weight: 800;
-      font-family: var(--font-mono);
-      letter-spacing: 0.06em;
-      line-height: 1;
-      padding: 2.5px 6px;
-      border-radius: 4px;
-      background: rgba(252, 76, 2, 0.15);
-      border: 1px solid rgba(252, 76, 2, 0.3);
-      color: var(--strava-orange);
     }
 
     /* Desktop Navigation Links */
@@ -971,44 +992,47 @@
     .mobile-dock {
       display: none;
       position: fixed;
-      bottom: 14px;
+      bottom: max(14px, env(safe-area-inset-bottom, 14px));
       left: 50%;
       transform: translateX(-50%);
-      z-index: 45;
-      background: rgba(21, 27, 38, 0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--border);
+      width: calc(100vw - 24px);
+      max-width: 440px;
+      z-index: 900;
+      background: rgba(21, 27, 38, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-full);
-      padding: 6px 12px;
-      box-shadow: var(--shadow-lg);
+      padding: 6px 8px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
     }
     .dock-inner {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-around;
+      width: 100%;
+      gap: 4px;
     }
     .dock-btn {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 2px;
-      padding: 6px 12px;
+      padding: 6px 4px;
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.68rem;
       font-weight: 700;
       border-radius: var(--radius-full);
       transition: all 0.15s ease;
+      white-space: nowrap;
+      min-width: 0;
     }
     .dock-btn:hover, .dock-btn:active {
       color: var(--text);
       background: rgba(255, 255, 255, 0.08);
-    }
-    .dock-lang-btn {
-      border-left: 1px solid var(--border);
-      padding-left: 10px;
-      margin-left: 2px;
     }
     .dock-icon { font-size: 16px; }
 
@@ -1036,9 +1060,14 @@
     @media (max-width: 640px) {
       :root { --nav-height: 54px; }
       .app-header {
-        padding: 0 12px;
+        padding-top: max(env(safe-area-inset-top, 0px), 14px);
+        padding-left: max(env(safe-area-inset-left, 0px), 12px);
+        padding-right: max(env(safe-area-inset-right, 0px), 12px);
+        padding-bottom: 8px;
       }
       .header-inner {
+        height: auto;
+        min-height: 48px;
         gap: 8px;
       }
       .brand-group {
@@ -1062,7 +1091,7 @@
         gap: 6px;
       }
       .sync-status-pill {
-        padding: 4px 8px;
+        padding: 5px 9px;
         font-size: 0.74rem;
         gap: 5px;
       }
@@ -1070,8 +1099,14 @@
         display: none;
       }
       .lang-pill-btn {
-        padding: 3.5px 9px;
-        font-size: 0.74rem;
+        min-height: 34px;
+        min-width: 38px;
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       .desktop-nav { display: none; }
       .mobile-dock { display: block; }
@@ -1100,6 +1135,13 @@
         }
       }
     }
+
+    @media all and (display-mode: standalone) {
+      .app-header {
+        padding-top: max(env(safe-area-inset-top, 0px), 50px);
+        padding-bottom: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1116,11 +1158,12 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-07 09:58:34">
+        <button type="button" class="sync-status-pill sync-refresh-btn" id="sync-refresh-btn" title="Dernière synchronisation : 2026-09-07 10:25:32 · Cliquer pour actualiser" aria-label="Actualiser la page">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synchronisé :</span>
-          <strong class="synced-value" data-synced-at="2026-09-07T09:58:34" data-synced-label="2026-09-07 09:58:34">aujourd&#x27;hui</strong>
-        </div>
+          <strong class="synced-value" data-synced-at="2026-09-07 10:25:32" data-synced-label="2026-09-07 10:25:32">il y a 1 min</strong>
+          <span class="sync-refresh-icon" aria-hidden="true">↻</span>
+        </button>
         <a href="../" class="lang-pill-btn" title="Switch to English" aria-label="English Version">EN</a>
       </div>
 
@@ -1451,7 +1494,6 @@
       <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Statistiques</span></a>
       <a href="#historic-goals" class="dock-btn"><span class="dock-icon">🏆</span><span>Historique</span></a>
       <a href="#all-time-totals" class="dock-btn"><span class="dock-icon">🎖️</span><span>Cumul</span></a>
-      <a href="../" class="dock-btn dock-lang-btn" title="Switch to English"><span class="dock-icon-code">EN</span><span>EN</span></a>
     </div>
   </nav>
 
@@ -1645,48 +1687,100 @@
     let activeYear = CURRENT_YEAR;
     let currentGoalModalData = null;
 
-    document.addEventListener("DOMContentLoaded", function() {
+    function initSyncTimestamp() {
+      var el = document.querySelector(".synced-value");
+      if (!el) return;
+      var raw = el.getAttribute("data-synced-at") || el.getAttribute("data-synced-label") || "";
+      var label = el.getAttribute("data-synced-label") || raw;
+      if (!raw) return;
+
+      var parts = raw.split(/[- :T]/);
+      var d;
+      if (parts.length >= 6) {
+        d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10), parseInt(parts[3], 10), parseInt(parts[4], 10), parseInt(parts[5], 10));
+      } else {
+        d = new Date(raw.replace(" ", "T"));
+      }
+      if (isNaN(d.getTime())) return;
+
+      var diffMs = Math.max(0, Date.now() - d.getTime());
+      var mins = Math.floor(diffMs / 60000);
+      var hours = Math.floor(diffMs / 3600000);
+      var days = Math.floor(diffMs / 86400000);
+      var weeks = Math.floor(days / 7);
+      var months = Math.floor(days / 30);
+      var years = Math.floor(days / 365);
+
+      var agoText = "";
+      if (LANG === "fr") {
+        if (mins < 60) {
+          agoText = "il y a " + Math.max(1, mins) + " min" + (mins > 1 ? "s" : "");
+        } else if (hours < 24) {
+          agoText = "il y a " + hours + " h";
+        } else if (days < 7) {
+          agoText = "il y a " + days + " jour" + (days > 1 ? "s" : "");
+        } else if (days < 30) {
+          agoText = "il y a " + Math.max(1, weeks) + " sem";
+        } else if (days < 365) {
+          agoText = "il y a " + Math.max(1, months) + " mois";
+        } else {
+          agoText = "il y a " + Math.max(1, years) + " an" + (years > 1 ? "s" : "");
+        }
+      } else {
+        if (mins < 60) {
+          agoText = Math.max(1, mins) + (mins === 1 ? " min ago" : " mins ago");
+        } else if (hours < 24) {
+          agoText = hours + (hours === 1 ? " hour ago" : " hours ago");
+        } else if (days < 7) {
+          agoText = days + (days === 1 ? " day ago" : " days ago");
+        } else if (days < 30) {
+          agoText = Math.max(1, weeks) + (weeks === 1 ? " week ago" : " weeks ago");
+        } else if (days < 365) {
+          agoText = Math.max(1, months) + (months === 1 ? " month ago" : " months ago");
+        } else {
+          agoText = Math.max(1, years) + (years === 1 ? " year ago" : " years ago");
+        }
+      }
+      el.textContent = agoText;
+    }
+
+    function initSyncButton() {
+      var btn = document.getElementById("sync-refresh-btn");
+      if (!btn) return;
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        var icon = btn.querySelector(".sync-refresh-icon");
+        if (icon) icon.style.transform = "rotate(360deg)";
+        btn.style.opacity = "0.7";
+        setTimeout(function() {
+          window.location.reload();
+        }, 150);
+      });
+    }
+
+    function initApp() {
       initSyncTimestamp();
+      initSyncButton();
       initDialogs();
       initYearSwitching();
       bindActivityClicks();
       bindGoalClicks();
       bindTimeClick();
-    });
-
-    function initSyncTimestamp() {
-      var el = document.querySelector(".synced-value");
-      if (!el) return;
-      var raw = el.getAttribute("data-synced-at") || "";
-      var label = el.getAttribute("data-synced-label") || raw;
-      var d = new Date(raw.replace(" ", "T"));
-      if (isNaN(d)) return;
-      var diffMs = Math.max(0, Date.now() - d.getTime());
-      var mins = Math.floor(diffMs / 60000);
-      var hours = Math.floor(diffMs / 3600000);
-      var days = Math.floor(diffMs / 86400000);
-      if (LANG === "fr") {
-        if (mins < 60) {
-          el.textContent = "il y a " + Math.max(1, mins) + " min";
-        } else if (hours < 24) {
-          el.textContent = "il y a " + hours + " h";
-        } else if (days < 7) {
-          el.textContent = "il y a " + days + " jours";
-        } else {
-          el.textContent = label;
-        }
-      } else {
-        if (mins < 60) {
-          el.textContent = Math.max(1, mins) + " mins ago";
-        } else if (hours < 24) {
-          el.textContent = hours + " hours ago";
-        } else if (days < 7) {
-          el.textContent = days + " days ago";
-        } else {
-          el.textContent = label;
-        }
-      }
+      setInterval(initSyncTimestamp, 30000);
     }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
+
+    window.addEventListener("pageshow", initSyncTimestamp);
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "visible") {
+        initSyncTimestamp();
+      }
+    });
 
     function initDialogs() {
       document.querySelectorAll("dialog").forEach(function(d) {
@@ -1945,7 +2039,7 @@
         if (act.hr) meta.innerHTML += "<span>💓 " + act.hr + "</span>";
         if (act.w) meta.innerHTML += "<span>⚡ " + act.w + "</span>";
         if (act.cad) meta.innerHTML += "<span>🔄 " + act.cad + "</span>";
-        if (act.dev) meta.innerHTML += "<span class='device-tag'>📱 " + act.dev + "</span>";
+        if (act.dev) meta.innerHTML += "<span class="device-tag">📱 " + act.dev + "</span>";
 
         li.appendChild(a);
         li.appendChild(meta);
