@@ -1128,10 +1128,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Last synced: 2026-09-07 00:15:47">
+        <div class="sync-status-pill" title="Last synced: 2026-09-07 05:30:55">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synced:</span>
-          <strong class="synced-value" data-synced-epoch="1788732947000" data-synced-at="2026-09-06T22:15:47Z" data-synced-label="2026-09-07 00:15:47">just now</strong>
+          <strong class="synced-value" data-synced-epoch="1788759055048" data-synced-at="2026-09-07T05:30:55" data-synced-label="2026-09-07 05:30:55">just now</strong>
         </div>
         <a href="./fr/" class="lang-pill-btn" title="Passer en version française" aria-label="Version Française">FR</a>
       </div>
@@ -1664,18 +1664,16 @@
       if (!epoch || isNaN(epoch)) {
         var raw = el.getAttribute("data-synced-at") || "";
         if (raw) {
-          var d = new Date(raw);
+          var d = new Date(raw.indexOf("T") === -1 ? raw.replace(" ", "T") : raw);
           epoch = d.getTime();
         }
       }
       if (!epoch || isNaN(epoch)) return;
 
-      var diffMs = Date.now() - epoch;
-      if (diffMs < 0) diffMs = 0;
-      var seconds = Math.floor(diffMs / 1000);
-      var mins = Math.floor(seconds / 60);
-      var hours = Math.floor(mins / 60);
-      var days = Math.floor(hours / 24);
+      var diffMs = Math.max(0, Date.now() - epoch);
+      var mins = Math.floor(diffMs / 60000);
+      var hours = Math.floor(diffMs / 3600000);
+      var days = Math.floor(diffMs / 86400000);
       var weeks = Math.floor(days / 7);
       var months = Math.floor(days / 30);
       var years = Math.floor(days / 365);
@@ -1683,32 +1681,20 @@
       var text = "";
       if (LANG === "fr") {
         if (mins < 1) text = "à l'instant";
-        else if (mins === 1) text = "il y a 1 min";
-        else if (mins < 60) text = "il y a " + mins + " mins";
-        else if (hours === 1) text = "il y a 1 heure";
+        else if (mins < 60) text = "il y a " + mins + " min" + (mins > 1 ? "s" : "");
         else if (hours < 24) text = "il y a " + hours + " h";
-        else if (days === 1) text = "hier";
         else if (days < 7) text = "il y a " + days + " j";
-        else if (weeks === 1) text = "il y a 1 sem";
-        else if (days < 30) text = "il y a " + weeks + " sem";
-        else if (months === 1) text = "il y a 1 mois";
-        else if (days < 365) text = "il y a " + months + " mois";
-        else if (years === 1) text = "il y a 1 an";
-        else text = "il y a " + years + " ans";
+        else if (days < 30) text = "il y a " + Math.max(1, weeks) + " sem";
+        else if (days < 365) text = "il y a " + Math.max(1, months) + " mois";
+        else text = "il y a " + Math.max(1, years) + " an" + (years > 1 ? "s" : "");
       } else {
         if (mins < 1) text = "just now";
-        else if (mins === 1) text = "1 min ago";
-        else if (mins < 60) text = mins + " mins ago";
-        else if (hours === 1) text = "1 hour ago";
-        else if (hours < 24) text = hours + " hours ago";
-        else if (days === 1) text = "yesterday";
-        else if (days < 7) text = days + " days ago";
-        else if (weeks === 1) text = "1 week ago";
-        else if (days < 30) text = weeks + " weeks ago";
-        else if (months === 1) text = "1 month ago";
-        else if (days < 365) text = months + " months ago";
-        else if (years === 1) text = "1 year ago";
-        else text = years + " years ago";
+        else if (mins < 60) text = mins + " min" + (mins > 1 ? "s" : "") + " ago";
+        else if (hours < 24) text = hours + " hour" + (hours > 1 ? "s" : "") + " ago";
+        else if (days < 7) text = days + " day" + (days > 1 ? "s" : "") + " ago";
+        else if (days < 30) text = Math.max(1, weeks) + " week" + (weeks > 1 ? "s" : "") + " ago";
+        else if (days < 365) text = Math.max(1, months) + " month" + (months > 1 ? "s" : "") + " ago";
+        else text = Math.max(1, years) + " year" + (years > 1 ? "s" : "") + " ago";
       }
       el.textContent = text;
     }
@@ -1720,7 +1706,7 @@
       bindActivityClicks();
       bindGoalClicks();
       bindTimeClick();
-      setInterval(initSyncTimestamp, 30000);
+      setInterval(initSyncTimestamp, 60000);
     }
 
     if (document.readyState === "loading") {
