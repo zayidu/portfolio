@@ -62,21 +62,20 @@
     .app-header {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(14, 17, 23, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      z-index: 50;
+      background: rgba(14, 17, 23, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding-top: max(env(safe-area-inset-top, 0px), 0px);
-      padding-left: max(env(safe-area-inset-left, 0px), 16px);
-      padding-right: max(env(safe-area-inset-right, 0px), 16px);
-      padding-bottom: 0px;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
     }
     .header-inner {
       width: 100%;
       max-width: 1140px;
       margin: 0 auto;
-      height: var(--nav-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -177,32 +176,39 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 5px 12px;
-      min-height: 32px;
+      padding: 4px 11px;
       border-radius: var(--radius-full);
       background: var(--surface-elevated);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       color: var(--text);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       font-family: var(--font-mono);
       letter-spacing: 0.06em;
       text-decoration: none;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       flex-shrink: 0;
       cursor: pointer;
-      position: relative;
-      z-index: 10;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: rgba(252, 76, 2, 0.3);
     }
     .lang-pill-btn:hover, .lang-pill-btn:active {
-      background: linear-gradient(135deg, rgba(252, 76, 2, 0.25), rgba(227, 68, 2, 0.15));
+      background: linear-gradient(135deg, rgba(252, 76, 2, 0.2), rgba(227, 68, 2, 0.1));
       border-color: var(--strava-orange);
       color: var(--strava-orange);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px var(--strava-orange-glow);
+    }
+    .dock-icon-code {
+      font-size: 0.7rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      line-height: 1;
+      padding: 2.5px 6px;
+      border-radius: 4px;
+      background: rgba(252, 76, 2, 0.15);
+      border: 1px solid rgba(252, 76, 2, 0.3);
+      color: var(--strava-orange);
     }
 
     /* Desktop Navigation Links */
@@ -965,47 +971,44 @@
     .mobile-dock {
       display: none;
       position: fixed;
-      bottom: max(14px, env(safe-area-inset-bottom, 14px));
+      bottom: 14px;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100vw - 24px);
-      max-width: 440px;
-      z-index: 900;
-      background: rgba(21, 27, 38, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 45;
+      background: rgba(21, 27, 38, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
       border-radius: var(--radius-full);
-      padding: 6px 8px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      padding: 6px 12px;
+      box-shadow: var(--shadow-lg);
     }
     .dock-inner {
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      width: 100%;
-      gap: 4px;
+      gap: 6px;
     }
     .dock-btn {
-      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       gap: 2px;
-      padding: 6px 4px;
+      padding: 6px 12px;
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.68rem;
       font-weight: 700;
       border-radius: var(--radius-full);
       transition: all 0.15s ease;
-      white-space: nowrap;
-      min-width: 0;
     }
     .dock-btn:hover, .dock-btn:active {
       color: var(--text);
       background: rgba(255, 255, 255, 0.08);
+    }
+    .dock-lang-btn {
+      border-left: 1px solid var(--border);
+      padding-left: 10px;
+      margin-left: 2px;
     }
     .dock-icon { font-size: 16px; }
 
@@ -1031,15 +1034,11 @@
 
     /* Mobile Responsive Viewport adjustments */
     @media (max-width: 640px) {
-      :root { --nav-height: 52px; }
+      :root { --nav-height: 54px; }
       .app-header {
-        padding-top: max(env(safe-area-inset-top, 0px), 8px);
-        padding-left: max(env(safe-area-inset-left, 0px), 12px);
-        padding-right: max(env(safe-area-inset-right, 0px), 12px);
-        padding-bottom: 4px;
+        padding: 0 12px;
       }
       .header-inner {
-        height: var(--nav-height);
         gap: 8px;
       }
       .brand-group {
@@ -1071,13 +1070,8 @@
         display: none;
       }
       .lang-pill-btn {
-        min-height: 32px;
-        padding: 4px 11px;
-        font-size: 0.78rem;
-        cursor: pointer;
-        pointer-events: auto;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
+        padding: 3.5px 9px;
+        font-size: 0.74rem;
       }
       .desktop-nav { display: none; }
       .mobile-dock { display: block; }
@@ -1106,12 +1100,6 @@
         }
       }
     }
-
-    @media all and (display-mode: standalone) {
-      .app-header {
-        padding-top: max(env(safe-area-inset-top, 0px), 24px);
-      }
-    }
   </style>
 </head>
 <body>
@@ -1128,10 +1116,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-07 05:30:55">
+        <div class="sync-status-pill" title="Dernière synchronisation : 2026-09-07 07:40:07">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synchronisé :</span>
-          <strong class="synced-value" data-synced-epoch="1788759055048" data-synced-at="2026-09-07T05:30:55" data-synced-label="2026-09-07 05:30:55">à l&#x27;instant</strong>
+          <strong class="synced-value" data-synced-at="2026-09-07T07:40:07" data-synced-label="2026-09-07 07:40:07">aujourd&#x27;hui</strong>
         </div>
         <a href="../" class="lang-pill-btn" title="Switch to English" aria-label="English Version">EN</a>
       </div>
@@ -1463,6 +1451,7 @@
       <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Statistiques</span></a>
       <a href="#historic-goals" class="dock-btn"><span class="dock-icon">🏆</span><span>Historique</span></a>
       <a href="#all-time-totals" class="dock-btn"><span class="dock-icon">🎖️</span><span>Cumul</span></a>
+      <a href="../" class="dock-btn dock-lang-btn" title="Switch to English"><span class="dock-icon-code">EN</span><span>EN</span></a>
     </div>
   </nav>
 
@@ -1656,63 +1645,47 @@
     let activeYear = CURRENT_YEAR;
     let currentGoalModalData = null;
 
-    function initSyncTimestamp() {
-      var el = document.querySelector(".synced-value");
-      if (!el) return;
-      var epochStr = el.getAttribute("data-synced-epoch");
-      var epoch = epochStr ? parseInt(epochStr, 10) : 0;
-      if (!epoch || isNaN(epoch)) {
-        var raw = el.getAttribute("data-synced-at") || "";
-        if (raw) {
-          var d = new Date(raw.indexOf("T") === -1 ? raw.replace(" ", "T") : raw);
-          epoch = d.getTime();
-        }
-      }
-      if (!epoch || isNaN(epoch)) return;
-
-      var diffMs = Math.max(0, Date.now() - epoch);
-      var mins = Math.floor(diffMs / 60000);
-      var hours = Math.floor(diffMs / 3600000);
-      var days = Math.floor(diffMs / 86400000);
-      var weeks = Math.floor(days / 7);
-      var months = Math.floor(days / 30);
-      var years = Math.floor(days / 365);
-
-      var text = "";
-      if (LANG === "fr") {
-        if (mins < 1) text = "à l'instant";
-        else if (mins < 60) text = "il y a " + mins + " min" + (mins > 1 ? "s" : "");
-        else if (hours < 24) text = "il y a " + hours + " h";
-        else if (days < 7) text = "il y a " + days + " j";
-        else if (days < 30) text = "il y a " + Math.max(1, weeks) + " sem";
-        else if (days < 365) text = "il y a " + Math.max(1, months) + " mois";
-        else text = "il y a " + Math.max(1, years) + " an" + (years > 1 ? "s" : "");
-      } else {
-        if (mins < 1) text = "just now";
-        else if (mins < 60) text = mins + " min" + (mins > 1 ? "s" : "") + " ago";
-        else if (hours < 24) text = hours + " hour" + (hours > 1 ? "s" : "") + " ago";
-        else if (days < 7) text = days + " day" + (days > 1 ? "s" : "") + " ago";
-        else if (days < 30) text = Math.max(1, weeks) + " week" + (weeks > 1 ? "s" : "") + " ago";
-        else if (days < 365) text = Math.max(1, months) + " month" + (months > 1 ? "s" : "") + " ago";
-        else text = Math.max(1, years) + " year" + (years > 1 ? "s" : "") + " ago";
-      }
-      el.textContent = text;
-    }
-
-    function initApp() {
+    document.addEventListener("DOMContentLoaded", function() {
       initSyncTimestamp();
       initDialogs();
       initYearSwitching();
       bindActivityClicks();
       bindGoalClicks();
       bindTimeClick();
-      setInterval(initSyncTimestamp, 60000);
-    }
+    });
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initApp);
-    } else {
-      initApp();
+    function initSyncTimestamp() {
+      var el = document.querySelector(".synced-value");
+      if (!el) return;
+      var raw = el.getAttribute("data-synced-at") || "";
+      var label = el.getAttribute("data-synced-label") || raw;
+      var d = new Date(raw.replace(" ", "T"));
+      if (isNaN(d)) return;
+      var diffMs = Math.max(0, Date.now() - d.getTime());
+      var mins = Math.floor(diffMs / 60000);
+      var hours = Math.floor(diffMs / 3600000);
+      var days = Math.floor(diffMs / 86400000);
+      if (LANG === "fr") {
+        if (mins < 60) {
+          el.textContent = "il y a " + Math.max(1, mins) + " min";
+        } else if (hours < 24) {
+          el.textContent = "il y a " + hours + " h";
+        } else if (days < 7) {
+          el.textContent = "il y a " + days + " jours";
+        } else {
+          el.textContent = label;
+        }
+      } else {
+        if (mins < 60) {
+          el.textContent = Math.max(1, mins) + " mins ago";
+        } else if (hours < 24) {
+          el.textContent = hours + " hours ago";
+        } else if (days < 7) {
+          el.textContent = days + " days ago";
+        } else {
+          el.textContent = label;
+        }
+      }
     }
 
     function initDialogs() {
