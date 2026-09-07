@@ -511,7 +511,7 @@
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-    /* Athletic Micro-Interactions & Icon Movements (Zero cost, pure CSS GPU transforms) */
+    /* Athletic Micro-Interactions & Icon Movements */
     .dial-emoji {
       font-size: 20px;
       line-height: 1;
@@ -521,7 +521,6 @@
       transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
-    /* Subtle ambient athletic breathing for goal dial icons */
     .goal-card .dial-emoji {
       animation: subtle-sport-float 5s ease-in-out infinite;
     }
@@ -537,7 +536,6 @@
       50% { transform: translateY(-2px) scale(1.04); }
     }
     
-    /* Interactive hover on goal cards - athletic spring lift */
     .goal-card:hover .dial-emoji {
       transform: translateY(-4px) scale(1.18);
       animation-play-state: paused;
@@ -550,7 +548,6 @@
       transform: scale(1.2) rotate(-6deg);
     }
 
-    /* Season Timeline Section subtle hourglass sway and interactive hover spin */
     .progress-dial--time .dial-emoji {
       display: inline-block;
       animation: subtle-time-tilt 6s ease-in-out infinite;
@@ -570,7 +567,6 @@
       100% { transform: scale(1) rotate(360deg); }
     }
 
-    /* Active dots & status tag micro-polish */
     .active-dot {
       display: inline-block;
       animation: active-dot-pulse 2.4s ease-in-out infinite;
@@ -988,53 +984,74 @@
       font-weight: 600;
     }
 
-    /* Mobile Bottom Navigation Dock */
+    /* Mobile Bottom Navigation Dock - 100% Uniform Size & Symmetrical Layout */
     .mobile-dock {
       display: none;
       position: fixed;
       bottom: max(14px, env(safe-area-inset-bottom, 14px));
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100vw - 24px);
-      max-width: 440px;
+      width: min(420px, calc(100vw - 24px));
+      height: 56px;
+      box-sizing: border-box;
       z-index: 900;
-      background: rgba(21, 27, 38, 0.92);
+      background: rgba(21, 27, 38, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: var(--radius-full);
-      padding: 6px 8px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      padding: 4px 6px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05);
     }
     .dock-inner {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
       width: 100%;
-      gap: 4px;
+      height: 100%;
+      gap: 2px;
+      box-sizing: border-box;
     }
     .dock-btn {
-      flex: 1;
+      flex: 1 1 0;
+      min-width: 0;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 2px;
-      padding: 6px 4px;
+      padding: 3px 2px;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.68rem;
-      font-weight: 700;
       border-radius: var(--radius-full);
       transition: all 0.15s ease;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .dock-btn span:not(.dock-icon) {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
       white-space: nowrap;
-      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      display: block;
+      text-align: center;
     }
     .dock-btn:hover, .dock-btn:active {
       color: var(--text);
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
     }
-    .dock-icon { font-size: 16px; }
+    .dock-icon {
+      font-size: 18px;
+      line-height: 1;
+      display: block;
+    }
 
     /* Footer */
     .app-footer {
@@ -1056,7 +1073,13 @@
       .year-pill, .goal-card, .time-card, dialog { transition: none !important; }
     }
 
-    /* Mobile Responsive Viewport adjustments */
+    /* Mobile & Tablet Responsive Viewport Adjustments */
+    @media (max-width: 820px) {
+      .desktop-nav { display: none; }
+      .mobile-dock { display: block; }
+      .page-container { width: calc(100vw - 24px); }
+    }
+
     @media (max-width: 640px) {
       :root { --nav-height: 54px; }
       .app-header {
@@ -1108,8 +1131,6 @@
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
       }
-      .desktop-nav { display: none; }
-      .mobile-dock { display: block; }
       .page-container { margin-top: 14px; gap: 18px; width: calc(100vw - 24px); }
       .athletic-card { padding: 16px; border-radius: var(--radius-md); }
       .card-title { font-size: 1.15rem; }
@@ -1158,10 +1179,10 @@
       </a>
 
       <div class="header-actions">
-        <button type="button" class="sync-status-pill sync-refresh-btn" id="sync-refresh-btn" title="Last synced: 2026-09-07 10:25:32 · Click to refresh" aria-label="Refresh page">
+        <button type="button" class="sync-status-pill sync-refresh-btn" id="sync-refresh-btn" title="Last synced: 2026-09-07 10:32:17 · Click to refresh" aria-label="Refresh page">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synced:</span>
-          <strong class="synced-value" data-synced-at="2026-09-07 10:25:32" data-synced-label="2026-09-07 10:25:32">1 min ago</strong>
+          <strong class="synced-value" data-synced-at="2026-09-07T10:32:17" data-synced-label="2026-09-07 10:32:17">1 min ago</strong>
           <span class="sync-refresh-icon" aria-hidden="true">↻</span>
         </button>
         <a href="./fr/" class="lang-pill-btn" title="Passer en version française" aria-label="Version Française">FR</a>
@@ -1519,11 +1540,11 @@
           <div id="goal-dialog-sport" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Current Status</div>
+          <div class="goal-stat-label">Pace Status</div>
           <div id="goal-dialog-status" class="status-badge">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Target Achieved</div>
+          <div class="goal-stat-label">Achieved / Target</div>
           <div id="goal-dialog-achieved" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
@@ -1531,12 +1552,12 @@
           <div id="goal-dialog-remaining" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Required Weekly Pace</div>
-          <div id="goal-dialog-pace-needed" class="goal-stat-value" style="color: var(--accent-cyan);">-</div>
+          <div class="goal-stat-label">Required Pace</div>
+          <div id="goal-dialog-pace-needed" class="goal-stat-value" style="color: var(--accent-amber);">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Season Activity Count</div>
-          <div id="goal-dialog-sessions" class="goal-stat-value" style="color: var(--accent-amber);">-</div>
+          <div class="goal-stat-label">Sessions / Time</div>
+          <div id="goal-dialog-sessions" class="goal-stat-value" style="color: var(--accent-cyan);">-</div>
         </div>
       </div>
 
@@ -1546,7 +1567,7 @@
     </div>
   </dialog>
 
-  <!-- Modal: Time Timeline Detail Sheet -->
+  <!-- Modal: Time Timeline Sheet -->
   <dialog id="time-dialog" aria-labelledby="time-dialog-title">
     <div class="dialog-header">
       <h3 id="time-dialog-title" class="dialog-title">⏳ Season Timeline</h3>
@@ -1554,7 +1575,7 @@
     </div>
     <div class="dialog-body">
       <div class="goal-detail-dial-row">
-        <div id="time-dialog-dial" class="progress-dial progress-dial--lg progress-dial--time">
+        <div id="time-dialog-dial" class="progress-dial progress-dial--time progress-dial--lg">
           <div class="progress-dial-inner">
             <span class="dial-emoji">⏳</span>
             <span id="time-dialog-percent" class="dial-percent">0%</span>
@@ -1568,7 +1589,7 @@
           <div id="time-dialog-season" class="goal-stat-value">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Timeline Status</div>
+          <div class="goal-stat-label">Status</div>
           <div id="time-dialog-status" class="status-badge status-timeline">-</div>
         </div>
         <div class="goal-stat-box">
@@ -1577,15 +1598,15 @@
         </div>
         <div class="goal-stat-box">
           <div class="goal-stat-label">Days Remaining</div>
-          <div id="time-dialog-days-left" class="goal-stat-value">-</div>
+          <div id="time-dialog-days-left" class="goal-stat-value" style="color: var(--accent-cyan);">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Weeks Remaining</div>
-          <div id="time-dialog-weeks-left" class="goal-stat-value" style="color: var(--accent-cyan);">-</div>
+          <div class="goal-stat-label">Weeks Left</div>
+          <div id="time-dialog-weeks-left" class="goal-stat-value" style="color: var(--accent-amber);">-</div>
         </div>
         <div class="goal-stat-box">
-          <div class="goal-stat-label">Months Remaining</div>
-          <div id="time-dialog-months-left" class="goal-stat-value" style="color: var(--accent-amber);">-</div>
+          <div class="goal-stat-label">Months Left</div>
+          <div id="time-dialog-months-left" class="goal-stat-value">-</div>
         </div>
       </div>
     </div>
@@ -1635,40 +1656,40 @@
     function translateTextFr(text) {
       if (!text) return text;
       var t = text;
-      t = t.replace(/\bWeekly\b/g, "Hebdomadaire");
-      t = t.replace(/\bMonthly\b/g, "Mensuel");
-      t = t.replace(/\bYearly\b/g, "Annuel");
-      t = t.replace(/\bRides:\b/g, "Sorties vélo :");
-      t = t.replace(/\bRuns:\b/g, "Courses :");
-      t = t.replace(/\bSwims:\b/g, "Natations :");
-      t = t.replace(/\bWalks:\b/g, "Marches :");
-      t = t.replace(/\bHikes:\b/g, "Randonnées :");
-      t = t.replace(/\bTotal:\b/g, "Total :");
-      t = t.replace(/(\d+)\s+Rides\b/g, "$1 Sorties vélo");
-      t = t.replace(/(\d+)\s+Ride\b/g, "$1 Sortie vélo");
-      t = t.replace(/(\d+)\s+Runs\b/g, "$1 Courses");
-      t = t.replace(/(\d+)\s+Run\b/g, "$1 Course");
-      t = t.replace(/(\d+)\s+Swims\b/g, "$1 Natations");
-      t = t.replace(/(\d+)\s+Swim\b/g, "$1 Natation");
-      t = t.replace(/(\d+)\s+Walks\b/g, "$1 Marches");
-      t = t.replace(/(\d+)\s+Walk\b/g, "$1 Marche");
-      t = t.replace(/(\d+)\s+Hikes\b/g, "$1 Randonnées");
-      t = t.replace(/(\d+)\s+Hike\b/g, "$1 Randonnée");
-      t = t.replace(/(\d+)\s+Crossfits\b/g, "$1 Crossfits");
-      t = t.replace(/(\d+)\s+Crossfit\b/g, "$1 Crossfit");
-      t = t.replace(/(\d+)\s+WeightTrainings?\b/g, "$1 Musculations");
-      t = t.replace(/(\d+)\s+Workouts?\b/g, "$1 Entraînements");
-      t = t.replace(/\bTotal\s+(\d+)\s+Activities\b/g, "Total $1 Activités");
-      t = t.replace(/\bTotal\s+(\d+)\s+Activity\b/g, "Total $1 Activité");
-      t = t.replace(/(\d+)\s+activities\b/g, "$1 activités");
-      t = t.replace(/(\d+)\s+activity\b/g, "$1 activité");
+      t = t.replace(/Weekly/g, "Hebdomadaire");
+      t = t.replace(/Monthly/g, "Mensuel");
+      t = t.replace(/Yearly/g, "Annuel");
+      t = t.replace(/Rides:/g, "Sorties vélo :");
+      t = t.replace(/Runs:/g, "Courses :");
+      t = t.replace(/Swims:/g, "Natations :");
+      t = t.replace(/Walks:/g, "Marches :");
+      t = t.replace(/Hikes:/g, "Randonnées :");
+      t = t.replace(/Total:/g, "Total :");
+      t = t.replace(/(\d+)\s+Rides/g, "$1 Sorties vélo");
+      t = t.replace(/(\d+)\s+Ride/g, "$1 Sortie vélo");
+      t = t.replace(/(\d+)\s+Runs/g, "$1 Courses");
+      t = t.replace(/(\d+)\s+Run/g, "$1 Course");
+      t = t.replace(/(\d+)\s+Swims/g, "$1 Natations");
+      t = t.replace(/(\d+)\s+Swim/g, "$1 Natation");
+      t = t.replace(/(\d+)\s+Walks/g, "$1 Marches");
+      t = t.replace(/(\d+)\s+Walk/g, "$1 Marche");
+      t = t.replace(/(\d+)\s+Hikes/g, "$1 Randonnées");
+      t = t.replace(/(\d+)\s+Hike/g, "$1 Randonnée");
+      t = t.replace(/(\d+)\s+Crossfits/g, "$1 Crossfits");
+      t = t.replace(/(\d+)\s+Crossfit/g, "$1 Crossfit");
+      t = t.replace(/(\d+)\s+WeightTrainings?/g, "$1 Musculations");
+      t = t.replace(/(\d+)\s+Workouts?/g, "$1 Entraînements");
+      t = t.replace(/Total\s+(\d+)\s+Activities/g, "Total $1 Activités");
+      t = t.replace(/Total\s+(\d+)\s+Activity/g, "Total $1 Activité");
+      t = t.replace(/(\d+)\s+activities/g, "$1 activités");
+      t = t.replace(/(\d+)\s+activity/g, "$1 activité");
       t = t.replace(/(\d+)d\s+(\d+h)/g, "$1j $2");
-      t = t.replace(/\+(\d+(?:\.\d+)?(?:km|m|mi))\s+ahead\b/g, "+$1 en avance");
-      t = t.replace(/-(\d+(?:\.\d+)?(?:km|m|mi))\s+behind\b/g, "-$1 en retard");
-      t = t.replace(/\bOn track\b/g, "Dans les temps");
-      t = t.replace(/\bCompleted\b/g, "Terminé");
-      t = t.replace(/\bAchieved\b/g, "Atteint");
-      t = t.replace(/(\d+)\s+days?\s+left\b/g, "$1 jours restants");
+      t = t.replace(/\+(\d+(?:\.\d+)?(?:km|m|mi))\s+ahead/g, "+$1 en avance");
+      t = t.replace(/-(\d+(?:\.\d+)?(?:km|m|mi))\s+behind/g, "-$1 en retard");
+      t = t.replace(/On track/g, "Dans les temps");
+      t = t.replace(/Completed/g, "Terminé");
+      t = t.replace(/Achieved/g, "Atteint");
+      t = t.replace(/(\d+)\s+days?\s+left/g, "$1 jours restants");
       t = t.replace(/clickable-activité/g, "clickable-activity");
       return t;
     }
@@ -1713,8 +1734,10 @@
 
       var agoText = "";
       if (LANG === "fr") {
-        if (mins < 60) {
-          agoText = "il y a " + Math.max(1, mins) + " min" + (mins > 1 ? "s" : "");
+        if (mins < 1) {
+          agoText = "à l'instant";
+        } else if (mins < 60) {
+          agoText = "il y a " + mins + " min" + (mins > 1 ? "s" : "");
         } else if (hours < 24) {
           agoText = "il y a " + hours + " h";
         } else if (days < 7) {
@@ -1727,8 +1750,10 @@
           agoText = "il y a " + Math.max(1, years) + " an" + (years > 1 ? "s" : "");
         }
       } else {
-        if (mins < 60) {
-          agoText = Math.max(1, mins) + (mins === 1 ? " min ago" : " mins ago");
+        if (mins < 1) {
+          agoText = "just now";
+        } else if (mins < 60) {
+          agoText = mins + (mins === 1 ? " min ago" : " mins ago");
         } else if (hours < 24) {
           agoText = hours + (hours === 1 ? " hour ago" : " hours ago");
         } else if (days < 7) {
@@ -1757,30 +1782,6 @@
         }, 150);
       });
     }
-
-    function initApp() {
-      initSyncTimestamp();
-      initSyncButton();
-      initDialogs();
-      initYearSwitching();
-      bindActivityClicks();
-      bindGoalClicks();
-      bindTimeClick();
-      setInterval(initSyncTimestamp, 30000);
-    }
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initApp);
-    } else {
-      initApp();
-    }
-
-    window.addEventListener("pageshow", initSyncTimestamp);
-    document.addEventListener("visibilitychange", function() {
-      if (document.visibilityState === "visible") {
-        initSyncTimestamp();
-      }
-    });
 
     function initDialogs() {
       document.querySelectorAll("dialog").forEach(function(d) {
@@ -2055,6 +2056,30 @@
 
       dialog.showModal();
     }
+
+    function initApp() {
+      initSyncTimestamp();
+      initSyncButton();
+      initDialogs();
+      initYearSwitching();
+      bindActivityClicks();
+      bindGoalClicks();
+      bindTimeClick();
+      setInterval(initSyncTimestamp, 15000);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
+
+    window.addEventListener("pageshow", initSyncTimestamp);
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "visible") {
+        initSyncTimestamp();
+      }
+    });
   </script>
 </body>
 </html>
