@@ -2,7 +2,7 @@
 *🚴 Long rides · 🏃 steady miles · 🏊 swim focus · 🎯 yearly goals*<br>
 
 # 🎯 Goals 2026 (Buts)
-![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-3_months%2C_13_weeks%2C_92_days-f59e0b?style=flat-square&labelColor=f8fafc)
+![Goals status](https://img.shields.io/badge/%F0%9F%8E%AF_Opportunities_Still_on_the_Table._%E2%8F%B3_The_Clock_is_Ticking,_Make_it_Count.-2_months%2C_13_weeks%2C_91_days-f59e0b?style=flat-square&labelColor=f8fafc)
 
 ### ⏳ Time Progress
 <p align="center"><img src="progress/2026/time_progress.svg" alt="Time progress" width="220"></p>
@@ -12,17 +12,11 @@
 <p align="center"><img src="progress/2026/run_goal_progress.svg" alt="Run goal progress" width="220"> <img src="progress/2026/ride_goal_progress.svg" alt="Ride goal progress" width="220"> <img src="progress/2026/swim_goal_progress.svg" alt="Swim goal progress" width="220"></p>
 
 
-## 📊 September 2026 Stats/Snapshots (Current)
+## 📊 October 2026 Stats/Snapshots (Current)
 
 **📅 Weekly** (Sep 28 - Oct 04) *(13.46km total)*<br>
 *🏃 <span class="clickable-activity" data-ids="20382534080" data-title="🏃 1 Run (9.16km)">1 Run</span> (9.16km),  🏊 <span class="clickable-activity" data-ids="20368952679" data-title="🏊 1 Swim (2.95km)">1 Swim</span> (2.95km),  🚶 <span class="clickable-activity" data-ids="20380941113" data-title="🚶 1 Walk (1.35km)">1 Walk</span> (1.35km)*<br>
 *🏁 Total 3 Activities (13.46km / 2h 25m)*
-
-<sub>────────────────────────</sub>
-
-**🗓️  Monthly** (September 2026) *(520.18km total)*<br>
-*🚴 <span class="clickable-activity" data-ids="20030178757,20059212483,20154773029,20158564909,20252398044,20348544061" data-title="🚴 6 Rides (432.74km)">6 Rides</span> (432.74km),  🚣 <span class="clickable-activity" data-ids="20208705952" data-title="🚣 1 Rowing (0km)">1 Rowing</span> (0km),  🏃 <span class="clickable-activity" data-ids="19993741555,20217874863,20236710247,20314644103,20382534080" data-title="🏃 5 Runs (53.17km)">5 Runs</span> (53.17km),  🏊 <span class="clickable-activity" data-ids="20109227579,20134146060,20175894681,20205064490,20237438749,20272391738,20301537472,20332394123,20368952679" data-title="🏊 9 Swims (26.43km)">9 Swims</span> (26.43km),  🚶 <span class="clickable-activity" data-ids="20004697836,20084808527,20086288760,20087145482,20210147801,20380941113" data-title="🚶 6 Walks (7.85km)">6 Walks</span> (7.85km)*<br>
-*🏁 Total 27 Activities (520.18km / 1d 8h 21m)*
 
 <sub>────────────────────────</sub>
 
@@ -106,4 +100,4 @@
 *🏃 <span class="clickable-activity" data-ids="2840912842,2840912857,2843191895,2857632975,2859869996,2869065551,2871998468,2874047096,2888630591,2890553674" data-title="🏃 10 Runs (37km)">10 Runs</span> (37km)*<br>
 *🏁 Total 10 Activities (36.72km / 1d 1h 57m)*
 
-<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-09-30 05:30:59</sub></p>
+<p align="center"><sub>&copy; <a href="https://zayidu.github.io/portfolio/">Zayidu</a> | <a href="https://www.strava.com/athletes/32322110">Strava</a> | Synced: 2026-10-01 05:30:56</sub></p>
