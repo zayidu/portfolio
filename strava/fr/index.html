@@ -216,6 +216,16 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .desktop-nav::-webkit-scrollbar { display: none; }
+    .nav-btn { flex-shrink: 0; }
+    /* Tablets / small laptops: icon-only nav (labels stay as tooltips). */
+    @media (min-width: 641px) and (max-width: 1100px) {
+      .nav-btn .nav-label { display: none; }
+      .nav-btn { padding: 7px 11px; }
     }
     .nav-btn {
       display: inline-flex;
@@ -344,6 +354,51 @@
       transform: translateY(-1px);
     }
     .active-dot { font-size: 10px; line-height: 1; }
+    .year-pill#season-active-pill { cursor: default; }
+    .season-select-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .season-select-wrap::after {
+      content: "▾";
+      position: absolute;
+      right: 12px;
+      pointer-events: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .season-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 8px 32px 8px 14px;
+      max-width: 150px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .season-select:hover {
+      background: var(--surface-active);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+    @media (max-width: 420px) {
+      .season-switcher-bar { flex-wrap: wrap; overflow-x: visible; row-gap: 8px; }
+    }
+    .season-select:focus-visible {
+      outline: 2px solid var(--strava-orange);
+      outline-offset: 2px;
+    }
+    .season-select option {
+      background: var(--surface);
+      color: var(--text);
+    }
 
     /* Time Progress Timeline Card */
     .time-card {
@@ -824,9 +879,46 @@
       color: var(--text);
       padding: 0;
       width: min(540px, calc(100vw - 32px));
+      max-width: calc(100vw - 32px);
+      max-height: min(88vh, 900px);
       box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
       margin: auto;
       outline: none;
+    }
+    /* Header stays put, body takes the remaining height and scrolls, so the
+       content follows the popup when it is resized. */
+    dialog[open] {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #activity-dialog {
+      width: min(620px, calc(100vw - 32px));
+    }
+    /* Desktop / trackpad: drag the bottom-right corner to resize. The grip
+       only appears while hovering the popup. */
+    @media (hover: hover) and (pointer: fine) and (min-width: 641px) {
+      dialog[open] {
+        resize: both;
+        min-width: 340px;
+        min-height: 220px;
+        max-height: calc(100vh - 48px);
+      }
+      dialog[open]::after {
+        content: "";
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid var(--text-muted);
+        border-bottom: 2px solid var(--text-muted);
+        border-bottom-right-radius: 4px;
+        opacity: 0;
+        transition: opacity 0.15s ease;
+        pointer-events: none;
+      }
+      dialog[open]:hover::after { opacity: 0.6; }
     }
     dialog::backdrop {
       background: rgba(0, 0, 0, 0.75);
@@ -838,9 +930,36 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      flex: 0 0 auto;
       padding: 18px 24px;
       border-bottom: 1px solid var(--border);
     }
+    .dialog-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+    }
+    .dup-toggle-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      padding: 5px 11px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .dup-toggle-btn:hover { color: var(--text); }
+    .dup-toggle-btn[aria-pressed="true"] {
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+    .dup-toggle-btn[hidden] { display: none; }
     .dialog-title {
       font-size: 1.15rem;
       font-weight: 700;
@@ -848,6 +967,9 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
     .dialog-close-btn {
       background: var(--surface-elevated);
@@ -870,8 +992,11 @@
     }
     .dialog-body {
       padding: 24px;
-      max-height: 75vh;
+      flex: 1 1 auto;
+      min-height: 0;
       overflow-y: auto;
+      overflow-x: hidden;
+      container-type: inline-size;
     }
 
     /* Goal Detail Dialog Specifics */
@@ -933,10 +1058,20 @@
     .activity-url-list {
       list-style: none;
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: 10px;
       margin-top: 14px;
     }
+    .activity-url-list.hide-dups .activity-item-dup { display: none; }
+    /* A widened popup lays cards out in columns (kept/duplicate pairs stay
+       stacked, so only when duplicates are hidden). */
+    @container (min-width: 760px) {
+      .activity-url-list.hide-dups {
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      }
+    }
     .activity-item-card {
+      min-width: 0;
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
@@ -950,14 +1085,14 @@
       font-weight: 700;
       color: var(--accent-cyan);
       text-decoration: none;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      overflow-wrap: anywhere;
     }
     .activity-item-title:hover { text-decoration: underline; }
     .activity-item-meta {
       display: flex;
-      gap: 12px;
+      column-gap: 12px;
+      row-gap: 4px;
+      min-width: 0;
       font-size: 0.8rem;
       color: var(--text-muted);
       flex-wrap: wrap;
@@ -995,7 +1130,12 @@
     .activity-item-kept {
       border-left: 3px solid var(--accent-emerald) !important;
     }
+    .activity-item-meta > span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
     .merged-note {
+      flex-basis: 100%;
       color: var(--text-muted);
       font-style: italic;
       font-size: 0.75rem;
@@ -1045,6 +1185,15 @@
       margin-left: 2px;
     }
     .dock-icon { font-size: 16px; }
+    .mobile-dock { max-width: calc(100vw - 16px); }
+    /* Narrow phones: full-width dock with equal buttons so nothing spills. */
+    @media (max-width: 420px) {
+      .mobile-dock { left: 8px; right: 8px; transform: none; padding: 5px 6px; }
+      .dock-inner { justify-content: space-between; gap: 2px; }
+      .dock-btn { flex: 1 1 0; min-width: 0; padding: 6px 2px; font-size: 0.62rem; }
+      .dock-btn > span:last-child { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .dock-lang-btn { flex: 0 0 auto; padding-left: 6px; padding-right: 4px; }
+    }
 
     /* Footer */
     .app-footer {
@@ -1118,9 +1267,15 @@
       .time-card-sub { justify-content: center; }
       .grand-totals-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       
+      .dialog-header { padding: 14px 16px; }
+      .dialog-body { padding: 16px; }
+      .dialog-title { font-size: 1.02rem; }
+      .dup-toggle-btn { padding: 5px 9px; }
+      #activity-dialog { width: 100vw; }
       dialog {
         width: 100vw;
         max-width: 100vw;
+        max-height: 88vh;
         border-radius: 20px 20px 0 0;
         bottom: 0;
         top: auto;
@@ -1150,19 +1305,19 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Dernière synchronisation : 2026-11-10 12:23:41">
+        <div class="sync-status-pill" title="Dernière synchronisation : 2026-11-10 12:41:15">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synchronisé :</span>
-          <strong class="synced-value" data-synced-at="2026-11-10T12:23:41" data-synced-label="2026-11-10 12:23:41" data-debug="false">à l&#x27;instant</strong>
+          <strong class="synced-value" data-synced-at="2026-11-10T12:41:15" data-synced-label="2026-11-10 12:41:15" data-debug="false">à l&#x27;instant</strong>
         </div>
         <a href="../" class="lang-pill-btn" title="Switch to English" aria-label="English Version">EN</a>
       </div>
 
       <nav class="desktop-nav" aria-label="Quick section navigation">
-        <a href="#goals-section" class="nav-btn"><span>🎯</span> Objectifs</a>
-        <a href="#current-stats" class="nav-btn"><span>📊</span> Statistiques</a>
-        <a href="#historic-goals" class="nav-btn"><span>🏆</span> Historique</a>
-        <a href="#all-time-totals" class="nav-btn"><span>🎖️</span> Cumul</a>
+        <a href="#goals-section" class="nav-btn" title="Objectifs"><span>🎯</span> <span class="nav-label">Objectifs</span></a>
+        <a href="#current-stats" class="nav-btn" title="Statistiques"><span>📊</span> <span class="nav-label">Statistiques</span></a>
+        <a href="#historic-goals" class="nav-btn" title="Historique"><span>🏆</span> <span class="nav-label">Historique</span></a>
+        <a href="#all-time-totals" class="nav-btn" title="Cumul"><span>🎖️</span> <span class="nav-label">Cumul</span></a>
       </nav>
     </div>
   </header>
@@ -1177,16 +1332,10 @@
       
 
       <!-- Year Switcher Pill Bar -->
-      <div class="season-switcher-bar" role="tablist" aria-label="Season selector">
+      <div class="season-switcher-bar" aria-label="Season selector">
         <span class="season-label">Saison :</span>
         <div class="year-pills-list">
-          <button type="button" class="year-pill is-active" data-year="2026" aria-selected="true" role="tab"><span class="year-pill-num">2026</span> <span class="active-dot" title="Active season">🟢</span></button>
-<button type="button" class="year-pill" data-year="2025" aria-selected="false" role="tab"><span class="year-pill-num">2025</span></button>
-<button type="button" class="year-pill" data-year="2024" aria-selected="false" role="tab"><span class="year-pill-num">2024</span></button>
-<button type="button" class="year-pill" data-year="2023" aria-selected="false" role="tab"><span class="year-pill-num">2023</span></button>
-<button type="button" class="year-pill" data-year="2022" aria-selected="false" role="tab"><span class="year-pill-num">2022</span></button>
-<button type="button" class="year-pill" data-year="2021" aria-selected="false" role="tab"><span class="year-pill-num">2021</span></button>
-<button type="button" class="year-pill" data-year="2019" aria-selected="false" role="tab"><span class="year-pill-num">2019</span></button>
+          <span class="year-pill is-active" id="season-active-pill" aria-live="polite"><span class="year-pill-num" id="season-active-year">2026</span> <span class="active-dot" title="Saison sélectionnée">🟢</span></span><label class="season-select-wrap" title="Saisons disponibles"><select id="season-select" class="season-select" aria-label="Saisons disponibles"><option value="" disabled selected hidden>Saisons</option><option value="2026" data-label="2026 · en cours">✓ 2026 · en cours</option><option value="2025" data-label="2025">2025</option><option value="2024" data-label="2024">2024</option><option value="2023" data-label="2023">2023</option><option value="2022" data-label="2022">2022</option><option value="2021" data-label="2021">2021</option><option value="2019" data-label="2019">2019</option></select></label>
         </div>
       </div>
 
@@ -1498,7 +1647,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p>&copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> · <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Profil Strava</a> · <span class="footer-synced">Synchronisé : <strong class="synced-value" data-synced-at="2026-11-10T12:23:41" data-synced-label="2026-11-10 12:23:41" data-debug="false">à l&#x27;instant</strong></span></p>
+      <p>&copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> · <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Profil Strava</a> · <span class="footer-synced">Synchronisé : <strong class="synced-value" data-synced-at="2026-11-10T12:41:15" data-synced-label="2026-11-10 12:41:15" data-debug="false">à l&#x27;instant</strong></span></p>
     </footer>
   </main>
 
@@ -1506,7 +1655,7 @@
   <nav class="mobile-dock" aria-label="Mobile Navigation">
     <div class="dock-inner">
       <a href="#goals-section" class="dock-btn"><span class="dock-icon">🎯</span><span>Objectifs</span></a>
-      <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Statistiques</span></a>
+      <a href="#current-stats" class="dock-btn"><span class="dock-icon">📊</span><span>Stats</span></a>
       <a href="#historic-goals" class="dock-btn"><span class="dock-icon">🏆</span><span>Historique</span></a>
       <a href="#all-time-totals" class="dock-btn"><span class="dock-icon">🎖️</span><span>Cumul</span></a>
       <a href="../" class="dock-btn dock-lang-btn" title="Switch to English"><span class="dock-icon-code">EN</span><span>EN</span></a>
@@ -1611,7 +1760,10 @@
   <dialog id="activity-dialog" aria-labelledby="activity-dialog-title">
     <div class="dialog-header">
       <h3 id="activity-dialog-title" class="dialog-title">🚴 Activités</h3>
-      <button class="dialog-close-btn" data-close-dialog aria-label="Close dialog">✕</button>
+      <div class="dialog-header-actions">
+        <button id="dialog-dup-toggle" class="dup-toggle-btn" type="button" aria-pressed="false" hidden>⧉ <span class="dup-toggle-text"></span> <span class="dup-toggle-count"></span></button>
+        <button class="dialog-close-btn" data-close-dialog aria-label="Close dialog" autofocus>✕</button>
+      </div>
     </div>
     <div class="dialog-body">
       <button id="dialog-open-all-btn" class="btn-action-primary" style="margin-bottom: 16px;">
@@ -1806,7 +1958,38 @@
       bindTimeClick();
     }
 
+    // Duplicate recordings (same session on two devices) are hidden by
+    // default; the header toggle flips it for every activity popup and the
+    // choice is remembered in this browser only.
+    var SHOW_DUPS = false;
+    try { SHOW_DUPS = localStorage.getItem("strava.showDuplicates") === "1"; } catch (e) {}
+
+    function applyDupState() {
+      var listEl = document.getElementById("activity-dialog-list");
+      var btn = document.getElementById("dialog-dup-toggle");
+      if (!listEl) return;
+      var n = parseInt(listEl.getAttribute("data-dup-count") || "0", 10);
+      listEl.classList.toggle("hide-dups", !SHOW_DUPS);
+      if (!btn) return;
+      btn.hidden = n === 0;
+      btn.setAttribute("aria-pressed", SHOW_DUPS ? "true" : "false");
+      var label = SHOW_DUPS
+        ? (LANG === "fr" ? "Masquer les doublons" : "Hide duplicates")
+        : (LANG === "fr" ? "Afficher les doublons" : "Show duplicates");
+      btn.querySelector(".dup-toggle-text").textContent = label;
+      btn.querySelector(".dup-toggle-count").textContent = "(" + n + ")";
+      btn.title = label + " (" + n + ")";
+    }
+
     function initDialogs() {
+      var dupBtn = document.getElementById("dialog-dup-toggle");
+      if (dupBtn) {
+        dupBtn.addEventListener("click", function() {
+          SHOW_DUPS = !SHOW_DUPS;
+          try { localStorage.setItem("strava.showDuplicates", SHOW_DUPS ? "1" : "0"); } catch (e) {}
+          applyDupState();
+        });
+      }
       document.querySelectorAll("dialog").forEach(function(d) {
         d.querySelectorAll("[data-close-dialog]").forEach(function(btn) {
           btn.addEventListener("click", function() { d.close(); });
@@ -1829,19 +2012,26 @@
     }
 
     function initYearSwitching() {
-      var pills = document.querySelectorAll(".year-pill");
-      pills.forEach(function(pill) {
-        pill.addEventListener("click", function() {
-          var year = this.getAttribute("data-year");
-          if (!year || year === activeYear) return;
-          
-          pills.forEach(function(p) { p.classList.remove("is-active"); p.setAttribute("aria-selected", "false"); });
-          this.classList.add("is-active");
-          this.setAttribute("aria-selected", "true");
-
-          activeYear = year;
-          renderYear(year);
+      var select = document.getElementById("season-select");
+      var yearEl = document.getElementById("season-active-year");
+      if (!select) return;
+      function syncOptions() {
+        Array.prototype.forEach.call(select.options, function(o) {
+          if (!o.value) return;
+          var label = o.getAttribute("data-label") || o.value;
+          o.textContent = (o.value === activeYear ? "✓ " : "") + label;
         });
+        select.value = "";   // closed dropdown keeps reading "Seasons"
+      }
+      syncOptions();
+      select.addEventListener("change", function() {
+        var year = this.value;
+        if (year && year !== activeYear && YEARLY_ARCHIVE[year]) {
+          activeYear = year;
+          if (yearEl) yearEl.textContent = year;   // pill + green dot follow the selection
+          renderYear(year);
+        }
+        syncOptions();
       });
     }
 
@@ -2093,16 +2283,23 @@
         return url;
       }
 
+      var dupCount = 0;
       ids.forEach(function(id) {
         var act = ACTIVITY_DB[id];
         if (!act) return;
         var dups = (act.dups || []).filter(function(dupId) { return ACTIVITY_DB[dupId]; });
+        dupCount += dups.length;
         // Only counted activities go into "Open All"; duplicates stay one click away.
         urls.push(renderActivityItem(id, act, dups.length ? "kept" : ""));
         dups.forEach(function(dupId) {
           renderActivityItem(dupId, ACTIVITY_DB[dupId], "dup");
         });
       });
+
+      listEl.setAttribute("data-dup-count", String(dupCount));
+      applyDupState();
+      var bodyEl = listEl.closest(".dialog-body");
+      if (bodyEl) bodyEl.scrollTop = 0;
 
       openAllBtn.style.display = urls.length > 1 ? "flex" : "none";
       openAllBtn.onclick = function() {
