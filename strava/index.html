@@ -1531,10 +1531,10 @@
       </a>
 
       <div class="header-actions">
-        <div class="sync-status-pill" title="Last synced: 2026-11-14 14:02:23">
+        <div class="sync-status-pill" title="Last synced: 2026-11-14 14:03:07">
           <span class="live-pulse-dot" aria-hidden="true"></span>
           <span class="synced-label-text">Synced:</span>
-          <strong class="synced-value" data-synced-at="2026-11-14T14:02:23" data-synced-label="2026-11-14 14:02:23" data-debug="false">just now</strong>
+          <strong class="synced-value" data-synced-at="2026-11-14T14:03:07" data-synced-label="2026-11-14 14:03:07" data-debug="false">just now</strong>
         </div>
         <a href="./fr/" class="lang-pill-btn" title="Passer en version française" aria-label="Version Française">FR</a>
       </div>
@@ -1873,7 +1873,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p>&copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> · <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava Profile</a> · <span class="footer-synced">Synced: <strong class="synced-value" data-synced-at="2026-11-14T14:02:23" data-synced-label="2026-11-14 14:02:23" data-debug="false">just now</strong></span></p>
+      <p>&copy; <a href="https://zayidu.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Zayidu</a> · <a href="https://www.strava.com/athletes/32322110" target="_blank" rel="noopener noreferrer">Strava Profile</a> · <span class="footer-synced">Synced: <strong class="synced-value" data-synced-at="2026-11-14T14:03:07" data-synced-label="2026-11-14 14:03:07" data-debug="false">just now</strong></span></p>
     </footer>
   </main>
 
@@ -2732,25 +2732,11 @@
       return n <= 3 ? Array(n + 1).join("🏆") : "🏆×" + n;
     }
 
-    var PB_SEEN_KEY = "strava.pbSeen";
-    function pbReadSeen() {
-      try { var v = JSON.parse(localStorage.getItem(PB_SEEN_KEY) || "{}"); return (v && typeof v === "object") ? v : {}; }
-      catch (e) { return {}; }
-    }
-    function pbWriteSeen(seen) {
-      try {
-        if (Object.keys(seen).length) localStorage.setItem(PB_SEEN_KEY, JSON.stringify(seen));
-        else localStorage.removeItem(PB_SEEN_KEY);
-      } catch (e) {}
-    }
-
     function initPbCongrats() {
       var today = pbYmd(0);
-      // Forget "seen" marks after 2 days: by then their records are out of
-      // the 1-day celebration window anyway.
-      var seen = pbReadSeen(), keep = pbYmd(-2), pruned = false;
-      Object.keys(seen).forEach(function(k) { if (!(String(seen[k]) >= keep)) { delete seen[k]; pruned = true; } });
-      if (pruned) pbWriteSeen(seen);
+      // Shown on every load while a record is from today or yesterday.
+      // Drop the "seen" store an earlier version kept in this browser.
+      try { localStorage.removeItem("strava.pbSeen"); } catch (e) {}
 
       var fresh = [];
       Object.keys(ALLTIME_BESTS || {}).forEach(function(stype) {
@@ -2759,9 +2745,7 @@
         var data = ALLTIME_BESTS[stype];
         ((data && data.bests) || []).forEach(function(b) {
           pbRecentWins(b, 1).forEach(function(w) {
-            var key = stype + "|" + b.l + "|" + w.id;
-            if (seen[key]) return;
-            fresh.push({ key: key, stype: stype, b: b, w: w, card: card });
+            fresh.push({ stype: stype, b: b, w: w, card: card });
           });
         });
       });
@@ -2806,9 +2790,6 @@
       box.appendChild(el("p", "pb-congrats-sub", isFr ? "Bravo, continue comme ça 🎉" : "Congrats, keep it rolling 🎉"));
 
       function dismiss() {
-        var s = pbReadSeen();
-        fresh.forEach(function(f) { s[f.key] = today; });
-        pbWriteSeen(s);
         document.removeEventListener("keydown", onKey);
         if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
       }
